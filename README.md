@@ -3,5 +3,8 @@
 App for aligning windows in macOS
 ## How to run this app?
 ```zsh
-swift build -v
+swift build
+```
+```zsh
+./.build/debug/build
 ```
