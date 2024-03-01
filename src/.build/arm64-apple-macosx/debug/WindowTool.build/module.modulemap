@@ -1,4 +1,0 @@
-module WindowTool {
-    header "/Users/aleksander/Projects/WinTool-macOS/src/.build/arm64-apple-macosx/debug/WindowTool.build/WindowTool-Swift.h"
-    requires objc
-}
