@@ -1,4 +1,19 @@
 import SwiftUI
+import Cocoa
+
+func getFrontWindow() -> [String:Any]? {
+    let options = CGWindowListOption(arrayLiteral: .excludeDesktopElements, .optionOnScreenOnly)
+    let windowsListInfo = CGWindowListCopyWindowInfo(options, CGWindowID(0))
+    let infoList = windowsListInfo as! [[String:Any]]
+    let visibleWindows = infoList.filter{ $0["kCGWindowLayer"] as! Int == 0 }
+    let frontMostAppID = Int(NSWorkspace.shared.frontmostApplication!.processIdentifier)
+    for window in visibleWindows {
+        if frontMostAppID == window["kCGWindowOwnerPID"] as! Int {
+            return window
+        }
+    }
+    return nil
+}
 
 @main
 struct WinTool: App {
@@ -24,5 +39,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         statusBarItem.button?.imagePosition = .imageLeading
         statusBarItem.menu = menu.createMenu()
+
+        print(getFrontWindow())
     }
 }
