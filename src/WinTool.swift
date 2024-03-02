@@ -17,7 +17,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(_ notification: Notification) {
         AppDelegate.instance = self
-        statusBarItem.button?.image = NSImage(contentsOfFile: "./assets/256.png")
+        if let button = statusBarItem.button {
+           let image = NSImage(contentsOfFile: "./Assets/AppIcons/Icon.png")
+           image?.isTemplate = true
+           button.image = image
+        }
         statusBarItem.button?.imagePosition = .imageLeading
         statusBarItem.menu = menu.createMenu()
     }

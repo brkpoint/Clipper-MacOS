@@ -26,6 +26,7 @@ class ApplicationMenu: NSObject {
     @objc func about(sender: NSMenuItem) {
         NSApp.orderFrontStandardAboutPanel()
     }
+    
     @objc func quit(sender: NSMenuItem) {
         NSApp.terminate(self)
     }

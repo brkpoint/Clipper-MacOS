@@ -10,6 +10,10 @@ let package = Package(
     ],
     targets: [
         .executableTarget(
-            name: "build"),
+            name: "build",
+            resources: [
+                .copy("Assets")
+            ]
+        ),
     ]
 )
