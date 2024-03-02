@@ -1,10 +1,8 @@
-# WinTool-MacOS
+# 🖥️ WinTool-MacOS
 ## About
-App for aligning windows on macOS
+App for aligning windows on macOS (in progress)
 ## How to run this app?
-First of all you need to install the compiler for swift.
-### macOS:
-#### Installing the command-line-tools:
+### First of all you need to install the compiler for swift.
 ```zsh
 xcode-select --install
 ```
