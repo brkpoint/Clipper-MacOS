@@ -13,11 +13,6 @@ class ApplicationMenu: NSObject {
         customMenuItem.view = topView.view
         menu.addItem(customMenuItem)
         menu.addItem(NSMenuItem.separator())
-
-        // i'll do it later
-        // let optionsMenuItem = NSMenuItem(title: "Options for resizing",
-        //                                 action: ,
-        //                                 keyEquivalent: String)
         
         let quitMenuItem = NSMenuItem(title: "Quit",
                                        action: #selector(quit),

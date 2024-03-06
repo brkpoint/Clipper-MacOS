@@ -1,20 +1,6 @@
 import SwiftUI
 import Cocoa
 
-func getFrontWindow() -> [String:Any]? {
-    let options = CGWindowListOption(arrayLiteral: .excludeDesktopElements, .optionOnScreenOnly)
-    let windowsListInfo = CGWindowListCopyWindowInfo(options, CGWindowID(0))
-    let infoList = windowsListInfo as! [[String:Any]]
-    let visibleWindows = infoList.filter{ $0["kCGWindowLayer"] as! Int == 0 }
-    let frontMostAppID = Int(NSWorkspace.shared.frontmostApplication!.processIdentifier)
-    for window in visibleWindows {
-        if frontMostAppID == window["kCGWindowOwnerPID"] as! Int {
-            return window
-        }
-    }
-    return nil
-}
-
 @main
 struct WinTool: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
@@ -26,6 +12,10 @@ struct WinTool: App {
 }
 
 class AppDelegate: NSObject, NSApplicationDelegate {
+    public private(set) static var frontAppId: String? = "com.knollsoft.Rectangle"
+    public private(set) static var frontAppName: String? = "Rectangle"
+    public private(set) static var shortcutsDisabled: Bool = false
+
     static private(set) var instance: AppDelegate!
     lazy var statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     let menu = ApplicationMenu()
@@ -40,6 +30,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusBarItem.button?.imagePosition = .imageLeading
         statusBarItem.menu = menu.createMenu()
 
-        print(getFrontWindow())
+        registerFrontAppChangeNote()
+    }
+
+    private func registerFrontAppChangeNote() {
+        NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(self.receiveFrontAppChangeNote(_:)), name: NSWorkspace.didActivateApplicationNotification, object: nil)
+    }
+
+    @objc func receiveFrontAppChangeNote(_ notification: Notification) {
+        if let application = notification.userInfo?["NSWorkspaceApplicationKey"] as? NSRunningApplication {
+            Self.frontAppId = application.bundleIdentifier
+            Self.frontAppName = application.localizedName
+            if let frontAppId = application.bundleIdentifier {
+                
+            } else {
+
+            }
+        }
     }
 }

@@ -1,9 +1,23 @@
 import SwiftUI
 
 struct ContentView: View {
+    let windowManager = WindowManager()
     var body: some View {
         VStack {
-            
+            HStack(alignment: .center) {
+                VStack {
+                    Text("Align options:")
+                    ForEach(ResizeTypeBasic.allCases, id: \.self) { item in
+                        Button {
+                            Task {
+                                windowManager.Align(item)
+                            }
+                        } label: {
+                            Text(item.rawValue).foregroundColor(Color.primary)
+                        }
+                    }
+                }
+            }
         }
         .padding()
     }
