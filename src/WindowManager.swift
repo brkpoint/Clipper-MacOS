@@ -21,4 +21,8 @@ class WindowManager {
     func Align(_ type: ResizeTypeBasic) {
         print(type)
     }
+
+    func GetCurrentApp() -> WindowElement {
+        return WindowElement("Test")
+    }
 }

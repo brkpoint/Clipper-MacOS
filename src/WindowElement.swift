@@ -1,5 +1,8 @@
 import Foundation
 
-class WindowElement {
-    
+struct WindowElement {
+    let name: String
+    init(_ n: String) {
+        name = n
+    }
 }

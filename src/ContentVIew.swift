@@ -6,6 +6,7 @@ struct ContentView: View {
         VStack {
             HStack(alignment: .center) {
                 VStack {
+                    Text("Current App: \(windowManager.GetCurrentApp().name)")
                     Text("Align options:")
                     ForEach(ResizeTypeBasic.allCases, id: \.self) { item in
                         Button {

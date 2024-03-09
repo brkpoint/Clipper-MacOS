@@ -7,7 +7,7 @@ class ApplicationMenu: NSObject {
     func createMenu() -> NSMenu {
         let viewMain = ContentView()
         let topView = NSHostingController(rootView: viewMain)
-        topView.view.frame.size = CGSize(width: 225, height: 100)
+        topView.view.frame.size = CGSize(width: 225, height: 125)
         
         let customMenuItem = NSMenuItem()
         customMenuItem.view = topView.view
