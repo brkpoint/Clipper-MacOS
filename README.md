@@ -10,7 +10,7 @@ App for aligning windows on macOS (in progress)
 - [ ] app resizing
 - [ ] app struct
 - [ ] more features
-- [ ] README.md file to fix 😭
+- [ ] README.md to fix 😭
 - [ ] snapping
 ## How to run this app?
 ### First of all you need to install the compiler for swift
