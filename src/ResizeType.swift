@@ -26,6 +26,15 @@ enum ResizeType: String, Codable, CaseIterable {
     toBottomRight = "Bottom Right Corner",
     toCenter = "Center"
 
+    var basic: Bool {
+        switch self {
+            case .toLeftSide, .toRightSide, .toCenter:
+                return true
+            default:
+                return false
+        }
+    }
+
     var type: String {
         switch self {
             case .toLeftSide:

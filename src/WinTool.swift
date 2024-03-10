@@ -12,8 +12,8 @@ struct WinTool: App {
 }
 
 class AppDelegate: NSObject, NSApplicationDelegate {
-    public private(set) static var frontAppId: String? = "com.knollsoft.Rectangle"
-    public private(set) static var frontAppName: String? = "Rectangle"
+    public private(set) static var frontAppId: String? = ""
+    public private(set) static var frontAppName: String? = "WinTool"
     public private(set) static var shortcutsDisabled: Bool = false
 
     static private(set) var instance: AppDelegate!

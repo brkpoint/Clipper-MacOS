@@ -25,4 +25,5 @@ class WindowManager {
     func GetCurrentApp() -> WindowElement {
         return WindowElement("Test")
     }
+
 }
