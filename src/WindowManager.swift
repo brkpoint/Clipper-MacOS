@@ -23,7 +23,6 @@ public class WindowManager {
 
     func SetApp(_ app: WindowElement) {
         currentApplication = app
-        Main.shared.contentView.viewInfo = WindowViewInfo(app.name)
     }
 
     func Align(_ type: ResizeType) {
@@ -32,6 +31,10 @@ public class WindowManager {
 
     func GetCurrentApp() -> WindowElement {
         return currentApplication
+    }
+
+    func GetCurrentAppName() -> String {
+        return currentApplication.name
     }
 
 }

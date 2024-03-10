@@ -1,22 +1,14 @@
 import SwiftUI
 
-class WindowViewInfo: ObservableObject {
-    @Published var appName: String
-
-    init(_ name: String) {
-        appName = name
-    }
-}
-
 struct ContentView: View {
     let windowManager = WindowManager.shared
-    @ObservedObject var viewInfo: WindowViewInfo = WindowViewInfo("None")
+    var appName: String = "None"
 
     var body: some View {
         VStack {
             HStack(alignment: .center) {
                 VStack {
-                    Text("Align app: \(self.viewInfo.appName)")                
+                    Text("Align: \(appName)")                
                     ForEach(ResizeType.allCases.filter {$0.isBasic($0)}, id: \.self) { item in
                         Button(action: {
                             windowManager.Align(item)
