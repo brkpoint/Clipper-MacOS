@@ -1,7 +1,14 @@
 import Cocoa
 import SwiftUI
 
-class WindowManager {
+public class WindowManager {
+    static let shared = WindowManager()
+
+    private(set) var currentApplication: WindowElement
+    private init() {
+        currentApplication = WindowElement("")
+    }
+
     // enum AlingOptions: Int {
     //     case toLeft = 0,
     //     toRight = 1,
@@ -14,16 +21,17 @@ class WindowManager {
     //     toBottom = 8
     // }
 
+    func SetApp(_ app: WindowElement) {
+        currentApplication = app
+        Main.shared.contentView.viewInfo = WindowViewInfo(app.name)
+    }
+
     func Align(_ type: ResizeType) {
         print(type)
     }
 
-    func Align(_ type: ResizeTypeBasic) {
-        print(type)
-    }
-
     func GetCurrentApp() -> WindowElement {
-        return WindowElement("Test")
+        return currentApplication
     }
 
 }

@@ -2,26 +2,26 @@ import SwiftUI
 import Cocoa
 
 @main
-struct WinTool: App {
+struct Main: App {
+    static var shared: Main = Main()
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    var contentView: ContentView = ContentView()
     var body: some Scene {
         Settings {
-            ContentView()
+            contentView
         }
     }
 }
 
 class AppDelegate: NSObject, NSApplicationDelegate {
-    public private(set) static var frontAppId: String? = ""
-    public private(set) static var frontAppName: String? = "WinTool"
-    public private(set) static var shortcutsDisabled: Bool = false
-
     static private(set) var instance: AppDelegate!
     lazy var statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     let menu = ApplicationMenu()
+    let windowManager = WindowManager.shared
     
     func applicationDidFinishLaunching(_ notification: Notification) {
         AppDelegate.instance = self
+        registerFrontAppChangeNote()
         if let button = statusBarItem.button {
            let image = NSImage(contentsOfFile: "./Assets/AppIcons/Icon.png")
            image?.isTemplate = true
@@ -29,8 +29,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         statusBarItem.button?.imagePosition = .imageLeading
         statusBarItem.menu = menu.createMenu()
-
-        registerFrontAppChangeNote()
     }
 
     private func registerFrontAppChangeNote() {
@@ -39,12 +37,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @objc func receiveFrontAppChangeNote(_ notification: Notification) {
         if let application = notification.userInfo?["NSWorkspaceApplicationKey"] as? NSRunningApplication {
-            Self.frontAppId = application.bundleIdentifier
-            Self.frontAppName = application.localizedName
+            // Self.frontAppId = application.bundleIdentifier
+            // Self.frontAppName = application.localizedName
             if let frontAppId = application.bundleIdentifier {
-                
+                windowManager.SetApp(WindowElement(application.localizedName!))
             } else {
-
+                
             }
         }
     }

@@ -5,7 +5,7 @@ class ApplicationMenu: NSObject {
     let menu = NSMenu()
     
     func createMenu() -> NSMenu {
-        let viewMain = ContentView()
+        let viewMain = Main.shared.contentView
         let topView = NSHostingController(rootView: viewMain)
         topView.view.frame.size = CGSize(width: 225, height: 125)
         
