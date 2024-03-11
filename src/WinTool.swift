@@ -54,7 +54,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 if error == .success, let windowRef = result {
                     let windowElement = windowRef as! AXUIElement
                     
-                    // Get the window title
                     var title: CFTypeRef?
                     AXUIElementCopyAttributeValue(windowElement, kAXTitleAttribute as CFString, &title)
                     
