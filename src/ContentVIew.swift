@@ -1,10 +1,10 @@
 import SwiftUI
 
 class WindowInfoView: ObservableObject {
-    @Published var window: WindowElement
+    @Published var windowElement: WindowElement
 
-    init(_ newWindow: WindowElement) {
-        window = newWindow
+    init(_ newWindowElement: WindowElement) {
+        windowElement = newWindowElement
     }
 }
 
@@ -16,10 +16,11 @@ struct ContentView: View {
         VStack {
             HStack(alignment: .center) {
                 VStack {
-                    HStack() {
-                        Text("Align: \(self.windowInfo.window.name)")
-                        Image(nsImage: self.windowInfo.window.icon)
-                    }
+                    Label {
+                        Text(self.windowInfo.windowElement.name)
+                    } icon: {
+                        Image(nsImage: self.windowInfo.windowElement.icon)
+                    }.font(.title)
                     ForEach(ResizeType.allCases.filter {$0.isBasic($0)}, id: \.self) { item in
                         Button(action: {
                             windowManager.Align(item)
@@ -32,7 +33,7 @@ struct ContentView: View {
         }
         .padding()
         .onAppear(perform: {
-            windowInfo.window = WindowManager.shared.GetCurrentApp()
+            windowInfo.windowElement = WindowManager.shared.GetCurrentApp()
         })
     }
 }

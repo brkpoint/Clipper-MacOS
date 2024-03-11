@@ -40,8 +40,33 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             // appId - application.bundleIdentifier
             // appName - application.localizedName
 
-            if let frontAppId = application.bundleIdentifier {
-                windowManager.SetApp(WindowElement(application.localizedName!, frontAppId, application.icon!))
+            if let window = getFrontmostWindow(for: application.processIdentifier) {
+                windowManager.SetApp(WindowElement(application.localizedName!, "", application.bundleIdentifier!, application.icon!, window))
+                window.setFrame(NSRect(x: 0, y: 0, width: 1200, height: 800), display: true)
+            }
+            
+            func getFrontmostWindow(for processIdentifier: pid_t) -> NSWindow? {
+                let appElement = AXUIElementCreateApplication(processIdentifier)
+                
+                var result: CFTypeRef?
+                let error = AXUIElementCopyAttributeValue(appElement, kAXFocusedWindowAttribute as CFString, &result)
+                
+                if error == .success, let windowRef = result {
+                    let windowElement = windowRef as! AXUIElement
+                    
+                    // Get the window title
+                    var title: CFTypeRef?
+                    AXUIElementCopyAttributeValue(windowElement, kAXTitleAttribute as CFString, &title)
+                    
+                    if let titleValue = title as? String {
+                        let windowPtr = UnsafeMutableRawPointer(Unmanaged.passUnretained(windowElement).toOpaque())
+                        return NSWindow(windowRef: windowPtr)
+                    } else {
+                        print("Failed to retrieve window title.")
+                    }
+                }
+                
+                return nil
             }
         }
     }
