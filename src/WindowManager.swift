@@ -33,8 +33,4 @@ public class WindowManager {
         return currentApplication
     }
 
-    func GetCurrentAppName() -> String {
-        return currentApplication.name
-    }
-
 }
