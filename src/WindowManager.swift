@@ -6,7 +6,7 @@ public class WindowManager {
 
     private(set) var currentApplication: WindowElement
     private init() {
-        currentApplication = WindowElement("")
+        currentApplication = WindowElement("", "")
     }
 
     // enum AlingOptions: Int {

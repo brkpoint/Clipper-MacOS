@@ -1,22 +1,25 @@
 import SwiftUI
 
 class WindowInfoView: ObservableObject {
-    @Published var appName: String
+    @Published var window: WindowElement
 
-    init(_ newAppName: String) {
-        appName = newAppName
+    init(_ newWindow: WindowElement) {
+        window = newWindow
     }
 }
 
 struct ContentView: View {
     let windowManager = WindowManager.shared
-    @StateObject var windowInfoView: WindowInfoView = WindowInfoView("")
+    @StateObject private var windowInfo: WindowInfoView = WindowInfoView(WindowElement("", ""))
 
     var body: some View {
         VStack {
             HStack(alignment: .center) {
                 VStack {
-                    Text("Align: \(self.windowInfoView.appName)")                
+                    HStack() {
+                        Text("Align: \(self.windowInfo.window.name)")
+                        Image(nsImage: self.windowInfo.window.icon)
+                    }
                     ForEach(ResizeType.allCases.filter {$0.isBasic($0)}, id: \.self) { item in
                         Button(action: {
                             windowManager.Align(item)
@@ -29,7 +32,7 @@ struct ContentView: View {
         }
         .padding()
         .onAppear(perform: {
-            windowInfoView.appName = WindowManager.shared.GetCurrentApp().name
+            windowInfo.window = WindowManager.shared.GetCurrentApp()
         })
     }
 }

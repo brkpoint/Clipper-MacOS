@@ -37,12 +37,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @objc func receiveFrontAppChangeNote(_ notification: Notification) {
         if let application = notification.userInfo?["NSWorkspaceApplicationKey"] as? NSRunningApplication {
-            // Self.frontAppId = application.bundleIdentifier
-            // Self.frontAppName = application.localizedName
+            // appId - application.bundleIdentifier
+            // appName - application.localizedName
+
             if let frontAppId = application.bundleIdentifier {
-                windowManager.SetApp(WindowElement(application.localizedName!))
-            } else {
-                
+                windowManager.SetApp(WindowElement(application.localizedName!, frontAppId, application.icon!))
             }
         }
     }
