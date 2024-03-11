@@ -20,7 +20,6 @@ struct ContentView: View {
                     ForEach(ResizeType.allCases.filter {$0.isBasic($0)}, id: \.self) { item in
                         Button(action: {
                             windowManager.Align(item)
-                            print(windowInfoView.appName)
                         }) {
                             Text(item.rawValue).foregroundColor(Color.primary)
                         }
