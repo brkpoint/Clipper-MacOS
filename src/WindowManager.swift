@@ -6,7 +6,7 @@ public class WindowManager {
 
     private(set) var currentApplication: WindowElement
     private init() {
-        currentApplication = WindowElement("", "")
+        currentApplication = WindowElement("", "", pid_t(0))
     }
 
     // enum AlingOptions: Int {
@@ -26,7 +26,7 @@ public class WindowManager {
     }
 
     func Align(_ type: ResizeType) {
-        
+        currentApplication.setFrame(CGRect(x: 0, y: 0, width: 800, height: 600))
     }
 
     func GetCurrentApp() -> WindowElement {

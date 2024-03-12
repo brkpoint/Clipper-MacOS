@@ -10,7 +10,7 @@ class WindowInfoView: ObservableObject {
 
 struct ContentView: View {
     let windowManager = WindowManager.shared
-    @StateObject private var windowInfo: WindowInfoView = WindowInfoView(WindowElement("", ""))
+    @StateObject private var windowInfo: WindowInfoView = WindowInfoView(WindowElement("", "", pid_t(0)))
 
     var body: some View {
         VStack {
