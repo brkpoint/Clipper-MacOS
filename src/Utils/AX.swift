@@ -42,6 +42,7 @@ extension AXUIElement {
 
     static func askForAccessibilityIfNeeded() -> Bool {
         let options = [kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String: true]
+        print("INFO: Asking for permission to access other apps")
         return AXIsProcessTrustedWithOptions(options as CFDictionary?)
     }
     

@@ -6,7 +6,6 @@ struct Main: App {
     static var shared: Main = Main()
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     var contentView: ContentView = ContentView()
-    var canMove: Bool = true
     var body: some Scene {
         Settings {
             contentView
@@ -21,12 +20,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let windowManager = WindowManager.shared
     
     func applicationDidFinishLaunching(_ notification: Notification) {
-        if AXUIElement.askForAccessibilityIfNeeded() {
-            Main.shared.canMove = AXUIElement.checkAppIsAllowToUseAccessibilty()
-        }
-
         if AXUIElement.isSandboxingEnabled() {
             print("ERR: Sandboxing is enabled")
+        } else {
+            print("INFO: Sandboxing is disabled")
         }
 
         AppDelegate.instance = self
