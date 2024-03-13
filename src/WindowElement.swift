@@ -50,6 +50,8 @@ class WindowElement {
     func setFrame(_ nFrame: CGRect) {
         position = nFrame.origin
         size = nFrame.size
+
+        print("INFO: Resizing window: \(axUIElement?.getValue(.title) as? String ?? "N/A"), to rect: \(nFrame)")
     }
 
     func getWindow() {
