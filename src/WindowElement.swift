@@ -42,12 +42,22 @@ class WindowElement {
         }
     }
 
+    var isResizable: Bool {
+        get {
+            axUIElement?.isSettable(.size) ?? true
+        }
+    }
+
     var frame: CGRect {
         guard let position = position, let size = size else { return .null }
         return .init(origin: position, size: size)
     }
 
     func setFrame(_ nFrame: CGRect) {
+        if !isResizable {
+            return
+        }
+
         position = nFrame.origin
         size = nFrame.size
 
