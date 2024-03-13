@@ -55,6 +55,7 @@ class WindowElement {
 
     func setFrame(_ nFrame: CGRect) {
         if !isResizable {
+            NSSound.beep()
             return
         }
 
