@@ -46,8 +46,12 @@ class WindowElement {
     }
 
     func setFrame(_ nFrame: CGRect) {
-        axUIElement.setValue(.size, CGSize(width: 800, height: 600))
-        print(axUIElement.getValue(.size))
+        if axUIElement.isSettable(.position) {
+            return
+        }
+
+        position = nFrame.origin
+        size = nFrame.size
     }
     
 }

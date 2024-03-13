@@ -6,6 +6,7 @@ struct Main: App {
     static var shared: Main = Main()
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     var contentView: ContentView = ContentView()
+    var canMove: Bool = true
     var body: some Scene {
         Settings {
             contentView
@@ -20,6 +21,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let windowManager = WindowManager.shared
     
     func applicationDidFinishLaunching(_ notification: Notification) {
+        if AXUIElement.askForAccessibilityIfNeeded() {
+            Main.shared.canMove = AXUIElement.checkAppIsAllowToUseAccessibilty()
+        }
+
+        if AXUIElement.isSandboxingEnabled() {
+            print("ERR: Sandboxing is enabled")
+        }
+
         AppDelegate.instance = self
         registerFrontAppChangeNote()
         if let button = statusBarItem.button {
@@ -40,7 +49,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             // appId - application.bundleIdentifier
             // appName - application.localizedName
 
-            //windowManager.SetApp(WindowElement(application.localizedName!, application.bundleIdentifier!, application.processIdentifier, application.icon!))
+            windowManager.SetApp(WindowElement(application.localizedName!, application.bundleIdentifier!, application.processIdentifier, application.icon!))
         }
     }
 }

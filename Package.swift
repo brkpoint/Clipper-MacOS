@@ -8,11 +8,22 @@ let package = Package(
     platforms: [
         .macOS(.v14)
     ],
+    dependencies: [
+
+    ],
     targets: [
         .executableTarget(
             name: "build",
             resources: [
                 .copy("Assets")
+            ],
+            linkerSettings: [
+                .unsafeFlags([
+                    "-Xlinker", "-sectcreate",
+                    "-Xlinker", "__TEXT",
+                    "-Xlinker", "__info_plist",
+                    "-Xlinker", "Info.plist"
+                ])
             ]
         ),
     ]
