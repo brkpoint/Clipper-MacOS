@@ -10,6 +10,8 @@ App for aligning windows on macOS (in progress)
 - [x] app resizing
 - [x] app struct
 - [ ] error handling
+- [ ] better UI
+- [ ] window hoverover and aling (WH&A)
 - [ ] screen detection and some stuff with this
 - [ ] more features
 - [ ] README.md to fix 😭
