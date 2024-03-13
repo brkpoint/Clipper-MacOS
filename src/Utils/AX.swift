@@ -4,21 +4,31 @@ extension AXUIElement {
     func getValue(_ attribute: NSAccessibility.Attribute) -> AnyObject? {
         var value: AnyObject?
         let result = AXUIElementCopyAttributeValue(self, attribute.rawValue as CFString, &value)
-        guard result == .success else { return nil }
+        guard result == .success else {
+            print("ERR: \(result.rawValue)")
+            return nil
+        }
         return value
     }
 
     func getWrappedValue<T>(_ attribute: NSAccessibility.Attribute) -> T? {
-        guard let value = getValue(attribute), CFGetTypeID(value) == AXValueGetTypeID() else { return nil }
+        guard let value = getValue(attribute), CFGetTypeID(value) == AXValueGetTypeID() else {
+            return nil
+        }
         return (value as! AXValue).convertTo()
     }
 
     private func m_setValue(_ attribute: NSAccessibility.Attribute, _ value: AnyObject) {
-        AXUIElementSetAttributeValue(self, attribute.rawValue as CFString, value)
+        let error = AXUIElementSetAttributeValue(self, attribute.rawValue as CFString, value)
+        if error != .success {
+            print("ERR: AXSetValue - err_code: \(error.rawValue)")
+        }
     }
 
     private func m_setWrappedValue<T>(_ attribute: NSAccessibility.Attribute, _ value: T, _ type: AXValueType) {
-        guard let value = AXValue.convertFrom(value, type) else { return }
+        guard let value = AXValue.convertFrom(value, type) else {
+            return
+        }
         m_setValue(attribute, value)
     }
 
@@ -62,7 +72,11 @@ extension AXValue {
         let success = AXValueGetValue(self, AXValueGetType(self), pointer)
         let value = pointer.pointee
         pointer.deallocate()
-        return success ? value : nil
+        if !success {
+            print("ERR: AXValue error")
+            return nil
+        }
+        return value
     }
     
     static func convertFrom<T>(_ value: T, _ type: AXValueType) -> AXValue? {

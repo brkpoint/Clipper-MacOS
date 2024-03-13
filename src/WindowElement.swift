@@ -6,7 +6,8 @@ class WindowElement {
     let Id: String
     let icon: NSImage
 
-    fileprivate let axUIElement: AXUIElement
+    fileprivate var axUIElement: Optional<AXUIElement>
+    private let mainApp: AXUIElement
 
     convenience init(_ Name: String, _ ID: String, _ PID: pid_t) {
         self.init(Name, ID, PID, NSImage())
@@ -17,26 +18,27 @@ class WindowElement {
         Id = ID
         icon = Icon
 
-        axUIElement = AXUIElementCreateApplication(PID)
+        mainApp = AXUIElementCreateApplication(PID)
+        axUIElement = nil
     }
 
     private var position: CGPoint? {
         get {
-            axUIElement.getWrappedValue(.position)
+            axUIElement?.getWrappedValue(.position)
         }
         set {
             guard let newValue = newValue else { return }
-            axUIElement.setValue(.position, newValue)
+            axUIElement?.setValue(.position, newValue)
         }
     }
 
     private var size: CGSize? {
         get {
-            axUIElement.getWrappedValue(.size)
+            axUIElement?.getWrappedValue(.size)
         }
         set {
             guard let newValue = newValue else { return }
-            axUIElement.setValue(.size, newValue)
+            axUIElement?.setValue(.size, newValue)
         }
     }
 
@@ -46,12 +48,12 @@ class WindowElement {
     }
 
     func setFrame(_ nFrame: CGRect) {
-        if axUIElement.isSettable(.position) {
-            return
-        }
-
         position = nFrame.origin
         size = nFrame.size
+    }
+
+    func getWindow() {
+        axUIElement = mainApp.getValue(.focusedWindow) as! AXUIElement
     }
     
 }

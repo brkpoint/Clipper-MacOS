@@ -20,6 +20,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let windowManager = WindowManager.shared
     
     func applicationDidFinishLaunching(_ notification: Notification) {
+        AXUIElement.askForAccessibilityIfNeeded()
+
         if AXUIElement.isSandboxingEnabled() {
             print("ERR: Sandboxing is enabled")
         } else {
@@ -47,6 +49,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             // appName - application.localizedName
 
             windowManager.SetApp(WindowElement(application.localizedName!, application.bundleIdentifier!, application.processIdentifier, application.icon!))
+            windowManager.GetCurrentApp().getWindow()
         }
     }
 }
