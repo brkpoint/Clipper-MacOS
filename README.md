@@ -7,8 +7,9 @@ App for aligning windows on macOS (in progress)
 - [x] windows list
 - [x] buttons in the menu
 - [x] current app in the menu (not kinda)
-- [ ] app resizing
-- [ ] app struct
+- [x] app resizing
+- [x] app struct
+- [ ] screen detection and some stuff with this
 - [ ] more features
 - [ ] README.md to fix 😭
 - [ ] snapping
