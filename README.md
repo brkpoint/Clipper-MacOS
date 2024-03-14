@@ -15,6 +15,7 @@ App for aligning windows on macOS (in progress)
 - [ ] better UI
 - [ ] window hoverover and aling (WH&A)
 - [x] screen detection and some stuff with this
+- [ ] global shortcuts and shortcut editor
 - [ ] more features
 - [ ] README.md to fix 😭
 - [ ] snapping
