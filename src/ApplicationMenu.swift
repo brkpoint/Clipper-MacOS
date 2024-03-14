@@ -3,20 +3,22 @@ import SwiftUI
 
 class ApplicationMenu: NSObject {
     let menu = NSMenu()
+
+    private let windowManager = WindowManager.shared
     
     func createMenu() -> NSMenu {
         let viewMain = Main.shared.contentView
         let topView = NSHostingController(rootView: viewMain)
         topView.view.frame.size = CGSize(width: 225, height: 150)
-        
+     
         let customMenuItem = NSMenuItem()
         customMenuItem.view = topView.view
         menu.addItem(customMenuItem)
         menu.addItem(NSMenuItem.separator())
-        
+
         let quitMenuItem = NSMenuItem(title: "Quit",
-                                       action: #selector(quit),
-                                       keyEquivalent: "q")
+                                                  action: #selector(quit),
+                                                  keyEquivalent: "q")
         quitMenuItem.target = self
         menu.addItem(quitMenuItem)
         

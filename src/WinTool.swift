@@ -4,7 +4,8 @@ import Cocoa
 @main
 struct Main: App {
     static var shared: Main = Main()
-    
+    private let windowManager = WindowManager.shared
+
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     var contentView: ContentView = ContentView()
     var body: some Scene {
@@ -47,6 +48,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if let application = NSWorkspace.shared.frontmostApplication {
             setupWindow(application)
         }
+
     }
 
     private func setupWindow(_ application: NSRunningApplication) {
