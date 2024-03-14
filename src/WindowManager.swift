@@ -3,8 +3,8 @@ import SwiftUI
 
 public class WindowManager {
     static let shared = WindowManager()
-    private var screen = NSScreen.main
 
+    private var screen = NSScreen.main
     private(set) var currentApplication: WindowElement
 
     private init() {
@@ -19,6 +19,7 @@ public class WindowManager {
 
     func Align(_ type: ResizeType) {
         let screenFrame: CGRect? = screen?.visibleFrame
+
         let screenWidth: CGFloat = screenFrame?.width ?? 1600
         let screenHeight: CGFloat = screenFrame?.height ?? 1200
 

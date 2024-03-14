@@ -4,9 +4,10 @@ import ServiceManagement
 
 @main
 struct Main: App {
+    private let windowManager = WindowManager.shared
+    
     static var shared: Main = Main()
     let bundleIdentifier = "com.shibaofficial.wintool"
-    private let windowManager = WindowManager.shared
 
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     var contentView: ContentView = ContentView()
@@ -58,6 +59,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             } catch {
                 print("ERR: Failed to add to launch on startup")
             }
+        } else {
+            print("INFO: App is added to launch on start up")
         }
 
     }

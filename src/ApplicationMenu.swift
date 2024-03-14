@@ -2,9 +2,9 @@ import Foundation
 import SwiftUI
 
 class ApplicationMenu: NSObject {
-    let menu = NSMenu()
-
     private let windowManager = WindowManager.shared
+
+    let menu = NSMenu()
     
     func createMenu() -> NSMenu {
         let viewMain = Main.shared.contentView
@@ -13,6 +13,7 @@ class ApplicationMenu: NSObject {
      
         let customMenuItem = NSMenuItem()
         customMenuItem.view = topView.view
+
         menu.addItem(customMenuItem)
         menu.addItem(NSMenuItem.separator())
 
