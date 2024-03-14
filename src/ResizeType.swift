@@ -24,11 +24,12 @@ enum ResizeType: String, Codable, CaseIterable {
     toTopRight = "Top Right Corner",
     toBottomLeft = "Bottom Left Corner",
     toBottomRight = "Bottom Right Corner",
-    toCenter = "Center"
+    toCenter = "Center",
+    maximize = "Maximize"
 
     func isBasic(_ name: Self) -> Bool {
         switch self {
-            case .toLeftSide, .toRightSide, .toCenter:
+            case .toLeftSide, .toRightSide, .toCenter, .maximize:
                 return true
             default:
                 return false
@@ -51,6 +52,8 @@ enum ResizeType: String, Codable, CaseIterable {
                 return "toBottomRightSide"
             case .toCenter:
                 return "toCenter"
+            case .maximize:
+                return "maximize"
         }
     }
 }
