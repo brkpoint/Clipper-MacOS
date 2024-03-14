@@ -32,6 +32,10 @@ you can exit the swift env by typing:
 ```zsh
 xcode-select --install
 ```
+#### Updating the packages in the project:
+```zsh
+swift package update
+```
 #### Compiling the project:
 ```zsh
 swift build
