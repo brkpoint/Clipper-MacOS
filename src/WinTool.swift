@@ -1,9 +1,11 @@
 import SwiftUI
 import Cocoa
+import ServiceManagement
 
 @main
 struct Main: App {
     static var shared: Main = Main()
+    let bundleIdentifier = "com.shibaofficial.wintool"
     private let windowManager = WindowManager.shared
 
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
@@ -47,6 +49,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         if let application = NSWorkspace.shared.frontmostApplication {
             setupWindow(application)
+        }
+
+        if SMAppService.mainApp.status != .enabled {
+            do {
+                try SMAppService.mainApp.register()
+                print("INFO: Successfully added to launch on startup")
+            } catch {
+                print("ERR: Failed to add to launch on startup")
+            }
         }
 
     }
