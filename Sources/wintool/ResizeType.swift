@@ -1,5 +1,6 @@
 import Foundation
 import SwiftUI
+import HotKey
 
 enum ResizeTypeBasic: String, Codable, CaseIterable {
     case toLeftSide = "Left Side",
@@ -18,7 +19,6 @@ enum ResizeTypeBasic: String, Codable, CaseIterable {
     }
 }
 
-@available(macOS 14.0, *)
 enum ResizeType: String, Codable, CaseIterable {
     case toLeftSide = "Left Side",
     toRightSide = "Right Side",
@@ -38,45 +38,45 @@ enum ResizeType: String, Codable, CaseIterable {
         }
     }
 
-    var key: KeyEquivalent {
+    var key: Key {
         switch self {
             case .toLeftSide:
-                return KeyEquivalent.leftArrow
+                return Key.leftBracket
             case .toRightSide:
-                return KeyEquivalent.rightArrow
+                return Key.rightBracket
             case .toTopLeft:
-                return KeyEquivalent.upArrow
+                return Key.p
             case .toTopRight:
-                return KeyEquivalent.upArrow
+                return Key.l
             case .toBottomLeft:
-                return KeyEquivalent.downArrow
+                return Key.semicolon
             case .toBottomRight:
-                return KeyEquivalent.downArrow
+                return Key.quote
             case .toCenter:
-                return "a"
+                return Key.c
             case .maximize:
-                return "d"
+                return Key.v
         }
     }
 
-    var modifiers: EventModifiers {
+    var modifiers: NSEvent.ModifierFlags {
         switch self {
             case .toLeftSide:
-                return [EventModifiers.command]
+                return [NSEvent.ModifierFlags.command, NSEvent.ModifierFlags.control]
             case .toRightSide:
-                return [EventModifiers.command]
+                return [NSEvent.ModifierFlags.command, NSEvent.ModifierFlags.control]
             case .toTopLeft:
-                return [EventModifiers.command, EventModifiers.option]
+                return [NSEvent.ModifierFlags.command, NSEvent.ModifierFlags.control]
             case .toTopRight:
-                return [EventModifiers.command, EventModifiers.option]
+                return [NSEvent.ModifierFlags.command, NSEvent.ModifierFlags.control]
             case .toBottomLeft:
-                return [EventModifiers.command, EventModifiers.option]
+                return [NSEvent.ModifierFlags.command, NSEvent.ModifierFlags.control]
             case .toBottomRight:
-                return [EventModifiers.command, EventModifiers.option]
+                return [NSEvent.ModifierFlags.command, NSEvent.ModifierFlags.control]
             case .toCenter:
-                return [EventModifiers.command]
+                return [NSEvent.ModifierFlags.command, NSEvent.ModifierFlags.control]
             case .maximize:
-                return [EventModifiers.command]
+                return [NSEvent.ModifierFlags.command, NSEvent.ModifierFlags.control]
         }
     }
 

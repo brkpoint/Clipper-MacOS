@@ -1,24 +1,24 @@
 import SwiftUI
 import Cocoa
 import ServiceManagement
+import HotKey
 
-@available(macOS 14.0, *)
 struct Main: App {
     private let windowManager = WindowManager.shared
 
     static var shared: Main = Main()
     let bundleIdentifier = "com.shibaofficial.wintool"
-
+    var hotKeysDictionary: [ResizeType : HotKey] = [:]
+    
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     var contentView: ContentView = ContentView()
     var body: some Scene {
         Settings {
-            contentView
+            EmptyView()
         }
     }
 }
 
-@available(macOS 14.0, *)
 class AppDelegate: NSObject, NSApplicationDelegate {
     static private(set) var instance: AppDelegate!
     lazy var statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
@@ -61,9 +61,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 print("ERR: Failed to add to launch on startup")
             }
         } else {
-            print("INFO: App is added to launch on start up")
+            print("INFO: App is added to launch on startup")
         }
 
+        for item in ResizeType.allCases {
+            let hotKey = HotKey(key: item.key, modifiers: item.modifiers)
+            Main.shared.hotKeysDictionary[item] = hotKey
+        }
     }
 
     private func setupWindow(_ application: NSRunningApplication) {

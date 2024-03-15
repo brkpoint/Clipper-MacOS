@@ -1,7 +1,6 @@
 import Cocoa
 import SwiftUI
 
-@available(macOS 14.0, *)
 public class WindowManager {
     static let shared = WindowManager()
     

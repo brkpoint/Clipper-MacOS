@@ -43,5 +43,5 @@ swift build
 ```
 #### Running the project
 ```zsh
-./.build/debug/build
+./.build/debug/WinTool
 ```

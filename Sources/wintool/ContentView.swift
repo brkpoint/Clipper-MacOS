@@ -1,6 +1,6 @@
 import SwiftUI
+import HotKey
 
-@available(macOS 14.0, *)
 class WindowInfoView: ObservableObject {
     @Published var windowElement: WindowElement
 
@@ -9,7 +9,6 @@ class WindowInfoView: ObservableObject {
     }
 }
 
-@available(macOS 14.0, *)
 struct ContentView: View {
     private let windowManager = WindowManager.shared
     
@@ -30,22 +29,28 @@ struct ContentView: View {
                         }) {
                             Text(item.rawValue).foregroundColor(Color.primary)
                         }
-                        //.keyboardShortcut(item.key, modifiers: item.modifiers)
+                        .keyboardShortcut(item.key as! KeyEquivalent, modifiers: item.modifiers as! EventModifiers)
                     }
                 }
             }
         }
         .padding()
-        .onAppear(perform: {
+        .onAppear {
             windowInfo.windowElement = WindowManager.shared.GetCurrentApp()
-        })
+
+            for hotKey in Main.shared.hotKeysDictionary {
+                hotKey.value.keyDownHandler = {
+                    windowManager.Align(hotKey.key)
+                }
+            }
+        }
     }
 }
 
-@available(macOS 14.0, *)
 struct ContentView_Previews:
     PreviewProvider {
     static var previews: some View {
         Main.shared.contentView
+            .frame(width: 225, height: 150)
     }
 }
