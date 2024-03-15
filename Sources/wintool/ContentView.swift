@@ -1,5 +1,6 @@
 import SwiftUI
 
+@available(macOS 14.0, *)
 class WindowInfoView: ObservableObject {
     @Published var windowElement: WindowElement
 
@@ -8,6 +9,7 @@ class WindowInfoView: ObservableObject {
     }
 }
 
+@available(macOS 14.0, *)
 struct ContentView: View {
     private let windowManager = WindowManager.shared
     
@@ -40,6 +42,7 @@ struct ContentView: View {
     }
 }
 
+@available(macOS 14.0, *)
 struct ContentView_Previews:
     PreviewProvider {
     static var previews: some View {

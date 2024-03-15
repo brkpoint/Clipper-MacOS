@@ -1,6 +1,7 @@
 import Foundation
 import SwiftUI
 
+@available(macOS 14.0, *)
 class ApplicationMenu: NSObject {
     private let windowManager = WindowManager.shared
 

@@ -18,6 +18,7 @@ enum ResizeTypeBasic: String, Codable, CaseIterable {
     }
 }
 
+@available(macOS 14.0, *)
 enum ResizeType: String, Codable, CaseIterable {
     case toLeftSide = "Left Side",
     toRightSide = "Right Side",

@@ -2,10 +2,10 @@ import SwiftUI
 import Cocoa
 import ServiceManagement
 
-@main
+@available(macOS 14.0, *)
 struct Main: App {
     private let windowManager = WindowManager.shared
-    
+
     static var shared: Main = Main()
     let bundleIdentifier = "com.shibaofficial.wintool"
 
@@ -18,6 +18,7 @@ struct Main: App {
     }
 }
 
+@available(macOS 14.0, *)
 class AppDelegate: NSObject, NSApplicationDelegate {
     static private(set) var instance: AppDelegate!
     lazy var statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)

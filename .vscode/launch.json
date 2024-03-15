@@ -71,6 +71,30 @@
             "name": "Release build",
             "program": "${workspaceFolder:WinTool-macOS}/.build/release/build",
             "preLaunchTask": "swift: Build Release build"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "sourceLanguages": [
+                "swift"
+            ],
+            "args": [],
+            "cwd": "${workspaceFolder:WinTool-macOS}",
+            "name": "Debug WinTool",
+            "program": "${workspaceFolder:WinTool-macOS}/.build/debug/WinTool",
+            "preLaunchTask": "swift: Build Debug WinTool"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "sourceLanguages": [
+                "swift"
+            ],
+            "args": [],
+            "cwd": "${workspaceFolder:WinTool-macOS}",
+            "name": "Release WinTool",
+            "program": "${workspaceFolder:WinTool-macOS}/.build/release/WinTool",
+            "preLaunchTask": "swift: Build Release WinTool"
         }
     ]
 }
