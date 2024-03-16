@@ -67,8 +67,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         for item in ResizeType.allCases {
             let hotKey = HotKey(key: item.key, modifiers: item.modifiers)
+            hotKey.keyDownHandler = {
+                WindowManager.shared.Align(item)
+            }
             Main.shared.hotKeysDictionary[item] = hotKey
         }
+
+        print("INFO: Added global shortcuts")
     }
 
     private func setupWindow(_ application: NSRunningApplication) {

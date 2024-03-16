@@ -37,12 +37,6 @@ struct ContentView: View {
         .padding()
         .onAppear {
             windowInfo.windowElement = WindowManager.shared.GetCurrentApp()
-
-            for hotKey in Main.shared.hotKeysDictionary {
-                hotKey.value.keyDownHandler = {
-                    windowManager.Align(hotKey.key)
-                }
-            }
         }
     }
 }

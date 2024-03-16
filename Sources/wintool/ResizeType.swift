@@ -45,17 +45,17 @@ enum ResizeType: String, Codable, CaseIterable {
             case .toRightSide:
                 return Key.rightBracket
             case .toTopLeft:
-                return Key.p
-            case .toTopRight:
-                return Key.l
-            case .toBottomLeft:
                 return Key.semicolon
-            case .toBottomRight:
+            case .toTopRight:
                 return Key.quote
+            case .toBottomLeft:
+                return Key.comma
+            case .toBottomRight:
+                return Key.period
             case .toCenter:
-                return Key.c
+                return Key.p
             case .maximize:
-                return Key.v
+                return Key.l
         }
     }
 
