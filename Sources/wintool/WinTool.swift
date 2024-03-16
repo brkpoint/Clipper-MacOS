@@ -10,19 +10,13 @@ struct Main: App {
     static var shared: Main = Main()
     let bundleIdentifier = "com.shibaofficial.wintool"
     var hotKeysDictionary: [ResizeType : HotKey] = [:]
-    var settingsWindowOpen: Bool = false
     var contentView = ContentView()
     
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     var body: some Scene {
         Settings {
-            contentView
-        }
-        WindowGroup("Settings", id: "settings") {
             SettingsView()
-                .frame(width: 200, height: 200)
         }
-        .windowResizability(.contentSize)
     }
 }
 

@@ -1,14 +1,16 @@
 import Foundation
 import SwiftUI
+import SettingsAccess
 
 class ApplicationMenu: NSObject {
     private let windowManager = WindowManager.shared
 
+    @Environment(\.openSettings) private var openSettings
+
     let menu = NSMenu()
-    @Environment(\.openWindow) var openWindow
     
     func createMenu() -> NSMenu {
-        let viewMain = Main.shared.contentView
+        let viewMain = Main.shared.contentView.openSettingsAccess()
         let topView = NSHostingController(rootView: viewMain)
         topView.view.frame.size = CGSize(width: 225, height: 150)
      
@@ -20,7 +22,7 @@ class ApplicationMenu: NSObject {
 
         let settingsMenuItem = NSMenuItem(title: "Settings",
                                                   action: #selector(settings),
-                                                  keyEquivalent: "s")
+                                                  keyEquivalent: "u")
         settingsMenuItem.target = self
         menu.addItem(settingsMenuItem)
 
@@ -38,11 +40,7 @@ class ApplicationMenu: NSObject {
     }
 
     @objc func settings(sender: NSMenuItem) {
-        if Main.shared.settingsWindowOpen {
-            return
-        }
-
-        openWindow(id: "settings")
+        try? openSettings()
     }
 
     @objc func quit(sender: NSMenuItem) {

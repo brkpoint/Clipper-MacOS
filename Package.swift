@@ -15,13 +15,15 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(url: "https://github.com/soffes/HotKey", from: "0.2.0")
+        .package(url: "https://github.com/soffes/HotKey", from: "0.2.0"),
+        .package(url: "https://github.com/orchetect/SettingsAccess", from: "1.4.0")
     ],
     targets: [
         .executableTarget(
             name: "WinTool",
             dependencies: [
                 "HotKey",
+                "SettingsAccess",
             ],
             linkerSettings: [
                 .unsafeFlags([

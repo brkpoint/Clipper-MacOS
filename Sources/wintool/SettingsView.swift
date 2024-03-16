@@ -5,7 +5,7 @@ struct SettingsView: View {
         VStack {
             Text("hello world!")
         }
-        .onAppear { Main.shared.settingsWindowOpen = true }
-        .onDisappear { Main.shared.settingsWindowOpen = false }
+        .padding()
+        .frame(width: 200, height: 150)
     }
 } 

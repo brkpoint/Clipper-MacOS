@@ -11,7 +11,7 @@ App for aligning windows on macOS (in progress)
 - [x] app struct
 - [x] window size and position calculation
 - [x] launching on startup
-- [ ] error handling
+- [ ] better error handling
 - [ ] better UI
 - [ ] window hover over and aling (WH&A)
 - [x] screen detection and some stuff with this

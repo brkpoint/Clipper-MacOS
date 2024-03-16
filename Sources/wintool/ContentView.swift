@@ -46,5 +46,6 @@ struct ContentView_Previews:
     static var previews: some View {
         Main.shared.contentView
             .frame(width: 225, height: 150)
+            .openSettingsAccess()
     }
 }
