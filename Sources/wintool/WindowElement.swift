@@ -66,7 +66,9 @@ class WindowElement {
     }
 
     func getWindow() {
-        axUIElement = mainApp.getValue(.focusedWindow) as! AXUIElement
+        if let window = mainApp.getValue(.focusedWindow) {
+            axUIElement = window as! AXUIElement
+        }
     }
     
 }

@@ -18,7 +18,7 @@ let package = Package(
         .package(url: "https://github.com/soffes/HotKey", from: "0.2.0")
     ],
     targets: [
-        .target(
+        .executableTarget(
             name: "WinTool",
             dependencies: [
                 "HotKey",

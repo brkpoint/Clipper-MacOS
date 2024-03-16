@@ -29,7 +29,7 @@ struct ContentView: View {
                         }) {
                             Text(item.rawValue).foregroundColor(Color.primary)
                         }
-                        .keyboardShortcut(item.key as! KeyEquivalent, modifiers: item.modifiers as! EventModifiers)
+                        //.keyboardShortcut(item.key as! KeyEquivalent, modifiers: item.modifiers as! EventModifiers)
                     }
                 }
             }

@@ -3,18 +3,19 @@ import Cocoa
 import ServiceManagement
 import HotKey
 
+@main
 struct Main: App {
     private let windowManager = WindowManager.shared
 
     static var shared: Main = Main()
     let bundleIdentifier = "com.shibaofficial.wintool"
     var hotKeysDictionary: [ResizeType : HotKey] = [:]
+    var contentView = ContentView()
     
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    var contentView: ContentView = ContentView()
     var body: some Scene {
         Settings {
-            EmptyView()
+            contentView
         }
     }
 }
