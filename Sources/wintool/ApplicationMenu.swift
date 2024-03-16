@@ -5,6 +5,7 @@ class ApplicationMenu: NSObject {
     private let windowManager = WindowManager.shared
 
     let menu = NSMenu()
+    @Environment(\.openWindow) var openWindow
     
     func createMenu() -> NSMenu {
         let viewMain = Main.shared.contentView
@@ -17,6 +18,12 @@ class ApplicationMenu: NSObject {
         menu.addItem(customMenuItem)
         menu.addItem(NSMenuItem.separator())
 
+        let settingsMenuItem = NSMenuItem(title: "Settings",
+                                                  action: #selector(settings),
+                                                  keyEquivalent: "s")
+        settingsMenuItem.target = self
+        menu.addItem(settingsMenuItem)
+
         let quitMenuItem = NSMenuItem(title: "Quit",
                                                   action: #selector(quit),
                                                   keyEquivalent: "q")
@@ -28,6 +35,14 @@ class ApplicationMenu: NSObject {
     
     @objc func about(sender: NSMenuItem) {
         NSApp.orderFrontStandardAboutPanel()
+    }
+
+    @objc func settings(sender: NSMenuItem) {
+        if Main.shared.settingsWindowOpen {
+            return
+        }
+
+        openWindow(id: "settings")
     }
 
     @objc func quit(sender: NSMenuItem) {
