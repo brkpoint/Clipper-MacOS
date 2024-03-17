@@ -13,6 +13,6 @@
     <key>NSPrincipalClass</key>
     <string>NSApplication</string>
     <key>com.apple.security.app-sandbox</key>
-    <false/>
+    <true/>
   </dict>
 </plist>

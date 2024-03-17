@@ -44,16 +44,37 @@ struct GeneralSettingsView: View {
     }
 }
 
+private struct DynamicShortcutRecorder: View {
+	@FocusState private var isFocused: Bool
+
+	@Binding var name: KeyboardShortcuts.Name
+
+    var bindTitle: String
+
+	var body: some View {
+		HStack(alignment: .firstTextBaseline) {
+            Text(bindTitle)
+			KeyboardShortcuts.Recorder(for: name)
+				.focused($isFocused)
+		}
+        .onChange(of: name) { _ in
+            isFocused = true
+        }
+	}
+}
+
 struct KeybindsSettingsView: View {
     var body: some View {
         Form {
             ScrollView(.vertical) {
                 Button("Reset All") {
-                    KeyboardShortcuts.reset(KeyboardShortcuts.shortcuts)
+                    for item in Main.shared.shortcuts.list {
+                        KeyboardShortcuts.reset(item.name)
+                    }
                 }
                 VStack {
-                    ForEach(KeyboardShortcuts.shortcuts, id: \.self) { item in
-                        KeyboardShortcuts.Recorder("\(item.rawValue):", name: item)
+                    ForEach(Main.shared.$shortcuts.list) { $shortcut in
+                        DynamicShortcutRecorder(name: $shortcut.name, bindTitle: shortcut.title)
                     }
                     .padding(2)
                 }

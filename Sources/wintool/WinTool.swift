@@ -15,6 +15,7 @@ struct Main: App {
     
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @StateObject private var appState: AppState = AppState()
+    @ObservedObject var shortcuts: Shortcuts = Shortcuts()
     var body: some Scene {
         Settings {
             SettingsView()
@@ -90,7 +91,7 @@ final class AppState: ObservableObject {
 	init() {
 		for item in ResizeType.allCases {
             let shortcut = KeyboardShortcuts.Name.init(item.rawValue, default: .init(item.key, modifiers: [item.modifiers]))
-            KeyboardShortcuts.shortcuts.append(shortcut)
+            Main.shared.shortcuts.list.append(Shortcut(name: shortcut, title: item.rawValue))
             KeyboardShortcuts.onKeyDown(for: shortcut) { [self] in
                 if Main.shared.shortcutsEnabled {
                     WindowManager.shared.Align(item)
