@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "WinTool-macOS",
     platforms: [
-		.macOS(.v13)
+		.macOS(.v14)
 	],
     products: [
         .executable(

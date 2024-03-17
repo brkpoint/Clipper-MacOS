@@ -24,12 +24,15 @@ struct SettingsView: View {
 }
 
 struct GeneralSettingsView: View {
-    @AppStorage("enableShortcuts") private var enableShortcuts = true
+    @AppStorage(Main.shared.shortcutUserDefaultsKey) var shortcutsEnabled = true
     // @AppStorage("fontSize") private var fontSize = 12.0
 
     var body: some View {
         Form {
-            Toggle("Shortcuts", isOn: $enableShortcuts)
+            Toggle("Shortcuts", isOn: $shortcutsEnabled)
+                .onChange(of: shortcutsEnabled) {
+                    Main.shared.shortcutsEnabled = shortcutsEnabled
+                }
         }
         // Form {
         //     Toggle("Show Previews", isOn: $showPreview)

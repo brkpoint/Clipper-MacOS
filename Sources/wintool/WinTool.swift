@@ -9,7 +9,9 @@ struct Main: App {
 
     static var shared: Main = Main()
     let bundleIdentifier = "com.shibaofficial.wintool"
+    let shortcutUserDefaultsKey = "shortcutsEnabled"
     var contentView = ContentView()
+    var shortcutsEnabled = true
     
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @StateObject private var appState: AppState = AppState()
@@ -43,6 +45,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     private func initialize() {
         AXUIElement.askForAccessibilityIfNeeded()
+        Main.shared.shortcutsEnabled = UserDefaults.standard.bool(forKey: Main.shared.shortcutUserDefaultsKey)
 
         if AXUIElement.isSandboxingEnabled() {
             print("ERR: Sandboxing is enabled")
@@ -89,7 +92,9 @@ final class AppState: ObservableObject {
             let shortcut = KeyboardShortcuts.Name.init(item.rawValue, default: .init(item.key, modifiers: [item.modifiers]))
             KeyboardShortcuts.shortcuts.append(shortcut)
             KeyboardShortcuts.onKeyDown(for: shortcut) { [self] in
-                WindowManager.shared.Align(item)
+                if Main.shared.shortcutsEnabled {
+                    WindowManager.shared.Align(item)
+                }
             }
         }
 
