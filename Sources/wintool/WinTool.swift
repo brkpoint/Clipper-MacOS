@@ -1,7 +1,7 @@
-import SwiftUI
 import Cocoa
+import SwiftUI
 import ServiceManagement
-import HotKey
+import KeyboardShortcuts
 
 @main
 struct Main: App {
@@ -9,10 +9,10 @@ struct Main: App {
 
     static var shared: Main = Main()
     let bundleIdentifier = "com.shibaofficial.wintool"
-    var hotKeysDictionary: [ResizeType : HotKey] = [:]
     var contentView = ContentView()
     
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    @StateObject private var appState: AppState = AppState()
     var body: some Scene {
         Settings {
             SettingsView()
@@ -64,16 +64,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         } else {
             print("INFO: App is added to launch on startup")
         }
-
-        for item in ResizeType.allCases {
-            let hotKey = HotKey(key: item.key, modifiers: item.modifiers)
-            hotKey.keyDownHandler = {
-                WindowManager.shared.Align(item)
-            }
-            Main.shared.hotKeysDictionary[item] = hotKey
-        }
-
-        print("INFO: Added global shortcuts")
     }
 
     private func setupWindow(_ application: NSRunningApplication) {
@@ -90,4 +80,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             setupWindow(application)
         }
     }
+}
+
+@MainActor
+final class AppState: ObservableObject {
+	init() {
+		for item in ResizeType.allCases {
+            let shortcut = KeyboardShortcuts.Name.init(item.rawValue, default: .init(item.key, modifiers: [item.modifiers]))
+            KeyboardShortcuts.shortcuts.append(shortcut)
+            KeyboardShortcuts.onKeyDown(for: shortcut) { [self] in
+                WindowManager.shared.Align(item)
+            }
+        }
+
+        print("INFO: Added global shortcuts")
+	}
 }

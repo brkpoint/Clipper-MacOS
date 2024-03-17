@@ -1,5 +1,5 @@
 import SwiftUI
-import HotKey
+import KeyboardShortcuts
 
 struct SettingsView: View {
     private enum Tabs: Hashable {
@@ -19,7 +19,7 @@ struct SettingsView: View {
                 }
                 .tag(Tabs.keybinds)
         }
-        .frame(width: 300, height: 150)
+        .frame(width: 400, height: 200)
     }
 }
 
@@ -42,11 +42,21 @@ struct GeneralSettingsView: View {
 }
 
 struct KeybindsSettingsView: View {
-    //@AppStorage("shortcutsBindings") private var shortcutsBindings: Data
-
     var body: some View {
         Form {
-
+            ScrollView(.vertical) {
+                Button("Reset All") {
+                    KeyboardShortcuts.reset(KeyboardShortcuts.shortcuts)
+                }
+                VStack {
+                    ForEach(KeyboardShortcuts.shortcuts, id: \.self) { item in
+                        KeyboardShortcuts.Recorder("\(item.rawValue):", name: item)
+                    }
+                    .padding(2)
+                }
+                .frame(maxWidth: .infinity)
+            }
         }
+        .padding(5)
     }
 }

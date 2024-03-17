@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "WinTool-macOS",
     platforms: [
-		.macOS(.v14)
+		.macOS(.v13)
 	],
     products: [
         .executable(
@@ -15,15 +15,15 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(url: "https://github.com/soffes/HotKey", from: "0.2.0"),
-        .package(url: "https://github.com/orchetect/SettingsAccess", from: "1.4.0")
+        .package(url: "https://github.com/orchetect/SettingsAccess", from: "1.4.0"),
+        .package(url: "https://github.com/sindresorhus/KeyboardShortcuts", from: "2.0.0"),
     ],
     targets: [
         .executableTarget(
             name: "WinTool",
             dependencies: [
-                "HotKey",
                 "SettingsAccess",
+                "KeyboardShortcuts",
             ],
             linkerSettings: [
                 .unsafeFlags([

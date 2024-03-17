@@ -40,6 +40,7 @@ class ApplicationMenu: NSObject {
     }
 
     @objc func settings(sender: NSMenuItem) {
+        NSApp.activate(ignoringOtherApps: true)
         try? openSettings()
     }
 

@@ -1,5 +1,4 @@
 import SwiftUI
-import HotKey
 
 class WindowInfoView: ObservableObject {
     @Published var windowElement: WindowElement
@@ -24,12 +23,9 @@ struct ContentView: View {
                         Image(nsImage: self.windowInfo.windowElement.icon)
                     }.font(.title)
                     ForEach(ResizeType.allCases.filter {$0.isBasic($0)}, id: \.self) { item in
-                        Button(action: {
+                        Button(item.rawValue) {
                             windowManager.Align(item)
-                        }) {
-                            Text(item.rawValue).foregroundColor(Color.primary)
                         }
-                        //.keyboardShortcut(item.key as! KeyEquivalent, modifiers: item.modifiers as! EventModifiers)
                     }
                 }
             }

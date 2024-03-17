@@ -1,23 +1,6 @@
 import Foundation
 import SwiftUI
-import HotKey
-
-enum ResizeTypeBasic: String, Codable, CaseIterable {
-    case toLeftSide = "Left Side",
-    toRightSide = "Right Side",
-    toCenter = "Center"
-
-    var type: String {
-        switch self {
-            case .toLeftSide:
-                return "toLeftSide"
-            case .toRightSide:
-                return "toRightSide"
-            case .toCenter:
-                return "toCenter"
-        }
-    }
-}
+import KeyboardShortcuts
 
 enum ResizeType: String, Codable, CaseIterable {
     case toLeftSide = "Left Side",
@@ -38,24 +21,24 @@ enum ResizeType: String, Codable, CaseIterable {
         }
     }
 
-    var key: Key {
+    var key: KeyboardShortcuts.Key {
         switch self {
             case .toLeftSide:
-                return Key.leftBracket
+                return .leftBracket
             case .toRightSide:
-                return Key.rightBracket
+                return .rightBracket
             case .toTopLeft:
-                return Key.semicolon
+                return .semicolon
             case .toTopRight:
-                return Key.quote
+                return .quote
             case .toBottomLeft:
-                return Key.comma
+                return .comma
             case .toBottomRight:
-                return Key.period
+                return .period
             case .toCenter:
-                return Key.p
+                return .p
             case .maximize:
-                return Key.l
+                return .l
         }
     }
 
