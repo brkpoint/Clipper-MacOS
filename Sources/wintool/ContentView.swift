@@ -1,4 +1,5 @@
 import SwiftUI
+import KeyboardShortcuts
 
 class WindowInfoView: ObservableObject {
     @Published var windowElement: WindowElement
