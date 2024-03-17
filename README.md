@@ -1,6 +1,6 @@
 # 🖥️ WinTool-MacOS
 ## About
-App for aligning windows on macOS (in progress)
+An open-source app for aligning and scaling windows made using swiftUI with more features to come in next updates.
 ## Roadmap:
 - [x] running app
 - [x] basic app on a bar
