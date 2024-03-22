@@ -10,7 +10,7 @@ An open-source app for aligning and scaling windows made using swiftUI with more
 - [x] app resizing
 - [x] app struct
 - [x] window size and position calculation
-- [x] launching on startup
+- [ ] launching on startup
 - [ ] better error handling
 - [ ] better UI
 - [x] better icon
