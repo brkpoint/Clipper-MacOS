@@ -23,7 +23,7 @@ An open-source app for aligning and scaling windows made using swiftUI with more
 - [ ] snapping
 ## Requirements:
 - xcode
-- packages
+- installed packages (you can check them below)
 ## Packages to install:
 - [KeyboardShortcuts](https://github.com/sindresorhus/KeyboardShortcuts)
 - [SettingsAccess](https://github.com/orchetect/SettingsAccess)
