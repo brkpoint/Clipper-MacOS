@@ -1,4 +1,5 @@
 # 🖥️ WinTool-MacOS
+# !!!THIS BRANCH IS DISCONTINUED!!!
 ## About
 An open-source app for aligning and scaling windows made using swiftUI with more features to come in next updates.
 ## Roadmap:
@@ -16,7 +17,6 @@ An open-source app for aligning and scaling windows made using swiftUI with more
 - [ ] window hover over and aling (WH&A)
 - [x] screen detection and some stuff with this
 - [x] global shortcuts
-- [ ] port to xcode
 - [ ] shortcut editor
 - [ ] more features
 - [ ] README.md to fix 😭
