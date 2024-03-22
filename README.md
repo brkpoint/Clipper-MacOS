@@ -21,12 +21,29 @@ An open-source app for aligning and scaling windows made using swiftUI with more
 - [ ] more features
 - [ ] README.md to fix 😭
 - [ ] snapping
-## Requirements:
-- xcode
-- packages
-## Packages to install:
-- [KeyboardShortcuts](https://github.com/sindresorhus/KeyboardShortcuts)
-- [SettingsAccess](https://github.com/orchetect/SettingsAccess)
 ## How to run this app?
-### If you're using vscode or other IDE go to vscode branch
-
+### First of all you need to install the compiler for swift
+if you have already it installed you should check the version by typing:
+```zsh
+swift
+```
+you can exit the swift env by typing:
+```zsh
+:q
+```
+#### Installing the command-line-tools:
+```zsh
+xcode-select --install
+```
+#### Updating the packages in the project:
+```zsh
+swift package update
+```
+#### Compiling the project:
+```zsh
+swift build
+```
+#### Running the project
+```zsh
+./.build/debug/WinTool
+```
