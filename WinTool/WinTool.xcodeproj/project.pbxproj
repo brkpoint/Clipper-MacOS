@@ -1,0 +1,515 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		28B354492BAE12380044A179 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28B354482BAE12380044A179 /* Assets.xcassets */; };
+		28B3544C2BAE12380044A179 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28B3544B2BAE12380044A179 /* Preview Assets.xcassets */; };
+		28B354772BAE13040044A179 /* WinToolApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B3546A2BAE13040044A179 /* WinToolApp.swift */; };
+		28B354782BAE13040044A179 /* ResizeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B3546B2BAE13040044A179 /* ResizeType.swift */; };
+		28B354792BAE13040044A179 /* WindowElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B3546C2BAE13040044A179 /* WindowElement.swift */; };
+		28B3547A2BAE13040044A179 /* WindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B3546D2BAE13040044A179 /* WindowManager.swift */; };
+		28B3547B2BAE13040044A179 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B3546F2BAE13040044A179 /* AppDelegate.swift */; };
+		28B3547C2BAE13040044A179 /* AppMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B354702BAE13040044A179 /* AppMenu.swift */; };
+		28B3547D2BAE13040044A179 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B354712BAE13040044A179 /* MenuView.swift */; };
+		28B3547E2BAE13040044A179 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B354722BAE13040044A179 /* SettingsView.swift */; };
+		28B3547F2BAE13040044A179 /* AX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B354742BAE13040044A179 /* AX.swift */; };
+		28B354802BAE13040044A179 /* Shortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B354752BAE13040044A179 /* Shortcuts.swift */; };
+		28B3548E2BAE13120044A179 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B354812BAE13120044A179 /* AppDelegate.swift */; };
+		28B3548F2BAE13120044A179 /* AppMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B354822BAE13120044A179 /* AppMenu.swift */; };
+		28B354902BAE13120044A179 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B354832BAE13120044A179 /* MenuView.swift */; };
+		28B354912BAE13120044A179 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B354842BAE13120044A179 /* SettingsView.swift */; };
+		28B354922BAE13120044A179 /* ResizeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B354862BAE13120044A179 /* ResizeType.swift */; };
+		28B354932BAE13120044A179 /* WindowElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B354872BAE13120044A179 /* WindowElement.swift */; };
+		28B354942BAE13120044A179 /* WindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B354882BAE13120044A179 /* WindowManager.swift */; };
+		28B354952BAE13120044A179 /* WinToolApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B3548A2BAE13120044A179 /* WinToolApp.swift */; };
+		28B354962BAE13120044A179 /* AX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B3548B2BAE13120044A179 /* AX.swift */; };
+		28B354972BAE13120044A179 /* Shortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B3548C2BAE13120044A179 /* Shortcuts.swift */; };
+		28B3549A2BAE13480044A179 /* SettingsAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 28B354992BAE13480044A179 /* SettingsAccess */; };
+		28B3549D2BAE13500044A179 /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = 28B3549C2BAE13500044A179 /* KeyboardShortcuts */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		28B354412BAE12370044A179 /* WinTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WinTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		28B354482BAE12380044A179 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		28B3544B2BAE12380044A179 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		28B3544D2BAE12380044A179 /* WinTool.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WinTool.entitlements; sourceTree = "<group>"; };
+		28B3546A2BAE13040044A179 /* WinToolApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WinToolApp.swift; path = WinTool/WinToolApp.swift; sourceTree = SOURCE_ROOT; };
+		28B3546B2BAE13040044A179 /* ResizeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResizeType.swift; sourceTree = "<group>"; };
+		28B3546C2BAE13040044A179 /* WindowElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowElement.swift; sourceTree = "<group>"; };
+		28B3546D2BAE13040044A179 /* WindowManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowManager.swift; sourceTree = "<group>"; };
+		28B3546F2BAE13040044A179 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		28B354702BAE13040044A179 /* AppMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppMenu.swift; sourceTree = "<group>"; };
+		28B354712BAE13040044A179 /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		28B354722BAE13040044A179 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		28B354742BAE13040044A179 /* AX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AX.swift; sourceTree = "<group>"; };
+		28B354752BAE13040044A179 /* Shortcuts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shortcuts.swift; sourceTree = "<group>"; };
+		28B354812BAE13120044A179 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		28B354822BAE13120044A179 /* AppMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppMenu.swift; sourceTree = "<group>"; };
+		28B354832BAE13120044A179 /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		28B354842BAE13120044A179 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		28B354862BAE13120044A179 /* ResizeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResizeType.swift; sourceTree = "<group>"; };
+		28B354872BAE13120044A179 /* WindowElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowElement.swift; sourceTree = "<group>"; };
+		28B354882BAE13120044A179 /* WindowManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowManager.swift; sourceTree = "<group>"; };
+		28B3548A2BAE13120044A179 /* WinToolApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WinToolApp.swift; sourceTree = "<group>"; };
+		28B3548B2BAE13120044A179 /* AX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AX.swift; sourceTree = "<group>"; };
+		28B3548C2BAE13120044A179 /* Shortcuts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shortcuts.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		28B3543E2BAE12370044A179 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28B3549A2BAE13480044A179 /* SettingsAccess in Frameworks */,
+				28B3549D2BAE13500044A179 /* KeyboardShortcuts in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		28B354382BAE12370044A179 = {
+			isa = PBXGroup;
+			children = (
+				28B354432BAE12370044A179 /* WinTool */,
+				28B354422BAE12370044A179 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		28B354422BAE12370044A179 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				28B354412BAE12370044A179 /* WinTool.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		28B354432BAE12370044A179 /* WinTool */ = {
+			isa = PBXGroup;
+			children = (
+				28B354852BAE13120044A179 /* Menu */,
+				28B3548D2BAE13120044A179 /* Utils */,
+				28B354892BAE13120044A179 /* Window */,
+				28B3548A2BAE13120044A179 /* WinToolApp.swift */,
+				28B354482BAE12380044A179 /* Assets.xcassets */,
+				28B3544D2BAE12380044A179 /* WinTool.entitlements */,
+				28B3544A2BAE12380044A179 /* Preview Content */,
+			);
+			path = WinTool;
+			sourceTree = "<group>";
+		};
+		28B3544A2BAE12380044A179 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				28B354732BAE13040044A179 /* Menu */,
+				28B354762BAE13040044A179 /* Utils */,
+				28B3546E2BAE13040044A179 /* Window */,
+				28B3546A2BAE13040044A179 /* WinToolApp.swift */,
+				28B3544B2BAE12380044A179 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		28B3546E2BAE13040044A179 /* Window */ = {
+			isa = PBXGroup;
+			children = (
+				28B3546B2BAE13040044A179 /* ResizeType.swift */,
+				28B3546C2BAE13040044A179 /* WindowElement.swift */,
+				28B3546D2BAE13040044A179 /* WindowManager.swift */,
+			);
+			name = Window;
+			path = WinTool/Window;
+			sourceTree = SOURCE_ROOT;
+		};
+		28B354732BAE13040044A179 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				28B3546F2BAE13040044A179 /* AppDelegate.swift */,
+				28B354702BAE13040044A179 /* AppMenu.swift */,
+				28B354712BAE13040044A179 /* MenuView.swift */,
+				28B354722BAE13040044A179 /* SettingsView.swift */,
+			);
+			name = Menu;
+			path = WinTool/Menu;
+			sourceTree = SOURCE_ROOT;
+		};
+		28B354762BAE13040044A179 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				28B354742BAE13040044A179 /* AX.swift */,
+				28B354752BAE13040044A179 /* Shortcuts.swift */,
+			);
+			name = Utils;
+			path = WinTool/Utils;
+			sourceTree = SOURCE_ROOT;
+		};
+		28B354852BAE13120044A179 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				28B354812BAE13120044A179 /* AppDelegate.swift */,
+				28B354822BAE13120044A179 /* AppMenu.swift */,
+				28B354832BAE13120044A179 /* MenuView.swift */,
+				28B354842BAE13120044A179 /* SettingsView.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		28B354892BAE13120044A179 /* Window */ = {
+			isa = PBXGroup;
+			children = (
+				28B354862BAE13120044A179 /* ResizeType.swift */,
+				28B354872BAE13120044A179 /* WindowElement.swift */,
+				28B354882BAE13120044A179 /* WindowManager.swift */,
+			);
+			path = Window;
+			sourceTree = "<group>";
+		};
+		28B3548D2BAE13120044A179 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				28B3548B2BAE13120044A179 /* AX.swift */,
+				28B3548C2BAE13120044A179 /* Shortcuts.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		28B354402BAE12370044A179 /* WinTool */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 28B354502BAE12380044A179 /* Build configuration list for PBXNativeTarget "WinTool" */;
+			buildPhases = (
+				28B3543D2BAE12370044A179 /* Sources */,
+				28B3543E2BAE12370044A179 /* Frameworks */,
+				28B3543F2BAE12370044A179 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WinTool;
+			packageProductDependencies = (
+				28B354992BAE13480044A179 /* SettingsAccess */,
+				28B3549C2BAE13500044A179 /* KeyboardShortcuts */,
+			);
+			productName = WinTool;
+			productReference = 28B354412BAE12370044A179 /* WinTool.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		28B354392BAE12370044A179 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1530;
+				LastUpgradeCheck = 1530;
+				TargetAttributes = {
+					28B354402BAE12370044A179 = {
+						CreatedOnToolsVersion = 15.3;
+						LastSwiftMigration = 1530;
+					};
+				};
+			};
+			buildConfigurationList = 28B3543C2BAE12370044A179 /* Build configuration list for PBXProject "WinTool" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 28B354382BAE12370044A179;
+			packageReferences = (
+				28B354982BAE13480044A179 /* XCRemoteSwiftPackageReference "SettingsAccess" */,
+				28B3549B2BAE13500044A179 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
+			);
+			productRefGroup = 28B354422BAE12370044A179 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				28B354402BAE12370044A179 /* WinTool */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		28B3543F2BAE12370044A179 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28B3544C2BAE12380044A179 /* Preview Assets.xcassets in Resources */,
+				28B354492BAE12380044A179 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		28B3543D2BAE12370044A179 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28B354932BAE13120044A179 /* WindowElement.swift in Sources */,
+				28B3548E2BAE13120044A179 /* AppDelegate.swift in Sources */,
+				28B3547D2BAE13040044A179 /* MenuView.swift in Sources */,
+				28B354942BAE13120044A179 /* WindowManager.swift in Sources */,
+				28B3547E2BAE13040044A179 /* SettingsView.swift in Sources */,
+				28B3547F2BAE13040044A179 /* AX.swift in Sources */,
+				28B354952BAE13120044A179 /* WinToolApp.swift in Sources */,
+				28B3547C2BAE13040044A179 /* AppMenu.swift in Sources */,
+				28B354922BAE13120044A179 /* ResizeType.swift in Sources */,
+				28B354972BAE13120044A179 /* Shortcuts.swift in Sources */,
+				28B354792BAE13040044A179 /* WindowElement.swift in Sources */,
+				28B3548F2BAE13120044A179 /* AppMenu.swift in Sources */,
+				28B354912BAE13120044A179 /* SettingsView.swift in Sources */,
+				28B354902BAE13120044A179 /* MenuView.swift in Sources */,
+				28B3547A2BAE13040044A179 /* WindowManager.swift in Sources */,
+				28B354772BAE13040044A179 /* WinToolApp.swift in Sources */,
+				28B3547B2BAE13040044A179 /* AppDelegate.swift in Sources */,
+				28B354782BAE13040044A179 /* ResizeType.swift in Sources */,
+				28B354962BAE13120044A179 /* AX.swift in Sources */,
+				28B354802BAE13040044A179 /* Shortcuts.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		28B3544E2BAE12380044A179 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		28B3544F2BAE12380044A179 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		28B354512BAE12380044A179 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = WinTool/WinTool.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"WinTool/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shibaofficial.WinTool;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		28B354522BAE12380044A179 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = WinTool/WinTool.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"WinTool/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shibaofficial.WinTool;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		28B3543C2BAE12370044A179 /* Build configuration list for PBXProject "WinTool" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28B3544E2BAE12380044A179 /* Debug */,
+				28B3544F2BAE12380044A179 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		28B354502BAE12380044A179 /* Build configuration list for PBXNativeTarget "WinTool" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28B354512BAE12380044A179 /* Debug */,
+				28B354522BAE12380044A179 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		28B354982BAE13480044A179 /* XCRemoteSwiftPackageReference "SettingsAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/orchetect/SettingsAccess.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.4.0;
+			};
+		};
+		28B3549B2BAE13500044A179 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/KeyboardShortcuts.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		28B354992BAE13480044A179 /* SettingsAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 28B354982BAE13480044A179 /* XCRemoteSwiftPackageReference "SettingsAccess" */;
+			productName = SettingsAccess;
+		};
+		28B3549C2BAE13500044A179 /* KeyboardShortcuts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 28B3549B2BAE13500044A179 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */;
+			productName = KeyboardShortcuts;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 28B354392BAE12370044A179 /* Project object */;
+}
