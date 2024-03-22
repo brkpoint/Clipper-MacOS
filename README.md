@@ -14,9 +14,10 @@ An open-source app for aligning and scaling windows made using swiftUI with more
 - [ ] better error handling
 - [ ] better UI
 - [ ] window hover over and aling (WH&A)
+- [x] port to xcode
 - [x] screen detection and some stuff with this
 - [x] global shortcuts
-- [ ] shortcut editor
+- [x] shortcut editor
 - [ ] more features
 - [ ] README.md to fix 😭
 - [ ] snapping
