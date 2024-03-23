@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		288D07392BAF35CC002C2EEC /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 288D07382BAF35CC002C2EEC /* README.md */; };
 		28B354492BAE12380044A179 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28B354482BAE12380044A179 /* Assets.xcassets */; };
 		28B3544C2BAE12380044A179 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28B3544B2BAE12380044A179 /* Preview Assets.xcassets */; };
 		28B354772BAE13040044A179 /* WinToolApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B3546A2BAE13040044A179 /* WinToolApp.swift */; };
@@ -34,6 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		288D07382BAF35CC002C2EEC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		28B354412BAE12370044A179 /* WinTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WinTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28B354482BAE12380044A179 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		28B3544B2BAE12380044A179 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 		28B354382BAE12370044A179 = {
 			isa = PBXGroup;
 			children = (
+				288D07382BAF35CC002C2EEC /* README.md */,
 				28B354432BAE12370044A179 /* WinTool */,
 				28B354422BAE12370044A179 /* Products */,
 			);
@@ -245,6 +248,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				288D07392BAF35CC002C2EEC /* README.md in Resources */,
 				28B3544C2BAE12380044A179 /* Preview Assets.xcassets in Resources */,
 				28B354492BAE12380044A179 /* Assets.xcassets in Resources */,
 			);

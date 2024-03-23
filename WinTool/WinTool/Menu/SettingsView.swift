@@ -1,5 +1,6 @@
 import SwiftUI
 import KeyboardShortcuts
+import LaunchAtLogin
 
 struct SettingsView: View {
     private enum Tabs: Hashable {
@@ -25,7 +26,6 @@ struct SettingsView: View {
 
 struct GeneralSettingsView: View {
     @AppStorage(Main.shared.shortcutUserDefaultsKey) var shortcutsEnabled = true
-    // @AppStorage("fontSize") private var fontSize = 12.0
 
     var body: some View {
         Form {
@@ -33,14 +33,8 @@ struct GeneralSettingsView: View {
                 .onChange(of: shortcutsEnabled) {
                     Main.shared.shortcutsEnabled = shortcutsEnabled
                 }
+            LaunchAtLogin.Toggle("Toggle launch at login")
         }
-        // Form {
-        //     Toggle("Show Previews", isOn: $showPreview)
-        //     Slider(value: $fontSize, in: 9...96) {
-        //         Text("Font Size (\(fontSize, specifier: "%.0f") pts)")
-        //     }
-        // }
-        // .padding(20)
     }
 }
 

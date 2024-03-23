@@ -16,7 +16,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         AppDelegate.instance = self
         registerFrontAppChangeNote()
         if let button = statusBarItem.button {
-           let image = NSImage(named: "AppIcon")
+           let image = NSImage(named: "AppIconMenu")
            image?.isTemplate = true
            button.image = image
         }
@@ -37,17 +37,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if let application = NSWorkspace.shared.frontmostApplication {
             setupWindow(application)
         }
-
-//        if SMAppService.mainApp.status != .enabled {
-//            do {
-//                try SMAppService.mainApp.register()
-//                print("INFO: Successfully added to launch on startup")
-//            } catch {
-//                print("ERR: Failed to add to launch on startup")
-//            }
-//        } else {
-//            print("INFO: App is added to launch on startup")
-//        }
     }
 
     private func setupWindow(_ application: NSRunningApplication) {
