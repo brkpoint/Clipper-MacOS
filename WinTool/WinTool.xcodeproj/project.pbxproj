@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		288D07392BAF35CC002C2EEC /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 288D07382BAF35CC002C2EEC /* README.md */; };
+		288D073C2BAF373A002C2EEC /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 288D073B2BAF373A002C2EEC /* LaunchAtLogin */; };
 		28B354492BAE12380044A179 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28B354482BAE12380044A179 /* Assets.xcassets */; };
 		28B3544C2BAE12380044A179 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28B3544B2BAE12380044A179 /* Preview Assets.xcassets */; };
 		28B354772BAE13040044A179 /* WinToolApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B3546A2BAE13040044A179 /* WinToolApp.swift */; };
@@ -67,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				288D073C2BAF373A002C2EEC /* LaunchAtLogin in Frameworks */,
 				28B3549A2BAE13480044A179 /* SettingsAccess in Frameworks */,
 				28B3549D2BAE13500044A179 /* KeyboardShortcuts in Frameworks */,
 			);
@@ -200,6 +202,7 @@
 			packageProductDependencies = (
 				28B354992BAE13480044A179 /* SettingsAccess */,
 				28B3549C2BAE13500044A179 /* KeyboardShortcuts */,
+				288D073B2BAF373A002C2EEC /* LaunchAtLogin */,
 			);
 			productName = WinTool;
 			productReference = 28B354412BAE12370044A179 /* WinTool.app */;
@@ -233,6 +236,7 @@
 			packageReferences = (
 				28B354982BAE13480044A179 /* XCRemoteSwiftPackageReference "SettingsAccess" */,
 				28B3549B2BAE13500044A179 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
+				288D073A2BAF373A002C2EEC /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */,
 			);
 			productRefGroup = 28B354422BAE12370044A179 /* Products */;
 			projectDirPath = "";
@@ -484,6 +488,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		288D073A2BAF373A002C2EEC /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin-Modern";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		28B354982BAE13480044A179 /* XCRemoteSwiftPackageReference "SettingsAccess" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/orchetect/SettingsAccess.git";
@@ -503,6 +515,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		288D073B2BAF373A002C2EEC /* LaunchAtLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 288D073A2BAF373A002C2EEC /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */;
+			productName = LaunchAtLogin;
+		};
 		28B354992BAE13480044A179 /* SettingsAccess */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 28B354982BAE13480044A179 /* XCRemoteSwiftPackageReference "SettingsAccess" */;

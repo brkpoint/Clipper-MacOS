@@ -27,6 +27,7 @@ An open-source app for aligning and scaling windows made using swiftUI with more
 - installed packages (you can check them below)
 ## Packages to install:
 - [KeyboardShortcuts](https://github.com/sindresorhus/KeyboardShortcuts)
+- [LaunchAtLogin](https://github.com/sindresorhus/LaunchAtLogin-modern)
 - [SettingsAccess](https://github.com/orchetect/SettingsAccess)
 ## How to run this app?
 ### If you're using vscode or other IDE go to vscode branch
