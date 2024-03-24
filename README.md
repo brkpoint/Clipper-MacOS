@@ -22,6 +22,7 @@ An open-source app for aligning and scaling windows made using swiftUI with more
 - [x] shortcut editor
 - [ ] more features
 - [x] README.md to fix 😭
+- [ ] fix the window calculation
 - [ ] snapping
 ## Requirements:
 - xcode

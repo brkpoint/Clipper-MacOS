@@ -6,7 +6,7 @@ struct Shortcut: Hashable, Identifiable {
     var name: KeyboardShortcuts.Name
     var title: String
 
-    init(name: KeyboardShortcuts.Name, title: String) {
+    init(_ name: KeyboardShortcuts.Name, _ title: String) {
         id = UUID()
         self.name = name
         self.title = title

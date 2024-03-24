@@ -10,7 +10,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let windowManager = WindowManager.shared
     
     func applicationDidFinishLaunching(_ notification: Notification) {
-        NSApp.setActivationPolicy(.accessory)
+        SnappingManager.shared.addMouseEventMonitor()
         initialize()
 
         AppDelegate.instance = self
@@ -25,8 +25,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     private func initialize() {
-        AXUIElement.askForAccessibilityIfNeeded() // to fix
-        Main.shared.shortcutsEnabled = UserDefaults.standard.bool(forKey: Main.shared.shortcutUserDefaultsKey)
+        AXUIElement.askForAccessibilityIfNeeded()
 
         if AXUIElement.isSandboxingEnabled() {
             print("ERR: Sandboxing is enabled")

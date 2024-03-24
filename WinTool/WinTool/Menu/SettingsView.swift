@@ -25,15 +25,22 @@ struct SettingsView: View {
 }
 
 struct GeneralSettingsView: View {
-    @AppStorage(Main.shared.shortcutUserDefaultsKey) var shortcutsEnabled = true
-
+    @State private var shortcutsEnabled = SettingsManager.shared.shortcutsEnabled.value
+    @State private var snappingEnabled = SettingsManager.shared.snappingEnabled.value
+    
     var body: some View {
         Form {
-            Toggle("Shortcuts", isOn: $shortcutsEnabled)
-                .onChange(of: shortcutsEnabled) {
-                    Main.shared.shortcutsEnabled = shortcutsEnabled
-                }
-            LaunchAtLogin.Toggle("Toggle launch at login")
+            VStack {
+                Toggle("Shortcuts", isOn: $shortcutsEnabled)
+                    .onChange(of: shortcutsEnabled) {
+                        SettingsManager.shared.shortcutsEnabled.value = shortcutsEnabled
+                    }
+                Toggle("Snapping", isOn: $snappingEnabled)
+                    .onChange(of: snappingEnabled) {
+                        SettingsManager.shared.shortcutsEnabled.value = snappingEnabled
+                    }
+                LaunchAtLogin.Toggle("Toggle launch at login")
+            }
         }
     }
 }

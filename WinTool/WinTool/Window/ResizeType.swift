@@ -10,7 +10,8 @@ enum ResizeType: String, Codable, CaseIterable {
     toBottomLeft = "Bottom Left Corner",
     toBottomRight = "Bottom Right Corner",
     toCenter = "Center",
-    maximize = "Maximize"
+    maximize = "Maximize",
+    centerQuarterSize = "Center Quarter"
 
     func isBasic(_ name: Self) -> Bool {
         switch self {
@@ -39,6 +40,8 @@ enum ResizeType: String, Codable, CaseIterable {
                 return .p
             case .maximize:
                 return .l
+            case .centerQuarterSize:
+                return .k
         }
     }
 
@@ -60,6 +63,9 @@ enum ResizeType: String, Codable, CaseIterable {
                 return [NSEvent.ModifierFlags.command, NSEvent.ModifierFlags.control]
             case .maximize:
                 return [NSEvent.ModifierFlags.command, NSEvent.ModifierFlags.control]
+            case .centerQuarterSize:
+                return [NSEvent.ModifierFlags.command, NSEvent.ModifierFlags.control]
+
         }
     }
 
@@ -81,6 +87,8 @@ enum ResizeType: String, Codable, CaseIterable {
                 return "toCenter"
             case .maximize:
                 return "maximize"
+            case .centerQuarterSize:
+                return "centerQuarterSize"
         }
     }
 }

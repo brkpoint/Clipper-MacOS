@@ -3,22 +3,22 @@ import SwiftUI
 
 class WindowElement {
     let name: String
-    let Id: String
+    let ID: String
     let icon: NSImage
 
     fileprivate var axUIElement: Optional<AXUIElement>
     private let mainApp: AXUIElement
 
-    convenience init(_ Name: String, _ ID: String, _ PID: pid_t) {
-        self.init(Name, ID, PID, NSImage())
+    convenience init(_ name: String, _ ID: String, _ pid: pid_t) {
+        self.init(name, ID, pid, NSImage())
     }
 
-    init(_ Name: String, _ ID: String, _ PID: pid_t, _ Icon: NSImage) {
-        name = Name
-        Id = ID
-        icon = Icon
+    init(_ name: String, _ ID: String, _ pid: pid_t, _ icon: NSImage) {
+        self.name = name
+        self.ID = ID
+        self.icon = icon
 
-        mainApp = AXUIElementCreateApplication(PID)
+        mainApp = AXUIElementCreateApplication(pid)
         axUIElement = nil
     }
 

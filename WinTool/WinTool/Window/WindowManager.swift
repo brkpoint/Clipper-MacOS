@@ -45,6 +45,12 @@ public class WindowManager {
                     return CGRect(x: 0, y: 0, width: screenWidth / 2, height: screenHeight / 2)
                 case ResizeType.toTopRight:
                     return CGRect(x: screenWidth / 2, y: 0, width: screenWidth / 2, height: screenHeight / 2)
+                case ResizeType.centerQuarterSize:
+                    return CGRect(x: screenWidth / 2 - screenWidth / 4,
+                                 y: screenHeight / 2 - screenHeight / 4,
+                                 width: screenHeight / 4,
+                                 height: screenHeight / 4
+                                 )
             }
         }
 
