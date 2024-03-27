@@ -2,7 +2,9 @@ import Foundation
 import Cocoa
 import SwiftUI
 
-struct AligmentManager {
+class AlignmentManager {
+    static var shared: AlignmentManager = AlignmentManager()
+    
     func AlignFrame(_ type: ResizeType, _ screen: NSScreen?, _ currentApplication: WindowElement) {
         let screenFrame: CGRect? = screen?.visibleFrame
 

@@ -14,8 +14,6 @@
 		28B354492BAE12380044A179 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28B354482BAE12380044A179 /* Assets.xcassets */; };
 		28B3544C2BAE12380044A179 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28B3544B2BAE12380044A179 /* Preview Assets.xcassets */; };
 		28B354772BAE13040044A179 /* WinToolApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B3546A2BAE13040044A179 /* WinToolApp.swift */; };
-		28B354782BAE13040044A179 /* ResizeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B3546B2BAE13040044A179 /* ResizeType.swift */; };
-		28B354792BAE13040044A179 /* WindowElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B3546C2BAE13040044A179 /* WindowElement.swift */; };
 		28B3547A2BAE13040044A179 /* WindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B3546D2BAE13040044A179 /* WindowManager.swift */; };
 		28B3547B2BAE13040044A179 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B3546F2BAE13040044A179 /* AppDelegate.swift */; };
 		28B3547C2BAE13040044A179 /* AppMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B354702BAE13040044A179 /* AppMenu.swift */; };
@@ -27,14 +25,15 @@
 		28B3548F2BAE13120044A179 /* AppMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B354822BAE13120044A179 /* AppMenu.swift */; };
 		28B354902BAE13120044A179 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B354832BAE13120044A179 /* MenuView.swift */; };
 		28B354912BAE13120044A179 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B354842BAE13120044A179 /* SettingsView.swift */; };
-		28B354922BAE13120044A179 /* ResizeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B354862BAE13120044A179 /* ResizeType.swift */; };
-		28B354932BAE13120044A179 /* WindowElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B354872BAE13120044A179 /* WindowElement.swift */; };
 		28B354942BAE13120044A179 /* WindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B354882BAE13120044A179 /* WindowManager.swift */; };
 		28B354952BAE13120044A179 /* WinToolApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B3548A2BAE13120044A179 /* WinToolApp.swift */; };
 		28B354962BAE13120044A179 /* AX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B3548B2BAE13120044A179 /* AX.swift */; };
 		28B354972BAE13120044A179 /* Shortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B3548C2BAE13120044A179 /* Shortcuts.swift */; };
 		28B3549A2BAE13480044A179 /* SettingsAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 28B354992BAE13480044A179 /* SettingsAccess */; };
 		28B3549D2BAE13500044A179 /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = 28B3549C2BAE13500044A179 /* KeyboardShortcuts */; };
+		28C6F2EB2BB4C64C007394BB /* AlignmentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C6F2E72BB4C64C007394BB /* AlignmentManager.swift */; };
+		28C6F2EC2BB4C64C007394BB /* ResizeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C6F2E82BB4C64C007394BB /* ResizeType.swift */; };
+		28C6F2ED2BB4C64C007394BB /* WindowElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C6F2E92BB4C64C007394BB /* WindowElement.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,12 +59,13 @@
 		28B354822BAE13120044A179 /* AppMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppMenu.swift; sourceTree = "<group>"; };
 		28B354832BAE13120044A179 /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		28B354842BAE13120044A179 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		28B354862BAE13120044A179 /* ResizeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResizeType.swift; sourceTree = "<group>"; };
-		28B354872BAE13120044A179 /* WindowElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowElement.swift; sourceTree = "<group>"; };
 		28B354882BAE13120044A179 /* WindowManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowManager.swift; sourceTree = "<group>"; };
 		28B3548A2BAE13120044A179 /* WinToolApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WinToolApp.swift; sourceTree = "<group>"; };
 		28B3548B2BAE13120044A179 /* AX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AX.swift; sourceTree = "<group>"; };
 		28B3548C2BAE13120044A179 /* Shortcuts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shortcuts.swift; sourceTree = "<group>"; };
+		28C6F2E72BB4C64C007394BB /* AlignmentManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlignmentManager.swift; sourceTree = "<group>"; };
+		28C6F2E82BB4C64C007394BB /* ResizeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResizeType.swift; sourceTree = "<group>"; };
+		28C6F2E92BB4C64C007394BB /* WindowElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowElement.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,9 +181,8 @@
 		28B354892BAE13120044A179 /* Window */ = {
 			isa = PBXGroup;
 			children = (
+				28C6F2EA2BB4C64C007394BB /* Alignment */,
 				28ABB6D02BAF5A7A00496B01 /* Snapping */,
-				28B354862BAE13120044A179 /* ResizeType.swift */,
-				28B354872BAE13120044A179 /* WindowElement.swift */,
 				28B354882BAE13120044A179 /* WindowManager.swift */,
 			);
 			path = Window;
@@ -197,6 +196,16 @@
 				28ABB6D42BAF636F00496B01 /* SettingsManager.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		28C6F2EA2BB4C64C007394BB /* Alignment */ = {
+			isa = PBXGroup;
+			children = (
+				28C6F2E72BB4C64C007394BB /* AlignmentManager.swift */,
+				28C6F2E82BB4C64C007394BB /* ResizeType.swift */,
+				28C6F2E92BB4C64C007394BB /* WindowElement.swift */,
+			);
+			path = Alignment;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,25 +290,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28B354932BAE13120044A179 /* WindowElement.swift in Sources */,
 				28B3548E2BAE13120044A179 /* AppDelegate.swift in Sources */,
 				28B3547D2BAE13040044A179 /* MenuView.swift in Sources */,
 				28B354942BAE13120044A179 /* WindowManager.swift in Sources */,
 				28B3547E2BAE13040044A179 /* SettingsView.swift in Sources */,
 				28B3547F2BAE13040044A179 /* AX.swift in Sources */,
 				28ABB6D22BAF5AA600496B01 /* SnappingManager.swift in Sources */,
+				28C6F2ED2BB4C64C007394BB /* WindowElement.swift in Sources */,
 				28B354952BAE13120044A179 /* WinToolApp.swift in Sources */,
 				28B3547C2BAE13040044A179 /* AppMenu.swift in Sources */,
-				28B354922BAE13120044A179 /* ResizeType.swift in Sources */,
+				28C6F2EB2BB4C64C007394BB /* AlignmentManager.swift in Sources */,
 				28B354972BAE13120044A179 /* Shortcuts.swift in Sources */,
-				28B354792BAE13040044A179 /* WindowElement.swift in Sources */,
 				28B3548F2BAE13120044A179 /* AppMenu.swift in Sources */,
 				28B354912BAE13120044A179 /* SettingsView.swift in Sources */,
 				28B354902BAE13120044A179 /* MenuView.swift in Sources */,
 				28B3547A2BAE13040044A179 /* WindowManager.swift in Sources */,
 				28B354772BAE13040044A179 /* WinToolApp.swift in Sources */,
+				28C6F2EC2BB4C64C007394BB /* ResizeType.swift in Sources */,
 				28B3547B2BAE13040044A179 /* AppDelegate.swift in Sources */,
-				28B354782BAE13040044A179 /* ResizeType.swift in Sources */,
 				28B354962BAE13120044A179 /* AX.swift in Sources */,
 				28ABB6D52BAF636F00496B01 /* SettingsManager.swift in Sources */,
 				28B354802BAE13040044A179 /* Shortcuts.swift in Sources */,

@@ -3,12 +3,14 @@
 An open-source app for aligning and scaling windows made using swiftUI with more features to come in next updates.
 ## Roadmap:
 - [x] running app
-- [x] basic app on a bar
-- [x] windows list
+- [x] app icon on the bar
+- [x] app doesnt have any windows
+- [x] window management
 - [x] buttons in the menu
 - [x] current app in the menu (not kinda)
-- [x] app resizing
-- [x] app struct
+- [x] app can be resized
+- [x] app can be repositioned
+- [x] small AXUIElement wrapper
 - [x] window size and position calculation
 - [x] launching on startup
 - [ ] better error handling
@@ -23,6 +25,7 @@ An open-source app for aligning and scaling windows made using swiftUI with more
 - [ ] more features
 - [x] README.md to fix 😭
 - [ ] fix the window calculation
+- [x] mouse position handling
 - [ ] snapping
 ## Requirements:
 - xcode
