@@ -183,6 +183,7 @@
 			children = (
 				28C6F2EA2BB4C64C007394BB /* Alignment */,
 				28ABB6D02BAF5A7A00496B01 /* Snapping */,
+				28C6F2E92BB4C64C007394BB /* WindowElement.swift */,
 				28B354882BAE13120044A179 /* WindowManager.swift */,
 			);
 			path = Window;
@@ -203,7 +204,6 @@
 			children = (
 				28C6F2E72BB4C64C007394BB /* AlignmentManager.swift */,
 				28C6F2E82BB4C64C007394BB /* ResizeType.swift */,
-				28C6F2E92BB4C64C007394BB /* WindowElement.swift */,
 			);
 			path = Alignment;
 			sourceTree = "<group>";

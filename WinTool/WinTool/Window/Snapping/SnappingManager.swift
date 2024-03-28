@@ -5,13 +5,19 @@ import Cocoa
 class SnappingManager {
     static var shared: SnappingManager = SnappingManager()
     
-    public func addMouseEventMonitor() {
-        NSEvent.addGlobalMonitorForEvents(matching: [.leftMouseDragged, .rightMouseDragged, .otherMouseDragged]) { event in
+    func addMouseEventMonitor() {
+        NSEvent.addGlobalMonitorForEvents(matching: [.leftMouseDragged, .otherMouseDragged]) { event in
             if !(SettingsManager.shared.snappingEnabled.value as? Bool ?? true) {
                 return
             }
             
+            event.window?.mouseLocationOutsideOfEventStream
+            
             // to do
         }
+    }
+    
+    private func checkBoundingBox(_ position: NSPoint, _ box: CGRect) {
+        
     }
 }

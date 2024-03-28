@@ -9,6 +9,7 @@ public class WindowManager {
 
     private init() {
         currentApplication = WindowElement("", "", pid_t(0))
+        SnappingManager.shared.addMouseEventMonitor()
     }
 
     func SetApp(_ app: WindowElement) {

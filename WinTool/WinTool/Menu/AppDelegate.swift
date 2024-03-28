@@ -10,7 +10,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let windowManager = WindowManager.shared
     
     func applicationDidFinishLaunching(_ notification: Notification) {
-        SnappingManager.shared.addMouseEventMonitor()
         initialize()
 
         AppDelegate.instance = self
