@@ -11,7 +11,7 @@ class SnappingManager {
                 return
             }
             
-            event.window?.mouseLocationOutsideOfEventStream
+            //event.window?.mouseLocationOutsideOfEventStream
             
             // to do
         }
