@@ -40,6 +40,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private func setupWindow(_ application: NSRunningApplication) {
         windowManager.SetApp(WindowElement(application.localizedName!, application.bundleIdentifier!, application.processIdentifier, application.icon!))
         windowManager.GetCurrentApp().getWindow()
+        ScreenManager.shared.UpdateScreen()
     }
 
     private func registerFrontAppChangeNote() {
