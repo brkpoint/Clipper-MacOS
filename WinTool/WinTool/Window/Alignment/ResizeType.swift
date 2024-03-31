@@ -11,7 +11,8 @@ enum ResizeType: String, Codable, CaseIterable {
     toBottomRight = "Bottom Right Corner",
     toCenter = "Center",
     maximize = "Maximize",
-    centerQuarterSize = "Center Quarter"
+    centerQuarterSize = "Center Quarter",
+    snap = "Snap Button"
 
     func isBasic(_ name: Self) -> Bool {
         switch self {
@@ -19,6 +20,17 @@ enum ResizeType: String, Codable, CaseIterable {
                 return true
             default:
                 return false
+        }
+    }
+    
+    func execute(_ name: Self) {
+        switch self {
+            case .snap:
+            SnappingManager.shared.fire()
+                break
+            default:
+                WindowManager.shared.Align(self)
+                break
         }
     }
 
@@ -42,30 +54,17 @@ enum ResizeType: String, Codable, CaseIterable {
                 return .l
             case .centerQuarterSize:
                 return .k
+            case .snap:
+                return .backtick
         }
     }
 
     var modifiers: NSEvent.ModifierFlags {
         switch self {
-            case .toLeftSide:
+            case .snap:
+                return [NSEvent.ModifierFlags.command]
+            default:
                 return [NSEvent.ModifierFlags.command, NSEvent.ModifierFlags.control]
-            case .toRightSide:
-                return [NSEvent.ModifierFlags.command, NSEvent.ModifierFlags.control]
-            case .toTopLeft:
-                return [NSEvent.ModifierFlags.command, NSEvent.ModifierFlags.control]
-            case .toTopRight:
-                return [NSEvent.ModifierFlags.command, NSEvent.ModifierFlags.control]
-            case .toBottomLeft:
-                return [NSEvent.ModifierFlags.command, NSEvent.ModifierFlags.control]
-            case .toBottomRight:
-                return [NSEvent.ModifierFlags.command, NSEvent.ModifierFlags.control]
-            case .toCenter:
-                return [NSEvent.ModifierFlags.command, NSEvent.ModifierFlags.control]
-            case .maximize:
-                return [NSEvent.ModifierFlags.command, NSEvent.ModifierFlags.control]
-            case .centerQuarterSize:
-                return [NSEvent.ModifierFlags.command, NSEvent.ModifierFlags.control]
-
         }
     }
 
@@ -89,6 +88,8 @@ enum ResizeType: String, Codable, CaseIterable {
                 return "maximize"
             case .centerQuarterSize:
                 return "centerQuarterSize"
+            case .snap:
+                return "snap"
         }
     }
 }

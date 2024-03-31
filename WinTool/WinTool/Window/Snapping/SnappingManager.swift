@@ -20,6 +20,10 @@ class SnappingManager {
         }
     }
     
+    func fire() {
+        
+    }
+    
     private func checkBoundingBox(_ position: CGPoint, _ box: CGRect) -> Bool {
         return position.x > box.minX && position.y > box.minY && position.x < box.maxX && position.y < box.maxY
     }
