@@ -11,13 +11,16 @@ class SnappingManager {
                 return
             }
             
-            //event.window?.mouseLocationOutsideOfEventStream
+            // first method
+//            let firstX: Bool = (ScreenManager.shared.GetScreen().frame.width / 2) > NSEvent.mouseLocation.x // is mouse in the first x square
+//            let firstY: Bool = (ScreenManager.shared.GetScreen().frame.height / 2) < NSEvent.mouseLocation.y // is mouse in the first y square
             
-            // to do
+            // second method
+//            var isInside: Bool = self.checkBoundingBox(NSEvent.mouseLocation, CGRect(x: 0, y: 0, width: 200, height: 200))
         }
     }
     
-    private func checkBoundingBox(_ position: NSPoint, _ box: CGRect) {
-        
+    private func checkBoundingBox(_ position: CGPoint, _ box: CGRect) -> Bool {
+        return position.x > box.minX && position.y > box.minY && position.x < box.maxX && position.y < box.maxY
     }
 }
