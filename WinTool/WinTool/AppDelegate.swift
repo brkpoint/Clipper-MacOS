@@ -24,6 +24,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     private func initialize() {
+        SnappingManager.shared.addMouseEventMonitor()
         Process.askForAccessibilityIfNeeded()
 
         if Process.isSandboxingEnabled() {

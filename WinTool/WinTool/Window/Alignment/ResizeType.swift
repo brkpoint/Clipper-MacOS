@@ -35,7 +35,7 @@ enum ResizeType: String, Codable, CaseIterable {
     func execute() {
         switch self {
             case .snap:
-                SnappingManager.shared.fire()
+            SnappingManager.shared.fire()
                 break
             default:
                 WindowManager.shared.Align(self)
