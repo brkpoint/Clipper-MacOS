@@ -10,8 +10,6 @@ class WindowInfoView: ObservableObject {
 }
 
 struct MenuView: View {
-    private let windowManager = WindowManager.shared
-    
     @StateObject private var windowInfo: WindowInfoView = WindowInfoView(WindowElement("", "", pid_t(0)))
 
     var body: some View {
@@ -23,9 +21,9 @@ struct MenuView: View {
                     } icon: {
                         Image(nsImage: self.windowInfo.windowElement.icon)
                     }.font(.title)
-                    ForEach(ResizeType.allCases.filter {$0.isBasic($0)}, id: \.self) { item in
+                    ForEach(ResizeType.allCases.filter {$0.isBasic()}, id: \.self) { item in
                         Button(item.rawValue) {
-                            windowManager.Align(item)
+                            WindowManager.shared.Align(item)
                         }
                     }
                 }

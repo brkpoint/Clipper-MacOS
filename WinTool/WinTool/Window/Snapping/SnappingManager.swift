@@ -5,26 +5,38 @@ import Cocoa
 class SnappingManager {
     static var shared: SnappingManager = SnappingManager()
     
+    var mousePos: CGPoint = NSEvent.mouseLocation
+    
     func addMouseEventMonitor() {
         NSEvent.addGlobalMonitorForEvents(matching: [.leftMouseDragged, .otherMouseDragged]) { event in
-            if !(SettingsManager.shared.snappingEnabled.value as? Bool ?? true) {
+            if SettingsManager.shared.snappingEnabled.value {
                 return
             }
             
-            // first method
-//            let firstX: Bool = (ScreenManager.shared.GetScreen().frame.width / 2) > NSEvent.mouseLocation.x // is mouse in the first x square
-//            let firstY: Bool = (ScreenManager.shared.GetScreen().frame.height / 2) < NSEvent.mouseLocation.y // is mouse in the first y square
-            
-            // second method
-//            var isInside: Bool = self.checkBoundingBox(NSEvent.mouseLocation, CGRect(x: 0, y: 0, width: 200, height: 200))
+            self.mousePos = NSEvent.mouseLocation
         }
     }
     
     func fire() {
+        if !SettingsManager.shared.snappingEnabled.value {
+            return
+        }
+        
+        for item in (ResizeType.allCases.filter {$0.forSnapping()}) {
+            guard let rect = item.rect(WindowManager.shared.currentApplication) else {
+                continue
+            }
+            
+            if self.checkBoundingBox(self.mousePos, rect) {
+                //print(self.mousePos, rect)
+                item.execute()
+                return
+            }
+        }
         
     }
     
     private func checkBoundingBox(_ position: CGPoint, _ box: CGRect) -> Bool {
-        return position.x > box.minX && position.y > box.minY && position.x < box.maxX && position.y < box.maxY
+        return (position.x > box.origin.x && position.y > box.origin.y) && (position.x < box.width + box.origin.x && position.y < box.height + box.origin.y)
     }
 }

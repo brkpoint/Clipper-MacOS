@@ -20,8 +20,9 @@ extension AXUIElement {
 
     private func m_setValue(_ attribute: NSAccessibility.Attribute, _ value: AnyObject) {
         let error = AXUIElementSetAttributeValue(self, attribute.rawValue as CFString, value)
-        if error != .success {
+        guard error == .success else {
             print("ERR: AXSetValue - err_code: \(error.rawValue)")
+            return
         }
     }
 
@@ -48,24 +49,6 @@ extension AXUIElement {
         var attributeCanBeSet: DarwinBoolean = false
         AXUIElementIsAttributeSettable(self, attribute.rawValue as CFString, &attributeCanBeSet)
         return attributeCanBeSet.boolValue
-    }
-
-    static func askForAccessibilityIfNeeded() {
-        if !AXIsProcessTrusted() {
-            print("INFO: Asking for permission to access other apps")
-            AXIsProcessTrustedWithOptions([kAXTrustedCheckOptionPrompt.takeUnretainedValue():true] as CFDictionary)
-            return
-        }
-        print("INFO: App has permissions to access other apps")
-    }
-    
-    static func checkAppIsAllowToUseAccessibilty() -> Bool {
-        return AXIsProcessTrusted()
-    }
-    
-    static func isSandboxingEnabled() -> Bool {
-        let environment = ProcessInfo.processInfo.environment
-        return environment["APP_SANDBOX_CONTAINER_ID"] != nil
     }
 }
 

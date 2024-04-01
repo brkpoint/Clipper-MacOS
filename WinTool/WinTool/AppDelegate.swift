@@ -24,9 +24,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     private func initialize() {
-        AXUIElement.askForAccessibilityIfNeeded()
+        Process.askForAccessibilityIfNeeded()
 
-        if AXUIElement.isSandboxingEnabled() {
+        if Process.isSandboxingEnabled() {
             print("ERR: Sandboxing is enabled")
         } else {
             print("INFO: Sandboxing is disabled")

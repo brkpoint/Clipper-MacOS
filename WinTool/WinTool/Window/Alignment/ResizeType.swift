@@ -14,7 +14,7 @@ enum ResizeType: String, Codable, CaseIterable {
     centerQuarterSize = "Center Quarter",
     snap = "Snap Button"
 
-    func isBasic(_ name: Self) -> Bool {
+    func isBasic() -> Bool {
         switch self {
             case .toLeftSide, .toRightSide, .toCenter, .maximize:
                 return true
@@ -23,10 +23,19 @@ enum ResizeType: String, Codable, CaseIterable {
         }
     }
     
-    func execute(_ name: Self) {
+    func forSnapping() -> Bool {
+        switch self {
+            case .toTopLeft, .toTopRight, .toBottomLeft, .toBottomRight:
+                return true
+            default:
+                return false
+        }
+    }
+    
+    func execute() {
         switch self {
             case .snap:
-            SnappingManager.shared.fire()
+                SnappingManager.shared.fire()
                 break
             default:
                 WindowManager.shared.Align(self)
@@ -65,6 +74,58 @@ enum ResizeType: String, Codable, CaseIterable {
                 return [NSEvent.ModifierFlags.command]
             default:
                 return [NSEvent.ModifierFlags.command, NSEvent.ModifierFlags.control]
+        }
+    }
+    
+    func rect(_ application: WindowElement) -> CGRect? {
+        let screen: NSScreen = ScreenManager.shared.GetScreen()
+        switch self {
+            case .snap:
+                return nil
+            case .toLeftSide:
+                return CGRect(x: 0, 
+                              y: 0,
+                              width: screen.frame.width / 2, 
+                              height: screen.frame.height)
+            case .toRightSide:
+                return CGRect(x: screen.frame.width / 2, 
+                              y: 0,
+                              width: screen.frame.width / 2,
+                              height: screen.frame.height / 2)
+            case .toTopLeft:
+                return CGRect(x: 0, 
+                              y: 0, width: screen.frame.width / 2,
+                              height: screen.frame.height / 2)
+            case .toTopRight:
+                return CGRect(x: screen.frame.width / 2, 
+                              y: 0, 
+                              width: screen.frame.width / 2,
+                              height: screen.frame.height / 2)
+            case .toBottomLeft:
+                return CGRect(x: 0, 
+                              y: screen.frame.height / 2,
+                              width: screen.frame.width / 2,
+                              height: screen.frame.height / 2)
+            case .toBottomRight:
+                return CGRect(x: screen.frame.width / 2, 
+                              y: screen.frame.height / 2,
+                              width: screen.frame.width / 2,
+                              height: screen.frame.height / 2)
+            case .toCenter:
+                return CGRect(x: screen.frame.width / 2 - application.frame.width / 2, 
+                              y: screen.frame.height / 2 - application.frame.height / 2,
+                              width: application.frame.width,
+                              height: application.frame.height)
+            case .maximize:
+                return CGRect(x: 0, 
+                              y: 0,
+                              width: screen.frame.width,
+                              height: screen.frame.height)
+            case .centerQuarterSize:
+                return CGRect(x: screen.frame.width / 2 - screen.frame.width / 4,
+                              y: screen.frame.midY - screen.frame.height / 4,
+                              width: screen.frame.width / 2,
+                              height: screen.frame.height / 2)
         }
     }
 

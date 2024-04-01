@@ -19,7 +19,7 @@ public class WindowManager {
     }
 
     func Align(_ type: ResizeType) {
-        AlignmentManager.shared.AlignFrame(type, screen, currentApplication)
+        AlignmentManager.shared.AlignFrame(type, currentApplication)
     }
 
     func GetCurrentApp() -> WindowElement {
