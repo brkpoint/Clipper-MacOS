@@ -30,6 +30,8 @@ An open-source app for aligning and scaling windows made using swiftUI with more
 - [ ] snapping without the button (hold the window for 1.5 sec in the area you wanna snap)
 - [ ] displaying a rectangle where is the snapping thing
 - [ ] refactoring and optimalizations
+- [ ] bug fixes
+- [ ] better about
 - [ ] better roadmap
 ## Requirements:
 - xcode
