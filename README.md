@@ -31,6 +31,7 @@ An open-source app for aligning and scaling windows made using swiftUI with more
 - [ ] displaying a rectangle where is the snapping thing
 - [ ] refactoring and optimalizations
 - [ ] bug fixes
+- [ ] settings bug
 - [ ] better about
 - [ ] better roadmap
 ## Requirements:
