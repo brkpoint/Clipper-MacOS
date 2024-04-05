@@ -34,6 +34,7 @@ An open-source app for aligning and scaling windows made using swiftUI with more
 - [ ] settings bug
 - [ ] better about
 - [ ] better roadmap
+- [ ] better code doc
 ## Requirements:
 - xcode
 - installed packages (you can check them below)
