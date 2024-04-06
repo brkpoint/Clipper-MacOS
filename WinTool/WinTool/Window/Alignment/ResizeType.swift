@@ -11,8 +11,7 @@ enum ResizeType: String, Codable, CaseIterable {
     toBottomRight = "Bottom Right Corner",
     toCenter = "Center",
     maximize = "Maximize",
-    centerQuarterSize = "Center Quarter",
-    snap = "Snap Button"
+    centerQuarterSize = "Center Quarter"
 
     func isBasic() -> Bool {
         switch self {
@@ -34,9 +33,6 @@ enum ResizeType: String, Codable, CaseIterable {
     
     func execute() {
         switch self {
-            case .snap:
-            SnappingManager.shared.fire()
-                break
             default:
                 WindowManager.shared.Align(self)
                 break
@@ -63,15 +59,11 @@ enum ResizeType: String, Codable, CaseIterable {
                 return .l
             case .centerQuarterSize:
                 return .k
-            case .snap:
-                return .backtick
         }
     }
 
     var modifiers: NSEvent.ModifierFlags {
         switch self {
-            case .snap:
-                return [NSEvent.ModifierFlags.command]
             default:
                 return [NSEvent.ModifierFlags.command, NSEvent.ModifierFlags.control]
         }
@@ -80,8 +72,6 @@ enum ResizeType: String, Codable, CaseIterable {
     func rect(_ application: WindowElement) -> CGRect? {
         let screen: NSScreen = ScreenManager.shared.GetScreen()
         switch self {
-            case .snap:
-                return nil
             case .toLeftSide:
                 return CGRect(x: 0, 
                               y: 0,
@@ -149,8 +139,6 @@ enum ResizeType: String, Codable, CaseIterable {
                 return "maximize"
             case .centerQuarterSize:
                 return "centerQuarterSize"
-            case .snap:
-                return "snap"
         }
     }
 }

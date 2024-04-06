@@ -35,7 +35,6 @@
 		28C6F2EC2BB4C64C007394BB /* ResizeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C6F2E82BB4C64C007394BB /* ResizeType.swift */; };
 		28C6F2ED2BB4C64C007394BB /* WindowElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C6F2E92BB4C64C007394BB /* WindowElement.swift */; };
 		28F7F9512BBB006F0012EFD5 /* Process.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F7F9502BBB006F0012EFD5 /* Process.swift */; };
-		28F7F9572BBB700E0012EFD5 /* SnapFootprint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F7F9562BBB700E0012EFD5 /* SnapFootprint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,7 +69,6 @@
 		28C6F2E82BB4C64C007394BB /* ResizeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResizeType.swift; sourceTree = "<group>"; };
 		28C6F2E92BB4C64C007394BB /* WindowElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowElement.swift; sourceTree = "<group>"; };
 		28F7F9502BBB006F0012EFD5 /* Process.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Process.swift; path = ../../../../../Process.swift; sourceTree = "<group>"; };
-		28F7F9562BBB700E0012EFD5 /* SnapFootprint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapFootprint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,7 +89,6 @@
 			isa = PBXGroup;
 			children = (
 				28ABB6D12BAF5AA600496B01 /* SnappingManager.swift */,
-				28F7F9562BBB700E0012EFD5 /* SnapFootprint.swift */,
 			);
 			path = Snapping;
 			sourceTree = "<group>";
@@ -306,7 +303,6 @@
 				28ABB6D22BAF5AA600496B01 /* SnappingManager.swift in Sources */,
 				28C6F2ED2BB4C64C007394BB /* WindowElement.swift in Sources */,
 				28B354952BAE13120044A179 /* WinToolApp.swift in Sources */,
-				28F7F9572BBB700E0012EFD5 /* SnapFootprint.swift in Sources */,
 				28B3547C2BAE13040044A179 /* AppMenu.swift in Sources */,
 				28C6F2EB2BB4C64C007394BB /* AlignmentManager.swift in Sources */,
 				28B354972BAE13120044A179 /* Shortcuts.swift in Sources */,
