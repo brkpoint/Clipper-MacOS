@@ -5,8 +5,6 @@ import SettingsAccess
 class AppMenu: NSObject {
     private let windowManager = WindowManager.shared
 
-    @Environment(\.openSettings) private var openSettings
-
     let menu = NSMenu()
     
     func createMenu() -> NSMenu {
@@ -41,7 +39,7 @@ class AppMenu: NSObject {
 
     @objc func settings(sender: NSMenuItem) {
         NSApplication.shared.activate(ignoringOtherApps: true)
-        try? openSettings()
+        try? Main.shared.contentView.openSettings()
     }
 
     @objc func quit(sender: NSMenuItem) {

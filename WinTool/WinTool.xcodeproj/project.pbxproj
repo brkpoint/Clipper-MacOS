@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2827DC122BC4837B0007F3E3 /* FloatingPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2827DC112BC4837B0007F3E3 /* FloatingPanel.swift */; };
+		2827DC152BC483BE0007F3E3 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2827DC142BC483BE0007F3E3 /* OverlayView.swift */; };
 		2855A46D2BB995EB00B1C9EB /* ScreenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2855A46C2BB995EB00B1C9EB /* ScreenManager.swift */; };
 		288D07392BAF35CC002C2EEC /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 288D07382BAF35CC002C2EEC /* README.md */; };
 		288D073C2BAF373A002C2EEC /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 288D073B2BAF373A002C2EEC /* LaunchAtLogin */; };
@@ -38,6 +40,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2827DC112BC4837B0007F3E3 /* FloatingPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanel.swift; sourceTree = "<group>"; };
+		2827DC142BC483BE0007F3E3 /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
 		2855A46C2BB995EB00B1C9EB /* ScreenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenManager.swift; sourceTree = "<group>"; };
 		288D07382BAF35CC002C2EEC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		28ABB6D12BAF5AA600496B01 /* SnappingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnappingManager.swift; sourceTree = "<group>"; };
@@ -177,6 +181,7 @@
 				28B354822BAE13120044A179 /* AppMenu.swift */,
 				28B354832BAE13120044A179 /* MenuView.swift */,
 				28B354842BAE13120044A179 /* SettingsView.swift */,
+				2827DC142BC483BE0007F3E3 /* OverlayView.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -195,6 +200,7 @@
 		28B3548D2BAE13120044A179 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				2827DC112BC4837B0007F3E3 /* FloatingPanel.swift */,
 				28B3548B2BAE13120044A179 /* AX.swift */,
 				28B3548C2BAE13120044A179 /* Shortcuts.swift */,
 				2855A46C2BB995EB00B1C9EB /* ScreenManager.swift */,
@@ -304,12 +310,14 @@
 				28C6F2ED2BB4C64C007394BB /* WindowElement.swift in Sources */,
 				28B354952BAE13120044A179 /* WinToolApp.swift in Sources */,
 				28B3547C2BAE13040044A179 /* AppMenu.swift in Sources */,
+				2827DC152BC483BE0007F3E3 /* OverlayView.swift in Sources */,
 				28C6F2EB2BB4C64C007394BB /* AlignmentManager.swift in Sources */,
 				28B354972BAE13120044A179 /* Shortcuts.swift in Sources */,
 				28B3548F2BAE13120044A179 /* AppMenu.swift in Sources */,
 				28B354912BAE13120044A179 /* SettingsView.swift in Sources */,
 				28B354902BAE13120044A179 /* MenuView.swift in Sources */,
 				28B3547A2BAE13040044A179 /* WindowManager.swift in Sources */,
+				2827DC122BC4837B0007F3E3 /* FloatingPanel.swift in Sources */,
 				28F7F9512BBB006F0012EFD5 /* Process.swift in Sources */,
 				28B354772BAE13040044A179 /* WinToolApp.swift in Sources */,
 				28C6F2EC2BB4C64C007394BB /* ResizeType.swift in Sources */,

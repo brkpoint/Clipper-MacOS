@@ -8,7 +8,6 @@ class SnappingManager {
     
     let snapTime: Int64 = 1100 // need to add this to user settings (in miliseconds)
     var dragStartDate: Date? = nil
-    var displayRect: Bool = false
     
     func addMouseEventMonitor() {
         NSEvent.addGlobalMonitorForEvents(matching: [.leftMouseDragged, .rightMouseDragged, .otherMouseDragged]) { event in
@@ -21,12 +20,15 @@ class SnappingManager {
             
             if self.dragStartDate == nil {
                 self.dragStartDate = Date()
-                self.displayRect = true
-                Timer.scheduledTimer(timeInterval: Double(self.snapTime) / 1000.0, target: self, selector: #selector(self.rect), userInfo: nil, repeats: false)
+                Timer.scheduledTimer(timeInterval: Double(self.snapTime) / 1000.0, target: self, selector: #selector(self.showRect), userInfo: nil, repeats: false)
             }
         }
         
         NSEvent.addGlobalMonitorForEvents(matching: [.mouseMoved]) { event in
+            if !SettingsManager.shared.snappingEnabled.value {
+                return
+            }
+            
             self.restart()
         }
         
@@ -39,16 +41,18 @@ class SnappingManager {
                 return
             }
             
-            if Int64((Date().timeIntervalSince(self.dragStartDate ?? Date()) * 1000.0).rounded()) >= self.snapTime{                
-                for item in (ResizeType.allCases.filter {$0.forSnapping()}) {
-                    guard let rect = item.rect(WindowManager.shared.currentApplication) else {
-                        continue
-                    }
-                    
-                    if self.checkBoundingBox(self.mousePos, rect) {
-                        item.execute()
-                        return
-                    }
+            if Int64((Date().timeIntervalSince(self.dragStartDate ?? Date()) * 1000.0).rounded()) < self.snapTime {
+                return
+            }
+            
+            for item in (ResizeType.allCases.filter {$0.forSnapping()}) {
+                guard let rect = item.rect(WindowManager.shared.currentApplication) else {
+                    continue
+                }
+                
+                if self.checkBoundingBox(self.mousePos, rect) {
+                    item.execute()
+                    return
                 }
             }
             
@@ -56,11 +60,11 @@ class SnappingManager {
         }
     }
     
-    @objc func rect() {
-        if displayRect {
-            return
-        }
+    @objc func showRect() {
         
+    }
+    
+    @objc func hideRect() {
         
     }
     
@@ -70,6 +74,6 @@ class SnappingManager {
     
     private func restart() {
         self.dragStartDate = nil
-        self.displayRect = false
+        hideRect()
     }
 }

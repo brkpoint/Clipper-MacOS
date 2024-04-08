@@ -11,6 +11,8 @@ class WindowInfoView: ObservableObject {
 
 struct MenuView: View {
     @StateObject private var windowInfo: WindowInfoView = WindowInfoView(WindowElement("", "", pid_t(0)))
+    
+    @Environment(\.openSettings) var openSettings
 
     var body: some View {
         VStack {
