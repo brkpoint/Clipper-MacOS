@@ -17,6 +17,9 @@ struct Main: App {
         Settings {
             SettingsView()
         }
+        WindowGroup {
+            OverlayView()
+        }
     }
 }
 

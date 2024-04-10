@@ -306,6 +306,7 @@
 				28B354942BAE13120044A179 /* WindowManager.swift in Sources */,
 				28B3547E2BAE13040044A179 /* SettingsView.swift in Sources */,
 				28B3547F2BAE13040044A179 /* AX.swift in Sources */,
+				2827DC122BC4837B0007F3E3 /* FloatingPanel.swift in Sources */,
 				28ABB6D22BAF5AA600496B01 /* SnappingManager.swift in Sources */,
 				28C6F2ED2BB4C64C007394BB /* WindowElement.swift in Sources */,
 				28B354952BAE13120044A179 /* WinToolApp.swift in Sources */,
@@ -317,7 +318,6 @@
 				28B354912BAE13120044A179 /* SettingsView.swift in Sources */,
 				28B354902BAE13120044A179 /* MenuView.swift in Sources */,
 				28B3547A2BAE13040044A179 /* WindowManager.swift in Sources */,
-				2827DC122BC4837B0007F3E3 /* FloatingPanel.swift in Sources */,
 				28F7F9512BBB006F0012EFD5 /* Process.swift in Sources */,
 				28B354772BAE13040044A179 /* WinToolApp.swift in Sources */,
 				28C6F2EC2BB4C64C007394BB /* ResizeType.swift in Sources */,
@@ -463,6 +463,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WinTool/Info.plist;
+				INFOPLIST_KEY_LSBackgroundOnly = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -492,6 +493,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WinTool/Info.plist;
+				INFOPLIST_KEY_LSBackgroundOnly = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
