@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2827DC122BC4837B0007F3E3 /* FloatingPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2827DC112BC4837B0007F3E3 /* FloatingPanel.swift */; };
 		2827DC152BC483BE0007F3E3 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2827DC142BC483BE0007F3E3 /* OverlayView.swift */; };
 		2855A46D2BB995EB00B1C9EB /* ScreenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2855A46C2BB995EB00B1C9EB /* ScreenManager.swift */; };
 		288D07392BAF35CC002C2EEC /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 288D07382BAF35CC002C2EEC /* README.md */; };
@@ -40,7 +39,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2827DC112BC4837B0007F3E3 /* FloatingPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanel.swift; sourceTree = "<group>"; };
 		2827DC142BC483BE0007F3E3 /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
 		2855A46C2BB995EB00B1C9EB /* ScreenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenManager.swift; sourceTree = "<group>"; };
 		288D07382BAF35CC002C2EEC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
@@ -200,7 +198,6 @@
 		28B3548D2BAE13120044A179 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				2827DC112BC4837B0007F3E3 /* FloatingPanel.swift */,
 				28B3548B2BAE13120044A179 /* AX.swift */,
 				28B3548C2BAE13120044A179 /* Shortcuts.swift */,
 				2855A46C2BB995EB00B1C9EB /* ScreenManager.swift */,
@@ -306,7 +303,6 @@
 				28B354942BAE13120044A179 /* WindowManager.swift in Sources */,
 				28B3547E2BAE13040044A179 /* SettingsView.swift in Sources */,
 				28B3547F2BAE13040044A179 /* AX.swift in Sources */,
-				2827DC122BC4837B0007F3E3 /* FloatingPanel.swift in Sources */,
 				28ABB6D22BAF5AA600496B01 /* SnappingManager.swift in Sources */,
 				28C6F2ED2BB4C64C007394BB /* WindowElement.swift in Sources */,
 				28B354952BAE13120044A179 /* WinToolApp.swift in Sources */,
@@ -463,7 +459,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WinTool/Info.plist;
-				INFOPLIST_KEY_LSBackgroundOnly = YES;
+				INFOPLIST_KEY_LSBackgroundOnly = NO;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -493,7 +489,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WinTool/Info.plist;
-				INFOPLIST_KEY_LSBackgroundOnly = YES;
+				INFOPLIST_KEY_LSBackgroundOnly = NO;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

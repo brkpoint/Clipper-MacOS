@@ -13,8 +13,6 @@ struct MenuView: View {
     @StateObject private var windowInfo: WindowInfoView = WindowInfoView(WindowElement("", "", pid_t(0)))
     
     @Environment(\.openSettings) var openSettings
-    
-    @State var panel: Bool = false
 
     var body: some View {
         VStack {
@@ -25,9 +23,6 @@ struct MenuView: View {
                     } icon: {
                         Image(nsImage: self.windowInfo.windowElement.icon)
                     }.font(.title)
-                    Button("float panel test") {
-                        panel.toggle()
-                    }
                     ForEach(ResizeType.allCases.filter {$0.isBasic()}, id: \.self) { item in
                         Button(item.rawValue) {
                             WindowManager.shared.Align(item)
