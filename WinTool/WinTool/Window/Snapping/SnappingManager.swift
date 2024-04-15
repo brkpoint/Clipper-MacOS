@@ -9,27 +9,27 @@ class SnappingManager {
     let snapTime: Int64 = 1100 // need to add this to user settings (in miliseconds)
     var dragStartDate: Date? = nil
     
-    func addMouseEventMonitor() {
+    var overlayWindow: NSWindow
+    var timer: Timer? = nil
+    
+    init() {
+        overlayWindow = SnapOverlay();
+        
         NSEvent.addGlobalMonitorForEvents(matching: [.leftMouseDragged, .rightMouseDragged, .otherMouseDragged]) { event in
             if !SettingsManager.shared.snappingEnabled.value {
+                return
+            }
+            
+            if WindowManager.shared.currentApplication.isFullscreen ||
+                !WindowManager.shared.currentApplication.isResizable {
                 return
             }
             
             self.mousePos.x = NSEvent.mouseLocation.x
             self.mousePos.y = ScreenManager.shared.GetScreen().frame.height - NSEvent.mouseLocation.y
             
-            if self.dragStartDate == nil {
-                self.dragStartDate = Date()
-                Timer.scheduledTimer(timeInterval: Double(self.snapTime) / 1000.0, target: self, selector: #selector(self.showRect), userInfo: nil, repeats: false)
-            }
-        }
-        
-        NSEvent.addGlobalMonitorForEvents(matching: [.mouseMoved]) { event in
-            if !SettingsManager.shared.snappingEnabled.value {
-                return
-            }
-            
-            self.restart()
+            self.dragStartDate = Date()
+            self.timer = Timer.scheduledTimer(timeInterval: Double(self.snapTime) / 1000.0, target: self, selector: #selector(self.showRect), userInfo: nil, repeats: false)
         }
         
         NSEvent.addGlobalMonitorForEvents(matching: [.leftMouseUp, .rightMouseUp, .otherMouseUp]) { event in
@@ -38,6 +38,15 @@ class SnappingManager {
             }
             
             if self.dragStartDate == nil {
+                return
+            }
+        
+            if !Process.isAllowedToUseAccessibilty() {
+                return
+            }
+            
+            if WindowManager.shared.currentApplication.isFullscreen ||
+                !WindowManager.shared.currentApplication.isResizable {
                 return
             }
             
@@ -61,11 +70,29 @@ class SnappingManager {
     }
     
     @objc func showRect() {
+        if !Process.isAllowedToUseAccessibilty() {
+            return
+        }
         
+        if WindowManager.shared.currentApplication.isFullscreen ||
+            !WindowManager.shared.currentApplication.isResizable {
+            return
+        }
+        
+        self.overlayWindow.orderFront(nil)
     }
     
-    @objc func hideRect() {
+    func hideRect() {
+        if !Process.isAllowedToUseAccessibilty() {
+            return
+        }
         
+        if WindowManager.shared.currentApplication.isFullscreen ||
+            !WindowManager.shared.currentApplication.isResizable {
+            return
+        }
+        
+        self.overlayWindow.orderOut(nil)
     }
     
     private func checkBoundingBox(_ position: CGPoint, _ box: CGRect) -> Bool {

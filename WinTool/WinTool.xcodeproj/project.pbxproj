@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2827DC152BC483BE0007F3E3 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2827DC142BC483BE0007F3E3 /* OverlayView.swift */; };
+		280416A82BCD7454005CE77D /* SnapOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280416A72BCD7454005CE77D /* SnapOverlay.swift */; };
 		2855A46D2BB995EB00B1C9EB /* ScreenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2855A46C2BB995EB00B1C9EB /* ScreenManager.swift */; };
 		288D07392BAF35CC002C2EEC /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 288D07382BAF35CC002C2EEC /* README.md */; };
 		288D073C2BAF373A002C2EEC /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 288D073B2BAF373A002C2EEC /* LaunchAtLogin */; };
@@ -39,7 +39,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2827DC142BC483BE0007F3E3 /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
+		280416A72BCD7454005CE77D /* SnapOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapOverlay.swift; sourceTree = "<group>"; };
 		2855A46C2BB995EB00B1C9EB /* ScreenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenManager.swift; sourceTree = "<group>"; };
 		288D07382BAF35CC002C2EEC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		28ABB6D12BAF5AA600496B01 /* SnappingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnappingManager.swift; sourceTree = "<group>"; };
@@ -91,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				28ABB6D12BAF5AA600496B01 /* SnappingManager.swift */,
+				280416A72BCD7454005CE77D /* SnapOverlay.swift */,
 			);
 			path = Snapping;
 			sourceTree = "<group>";
@@ -179,7 +180,6 @@
 				28B354822BAE13120044A179 /* AppMenu.swift */,
 				28B354832BAE13120044A179 /* MenuView.swift */,
 				28B354842BAE13120044A179 /* SettingsView.swift */,
-				2827DC142BC483BE0007F3E3 /* OverlayView.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -306,8 +306,8 @@
 				28ABB6D22BAF5AA600496B01 /* SnappingManager.swift in Sources */,
 				28C6F2ED2BB4C64C007394BB /* WindowElement.swift in Sources */,
 				28B354952BAE13120044A179 /* WinToolApp.swift in Sources */,
+				280416A82BCD7454005CE77D /* SnapOverlay.swift in Sources */,
 				28B3547C2BAE13040044A179 /* AppMenu.swift in Sources */,
-				2827DC152BC483BE0007F3E3 /* OverlayView.swift in Sources */,
 				28C6F2EB2BB4C64C007394BB /* AlignmentManager.swift in Sources */,
 				28B354972BAE13120044A179 /* Shortcuts.swift in Sources */,
 				28B3548F2BAE13120044A179 /* AppMenu.swift in Sources */,
@@ -459,7 +459,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WinTool/Info.plist;
-				INFOPLIST_KEY_LSBackgroundOnly = NO;
+				INFOPLIST_KEY_LSBackgroundOnly = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -489,7 +489,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WinTool/Info.plist;
-				INFOPLIST_KEY_LSBackgroundOnly = NO;
+				INFOPLIST_KEY_LSBackgroundOnly = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
