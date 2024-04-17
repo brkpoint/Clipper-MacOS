@@ -6,13 +6,15 @@ An open-source app for aligning and scaling windows made using swiftUI with more
 ## Roadmap:
 ### Basic:
 - [x] running app
+- [ ] better name for this app
 ### App UI:
 - [x] app icon on the bar
 - [x] app doesnt have any windows
 - [x] buttons in the menu
 - [x] current app in the menu
 - [ ] better UI
-- [x] better icon
+- [x] better icons
+- [ ] import better icons
 - [x] working overlay that shows a box
 - [ ] displaying a rectangle where is the snapping thing after the given amount time thing
 ### Functionality:
