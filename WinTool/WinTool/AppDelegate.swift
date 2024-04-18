@@ -15,9 +15,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         AppDelegate.instance = self
         registerFrontAppChangeNote()
         if let button = statusBarItem.button {
-           let image = NSImage(named: "AppIconMenu")
-           image?.isTemplate = true
-           button.image = image
+            let image = NSImage(named: "BarIcon")
+            image?.isTemplate = true
+            button.image = image
         }
         statusBarItem.button?.imagePosition = .imageLeading
         statusBarItem.menu = menu.createMenu()
