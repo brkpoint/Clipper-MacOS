@@ -2,10 +2,9 @@
 ## About
 An open-source app for aligning and scaling windows made using swiftUI with more features to come in next updates.
 
-_Done: 26/41_
-
 ** Please report bugs and maybe other stuff too... **
 ## Roadmap:
+#### Done: 26/41
 ### Basic:
 - [x] running app
 - [x] hiding the app from dock
