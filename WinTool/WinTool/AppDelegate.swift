@@ -17,6 +17,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if let button = statusBarItem.button {
             let image = NSImage(named: "BarIcon")
             image?.isTemplate = true
+            //image?.
             button.image = image
         }
         statusBarItem.button?.imagePosition = .imageLeading

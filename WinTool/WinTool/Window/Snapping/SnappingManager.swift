@@ -5,31 +5,49 @@ class SnappingManager {
     static var shared: SnappingManager = SnappingManager()
     
     var mousePos: CGPoint = NSEvent.mouseLocation
+    var prevMousePos: CGPoint = NSEvent.mouseLocation
     
-    let snapTime: Int64 = 1100 // need to add this to user settings (in miliseconds)
-    var dragStartDate: Date? = nil
+    let snapTime: Double = 1100.0 // need to add this to user settings (in miliseconds)
+    
+    var couldSnap = false
+    var mouseDown = false
+    var mouseMoving = false
     
     var overlayWindow: NSWindow
-    var timer: Timer? = nil
+    var timer: Timer?
+    var snapTimer: Timer? = nil
     
     init() {
         overlayWindow = SnapOverlay();
         
-        NSEvent.addGlobalMonitorForEvents(matching: [.leftMouseDragged, .rightMouseDragged, .otherMouseDragged]) { event in
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { timer in
             if !SettingsManager.shared.snappingEnabled.value {
                 return
             }
             
-            if WindowManager.shared.currentApplication.isFullscreen ||
-                !WindowManager.shared.currentApplication.isResizable {
-                return
-            }
+            self.prevMousePos = self.mousePos
             
             self.mousePos.x = NSEvent.mouseLocation.x
             self.mousePos.y = ScreenManager.shared.GetScreen().frame.height - NSEvent.mouseLocation.y
             
-            self.dragStartDate = Date()
-            self.timer = Timer.scheduledTimer(timeInterval: Double(self.snapTime) / 1000.0, target: self, selector: #selector(self.showRect), userInfo: nil, repeats: false)
+            if self.mousePos.x != self.prevMousePos.x || self.mousePos.y != self.prevMousePos.y {
+                self.mouseMoving = true
+                
+                self.couldSnap = false
+                self.snapTimer?.invalidate()
+                self.snapTimer = nil
+                return
+            }
+            
+            self.mouseMoving = false
+
+            if self.snapTimer == nil {
+                self.snapTimer = Timer.scheduledTimer(timeInterval: self.snapTime, target: (Any).self, selector: #selector(self.snap), userInfo: nil, repeats: false)
+            }
+        })
+        
+        NSEvent.addGlobalMonitorForEvents(matching: [.leftMouseDown, .rightMouseDown, .otherMouseDown]) { event in
+            self.mouseDown = true
         }
         
         NSEvent.addGlobalMonitorForEvents(matching: [.leftMouseUp, .rightMouseUp, .otherMouseUp]) { event in
@@ -37,20 +55,7 @@ class SnappingManager {
                 return
             }
             
-            if self.dragStartDate == nil {
-                return
-            }
-        
-            if !Process.isAllowedToUseAccessibilty() {
-                return
-            }
-            
-            if WindowManager.shared.currentApplication.isFullscreen ||
-                !WindowManager.shared.currentApplication.isResizable {
-                return
-            }
-            
-            if Int64((Date().timeIntervalSince(self.dragStartDate ?? Date()) * 1000.0).rounded()) < self.snapTime {
+            if !self.couldSnap {
                 return
             }
             
@@ -69,13 +74,13 @@ class SnappingManager {
         }
     }
     
-    @objc func showRect() {
+    @objc func snap() {
+        self.couldSnap = true
+        showRect()
+    }
+    
+    func showRect() {
         if !Process.isAllowedToUseAccessibilty() {
-            return
-        }
-        
-        if WindowManager.shared.currentApplication.isFullscreen ||
-            !WindowManager.shared.currentApplication.isResizable {
             return
         }
         
@@ -87,11 +92,6 @@ class SnappingManager {
             return
         }
         
-        if WindowManager.shared.currentApplication.isFullscreen ||
-            !WindowManager.shared.currentApplication.isResizable {
-            return
-        }
-        
         self.overlayWindow.orderOut(nil)
     }
     
@@ -100,7 +100,9 @@ class SnappingManager {
     }
     
     private func restart() {
-        self.dragStartDate = nil
+        self.mouseDown = false
+        self.snapTimer = nil
+        self.couldSnap = false
         hideRect()
     }
 }
