@@ -6,63 +6,76 @@ class WindowElement {
     let ID: String
     let icon: NSImage
 
-    fileprivate var axUIElement: AXUIElement?
-    private let mainApp: AXUIElement?
+    fileprivate var element: AXUIElement = AXUIElementCreateSystemWide()
+    private var mainApp: AXUIElement = AXUIElementCreateSystemWide()
 
-    convenience init(_ name: String, _ ID: String, _ pid: pid_t) {
+    convenience init(_ name: String, _ ID: String, _ pid: pid_t?) {
         self.init(name, ID, pid, NSImage())
     }
 
-    init(_ name: String, _ ID: String, _ pid: pid_t, _ icon: NSImage) {
+    init(_ name: String, _ ID: String, _ pid: pid_t?, _ icon: NSImage) {
         self.name = name
         self.ID = ID
         self.icon = icon
-
-        if !Process.isAllowedToUseAccessibilty() {
-            mainApp = nil
-        } else {
-            mainApp = AXUIElementCreateApplication(pid)
-        }
         
-        axUIElement = nil
+        if pid == nil { return}
+        mainApp = AXUIElementCreateApplication(pid!)
+        
+        if !Process.isAllowedToUseAccessibilty() { return }
+        element = mainApp.getValue(.focusedWindow) as! AXUIElement
     }
     
     private func getAXValue(_ attribute: NSAccessibility.Attribute) -> AXUIElement? {
-        guard let value = axUIElement?.getValue(attribute), CFGetTypeID(value) == AXUIElementGetTypeID() else { return nil }
+        guard let value = element.getValue(attribute), CFGetTypeID(value) == AXUIElementGetTypeID() else { return nil }
         return value as! AXUIElement
+    }
+    
+    private var focusedWindow: AXUIElement {
+        mainApp.getValue(.focusedWindow) as! AXUIElement
+    }
+    
+    private var role: NSAccessibility.Role? {
+        guard let value = element.getValue(.role) as? String else { return nil }
+        return NSAccessibility.Role(rawValue: value)
     }
 
     private var position: CGPoint? {
         get {
-            axUIElement?.getWrappedValue(.position)
+            element.getWrappedValue(.position)
         }
         set {
             guard let newValue = newValue else { return }
-            axUIElement?.setValue(.position, newValue)
+            element.setValue(.position, newValue)
         }
     }
 
     private var size: CGSize? {
         get {
-            axUIElement?.getWrappedValue(.size)
+            element.getWrappedValue(.size)
         }
         set {
             guard let newValue = newValue else { return }
-            axUIElement?.setValue(.size, newValue)
+            element.setValue(.size, newValue)
         }
     }
 
     var isResizable: Bool {
-        get {
-            axUIElement?.isSettable(.size) ?? true
-        }
+        element.isSettable(.size)
     }
     
     var isFullscreen: Bool {
-        get {
-            guard let subrole = getAXValue(.fullScreenButton)?.getValue(.subrole) as? String else { return false }
-            return NSAccessibility.Subrole(rawValue: subrole) == .zoomButton
-        }
+        guard let value = getAXValue(.fullScreenButton)?.getValue(.subrole) as? String else { return false }
+        return NSAccessibility.Subrole(rawValue: value) == .zoomButton
+    }
+    
+    var isHidden: Bool {
+        guard let value = element.getValue(.hidden) as? Bool else { return false }
+        return value
+    }
+    
+    var isWindow: Bool {
+        guard let role = role else { return false }
+        return role == .window
     }
 
     var frame: CGRect {
@@ -79,13 +92,6 @@ class WindowElement {
         position = nFrame.origin
         size = nFrame.size
 
-        print("INFO: Resizing window: \(axUIElement?.getValue(.title) as? String ?? "N/A"), to rect: \(nFrame)")
+        print("INFO: Resizing window: \(element.getValue(.title) as? String ?? "N/A"), to rect: \(nFrame)")
     }
-
-    func getWindow() {
-        if let window = mainApp?.getValue(.focusedWindow) {
-            axUIElement = window as! AXUIElement
-        }
-    }
-    
 }

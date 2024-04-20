@@ -81,7 +81,7 @@ enum ResizeType: String, Codable, CaseIterable {
                 return CGRect(x: screen.frame.width / 2, 
                               y: 0,
                               width: screen.frame.width / 2,
-                              height: screen.frame.height / 2)
+                              height: screen.frame.height)
             case .toTopLeft:
                 return CGRect(x: 0, 
                               y: 0, width: screen.frame.width / 2,

@@ -5,7 +5,7 @@ public class WindowManager {
     static let shared = WindowManager()
     
     private var screen = NSScreen.main
-    private(set) var currentApplication: WindowElement = WindowElement("", "", pid_t(0))
+    private(set) var currentApplication: WindowElement = WindowElement("", "", nil)
 
     func SetApp(_ app: WindowElement) {
         print("INFO: Updating the window to \(app.name)")
@@ -15,9 +15,5 @@ public class WindowManager {
 
     func Align(_ type: ResizeType) {
         AlignmentManager.shared.AlignFrame(type, currentApplication)
-    }
-
-    func GetCurrentApp() -> WindowElement {
-        return currentApplication
     }
 }

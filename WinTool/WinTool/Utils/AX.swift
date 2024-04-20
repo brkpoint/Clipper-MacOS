@@ -1,11 +1,14 @@
 import Cocoa
 
+// for debugging remove the commented lines
+// (for some apps it will always return an error e.g. -25212 (no value)
+
 extension AXUIElement {
     func getValue(_ attribute: NSAccessibility.Attribute) -> AnyObject? {
         var value: AnyObject?
         let result = AXUIElementCopyAttributeValue(self, attribute.rawValue as CFString, &value)
         guard result == .success else {
-            print("ERR: \(result.rawValue)")
+            //print("ERR: \(result.rawValue)")
             return nil
         }
         return value
@@ -21,7 +24,7 @@ extension AXUIElement {
     private func m_setValue(_ attribute: NSAccessibility.Attribute, _ value: AnyObject) {
         let error = AXUIElementSetAttributeValue(self, attribute.rawValue as CFString, value)
         guard error == .success else {
-            print("ERR: AXSetValue - err_code: \(error.rawValue)")
+            //print("ERR: AXSetValue - err_code: \(error.rawValue)")
             return
         }
     }
@@ -59,7 +62,7 @@ extension AXValue {
         let value = pointer.pointee
         pointer.deallocate()
         if !success {
-            print("ERR: AXValue error")
+            //print("ERR: AXValue error")
             return nil
         }
         return value

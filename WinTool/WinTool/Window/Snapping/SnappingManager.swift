@@ -7,23 +7,20 @@ class SnappingManager {
     var mousePos: CGPoint = NSEvent.mouseLocation
     var prevMousePos: CGPoint = NSEvent.mouseLocation
     
-    let snapTime: Double = 1100.0 // need to add this to user settings (in miliseconds)
+    let snapTime: Double = 0.45 // need to add this to user settings (in miliseconds)
+    var snapTimeCounter: Double = 0
     
     var couldSnap = false
     var mouseDown = false
-    var mouseMoving = false
     
     var overlayWindow: NSWindow
     var timer: Timer?
-    var snapTimer: Timer? = nil
     
     init() {
         overlayWindow = SnapOverlay();
         
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { timer in
-            if !SettingsManager.shared.snappingEnabled.value {
-                return
-            }
+        timer = Timer.scheduledTimer(withTimeInterval: 0.25, repeats: true, block: { timer in // fix the timing (for later)
+            if !SettingsManager.shared.snappingEnabled.value { return }
             
             self.prevMousePos = self.mousePos
             
@@ -31,18 +28,17 @@ class SnappingManager {
             self.mousePos.y = ScreenManager.shared.GetScreen().frame.height - NSEvent.mouseLocation.y
             
             if self.mousePos.x != self.prevMousePos.x || self.mousePos.y != self.prevMousePos.y {
-                self.mouseMoving = true
-                
-                self.couldSnap = false
-                self.snapTimer?.invalidate()
-                self.snapTimer = nil
+                self.snapTimeCounter = 0
+                self.restart()
                 return
             }
             
-            self.mouseMoving = false
-
-            if self.snapTimer == nil {
-                self.snapTimer = Timer.scheduledTimer(timeInterval: self.snapTime, target: (Any).self, selector: #selector(self.snap), userInfo: nil, repeats: false)
+            self.snapTimeCounter += 0.25
+            if self.mouseDown && self.snapTimeCounter > self.snapTime &&
+                WindowManager.shared.currentApplication.isWindow &&
+                !WindowManager.shared.currentApplication.isFullscreen {
+                self.couldSnap = true
+                self.showRect()
             }
         })
         
@@ -51,18 +47,14 @@ class SnappingManager {
         }
         
         NSEvent.addGlobalMonitorForEvents(matching: [.leftMouseUp, .rightMouseUp, .otherMouseUp]) { event in
-            if !SettingsManager.shared.snappingEnabled.value {
-                return
-            }
+            self.mouseDown = false
             
-            if !self.couldSnap {
-                return
-            }
+            if !SettingsManager.shared.snappingEnabled.value { return }
+            
+            if !self.couldSnap && !self.mouseDown { return }
             
             for item in (ResizeType.allCases.filter {$0.forSnapping()}) {
-                guard let rect = item.rect(WindowManager.shared.currentApplication) else {
-                    continue
-                }
+                guard let rect = item.rect(WindowManager.shared.currentApplication) else { continue }
                 
                 if self.checkBoundingBox(self.mousePos, rect) {
                     item.execute()
@@ -74,23 +66,14 @@ class SnappingManager {
         }
     }
     
-    @objc func snap() {
-        self.couldSnap = true
-        showRect()
-    }
-    
     func showRect() {
-        if !Process.isAllowedToUseAccessibilty() {
-            return
-        }
+        if !Process.isAllowedToUseAccessibilty() { return }
         
         self.overlayWindow.orderFront(nil)
     }
     
     func hideRect() {
-        if !Process.isAllowedToUseAccessibilty() {
-            return
-        }
+        if !Process.isAllowedToUseAccessibilty() { return }
         
         self.overlayWindow.orderOut(nil)
     }
@@ -100,9 +83,7 @@ class SnappingManager {
     }
     
     private func restart() {
-        self.mouseDown = false
-        self.snapTimer = nil
         self.couldSnap = false
-        hideRect()
+        self.hideRect()
     }
 }

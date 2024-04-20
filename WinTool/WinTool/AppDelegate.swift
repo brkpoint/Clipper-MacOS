@@ -11,13 +11,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(_ notification: Notification) {
         initialize()
-
         AppDelegate.instance = self
+        
         registerFrontAppChangeNote()
         if let button = statusBarItem.button {
             let image = NSImage(named: "BarIcon")
             image?.isTemplate = true
-            //image?.
             button.image = image
         }
         statusBarItem.button?.imagePosition = .imageLeading
@@ -40,8 +39,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     private func setupWindow(_ application: NSRunningApplication) {
+        if application.bundleIdentifier == Main.shared.bundleIdentifier { return }
+        
         windowManager.SetApp(WindowElement(application.localizedName!, application.bundleIdentifier!, application.processIdentifier, application.icon!))
-        windowManager.GetCurrentApp().getWindow()
         ScreenManager.shared.UpdateScreen()
     }
 

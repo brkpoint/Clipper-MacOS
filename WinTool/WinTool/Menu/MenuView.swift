@@ -10,7 +10,7 @@ class WindowInfoView: ObservableObject {
 }
 
 struct MenuView: View {
-    @StateObject private var windowInfo: WindowInfoView = WindowInfoView(WindowElement("", "", pid_t(0)))
+    @StateObject private var windowInfo: WindowInfoView = WindowInfoView(WindowElement("", "", nil))
     
     @Environment(\.openSettings) var openSettings
 
@@ -33,7 +33,7 @@ struct MenuView: View {
         }
         .padding()
         .onAppear {
-            windowInfo.windowElement = WindowManager.shared.GetCurrentApp()
+            windowInfo.windowElement = WindowManager.shared.currentApplication
         }
     }
 }
