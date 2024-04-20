@@ -3,6 +3,7 @@
 An open-source app for aligning and scaling windows made using swiftUI with more features to come in next updates.
 
 ** Please report bugs and maybe other stuff too... **
+_Done: 26/41_
 ## Roadmap:
 ### Basic:
 - [x] running app
@@ -31,6 +32,7 @@ An open-source app for aligning and scaling windows made using swiftUI with more
 - [x] shortcut editor
 - [ ] fix the window calculation
 - [ ] more features
+- [x] basic snapping
 - [ ] when its held for amount of time it wont stop snapping when moved to a diffrent snapping area
 - [ ] better snapping areas
 ### Other app stuff:
