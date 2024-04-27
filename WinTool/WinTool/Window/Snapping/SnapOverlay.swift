@@ -4,7 +4,7 @@ import SwiftUI
 
 class SnapOverlay: NSWindow {
     init() {
-        super.init(contentRect: NSRect(x: 0, y: 0, width: 500, height: 500), styleMask: .titled, backing: .buffered, defer: false)
+        super.init(contentRect: NSRect(x: 0, y: 0, width: 0, height: 0), styleMask: .titled, backing: .buffered, defer: false)
         title = Main.shared.appName + "Overlay"
         level = .modalPanel
         
@@ -13,11 +13,8 @@ class SnapOverlay: NSWindow {
         alphaValue = 0.45
         
         isReleasedWhenClosed = false
-        
-        hasShadow = false
-
         ignoresMouseEvents = true
-        
+        hasShadow = false
         collectionBehavior.insert(.transient)
         titleVisibility = .hidden
         titlebarAppearsTransparent = true

@@ -22,15 +22,6 @@ enum ResizeType: String, Codable, CaseIterable {
         }
     }
     
-    func forSnapping() -> Bool {
-        switch self {
-            case .toTopLeft, .toTopRight, .toBottomLeft, .toBottomRight:
-                return true
-            default:
-                return false
-        }
-    }
-    
     func execute() {
         switch self {
             default:
@@ -84,7 +75,8 @@ enum ResizeType: String, Codable, CaseIterable {
                               height: screen.frame.height)
             case .toTopLeft:
                 return CGRect(x: 0, 
-                              y: 0, width: screen.frame.width / 2,
+                              y: 0,
+                              width: screen.frame.width / 2,
                               height: screen.frame.height / 2)
             case .toTopRight:
                 return CGRect(x: screen.frame.width / 2, 

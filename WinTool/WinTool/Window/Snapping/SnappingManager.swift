@@ -16,6 +16,8 @@ class SnappingManager {
     var overlayWindow: NSWindow
     var timer: Timer?
     
+    var resizeItem: ResizeType? = nil
+    
     init() {
         overlayWindow = SnapOverlay();
         
@@ -38,7 +40,15 @@ class SnappingManager {
                 WindowManager.shared.currentApplication.isWindow &&
                 !WindowManager.shared.currentApplication.isFullscreen {
                 self.couldSnap = true
-                self.showRect()
+                for item in (SnapArea.allCases) {
+                    guard let rect = item.rect(WindowManager.shared.currentApplication) else { continue }
+                    
+                    if self.checkBoundingBox(self.mousePos, rect) {
+                        self.showRect(item.overlayRect(WindowManager.shared.currentApplication))
+                        self.resizeItem = item.resizeType;
+                        return
+                    }
+                }
             }
         })
         
@@ -53,23 +63,20 @@ class SnappingManager {
             
             if !self.couldSnap && !self.mouseDown { return }
             
-            for item in (ResizeType.allCases.filter {$0.forSnapping()}) {
-                guard let rect = item.rect(WindowManager.shared.currentApplication) else { continue }
-                
-                if self.checkBoundingBox(self.mousePos, rect) {
-                    item.execute()
-                    return
-                }
-            }
+            if self.resizeItem == nil { return }
+            
+            self.resizeItem?.execute();
             
             self.restart()
         }
     }
     
-    func showRect() {
+    func showRect(_ rect: CGRect?) {
         if !Process.isAllowedToUseAccessibilty() { return }
+        if rect == nil { return }
         
         self.overlayWindow.orderFront(nil)
+        self.overlayWindow.setFrame(rect as! CGRect, display: false)
     }
     
     func hideRect() {
@@ -84,6 +91,7 @@ class SnappingManager {
     
     private func restart() {
         self.couldSnap = false
+        self.resizeItem = nil
         self.hideRect()
     }
 }

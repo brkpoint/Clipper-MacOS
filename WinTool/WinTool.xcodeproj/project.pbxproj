@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		280416A82BCD7454005CE77D /* SnapOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280416A72BCD7454005CE77D /* SnapOverlay.swift */; };
+		28116A152BDDA9470082DF60 /* SnapArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28116A142BDDA9470082DF60 /* SnapArea.swift */; };
 		2855A46D2BB995EB00B1C9EB /* ScreenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2855A46C2BB995EB00B1C9EB /* ScreenManager.swift */; };
 		288A940E2BD45D9C001E102F /* Process.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288A940D2BD45D9C001E102F /* Process.swift */; };
 		288D07392BAF35CC002C2EEC /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 288D07382BAF35CC002C2EEC /* README.md */; };
@@ -40,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		280416A72BCD7454005CE77D /* SnapOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapOverlay.swift; sourceTree = "<group>"; };
+		28116A142BDDA9470082DF60 /* SnapArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapArea.swift; sourceTree = "<group>"; };
 		2855A46C2BB995EB00B1C9EB /* ScreenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenManager.swift; sourceTree = "<group>"; };
 		288A940D2BD45D9C001E102F /* Process.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Process.swift; sourceTree = "<group>"; };
 		288D07382BAF35CC002C2EEC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 			children = (
 				28ABB6D12BAF5AA600496B01 /* SnappingManager.swift */,
 				280416A72BCD7454005CE77D /* SnapOverlay.swift */,
+				28116A142BDDA9470082DF60 /* SnapArea.swift */,
 			);
 			path = Snapping;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				28B3547C2BAE13040044A179 /* AppMenu.swift in Sources */,
 				28C6F2EB2BB4C64C007394BB /* AlignmentManager.swift in Sources */,
 				28B354972BAE13120044A179 /* Shortcuts.swift in Sources */,
+				28116A152BDDA9470082DF60 /* SnapArea.swift in Sources */,
 				28B3548F2BAE13120044A179 /* AppMenu.swift in Sources */,
 				28B354912BAE13120044A179 /* SettingsView.swift in Sources */,
 				28B354902BAE13120044A179 /* MenuView.swift in Sources */,
