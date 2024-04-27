@@ -22,7 +22,9 @@ class WindowElement {
         mainApp = AXUIElementCreateApplication(pid!)
         
         if !Process.isAllowedToUseAccessibilty() { return }
-        element = mainApp.getValue(.focusedWindow) as! AXUIElement
+        if let val = mainApp.getValue(.focusedWindow) {
+            element = val as! AXUIElement
+        }
     }
     
     private func getAXValue(_ attribute: NSAccessibility.Attribute) -> AXUIElement? {
