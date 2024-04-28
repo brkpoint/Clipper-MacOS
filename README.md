@@ -19,7 +19,8 @@ An open-source app for aligning and scaling windows made using swiftUI with more
 - [x] better icons
 - [x] import better icons
 - [x] working overlay that shows a box
-- [ ] displaying a rectangle where is the snapping thing after the given amount time thing
+- [x] displaying a rectangle where is the snapping thing after the given amount time thing
+- [ ] animating the rectangle thing
 ### Functionality:
 - [x] window management
 - [x] app can be resized
@@ -34,7 +35,7 @@ An open-source app for aligning and scaling windows made using swiftUI with more
 - [ ] more features
 - [x] basic snapping
 - [ ] when its held for amount of time it wont stop snapping when moved to a diffrent snapping area
-- [ ] better snapping areas
+- [x] better snapping areas
 ### Other app stuff:
 - [x] small AXUIElement wrapper
 - [ ] better error handling
@@ -44,7 +45,7 @@ An open-source app for aligning and scaling windows made using swiftUI with more
 - [x] mouse position handling
 - [ ] time to snap setting
 - [ ] refactoring and optimalizations
-- [ ] bug fixes
+- [x] bug fixes
 - [ ] moreee bug fixes
 - [ ] better code doc
 ### Readme.md stuff:
