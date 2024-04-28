@@ -24,6 +24,8 @@ class SnappingManager {
         timer = Timer.scheduledTimer(withTimeInterval: 0.25, repeats: true, block: { timer in // fix the timing (for later)
             if !SettingsManager.shared.snappingEnabled.value { return }
             
+            if WindowManager.shared.currentApplication.isFullscreen { return }
+            
             self.prevMousePos = self.mousePos
             
             self.mousePos.x = NSEvent.mouseLocation.x
