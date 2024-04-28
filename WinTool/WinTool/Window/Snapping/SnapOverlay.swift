@@ -44,4 +44,14 @@ class SnapOverlay: NSWindow {
             super.orderOut(sender)
         }
     }
+    
+    func updateSettings() {
+//        let view = NSBox()
+//        view.boxType = .custom
+//        view.fillColor = .controlBackgroundColor
+//        view.borderColor = .controlAccentColor
+//        view.cornerRadius =
+//        view.wantsLayer = true
+//        contentView = view
+    }
 }

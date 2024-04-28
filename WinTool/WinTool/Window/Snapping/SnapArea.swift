@@ -25,13 +25,25 @@ enum SnapArea: String, Codable, CaseIterable {
         let screen: NSScreen = ScreenManager.shared.GetScreen()
         switch self {
             case .toTopLeft:
-                return ResizeType.toTopLeft.rect(application)
+                return CGRect(x: 0,
+                              y: 0,
+                              width: screen.frame.height / 2,
+                              height: screen.frame.height / 2)
             case .toTopRight:
-                return ResizeType.toTopRight.rect(application)
+                return CGRect(x: screen.frame.width - screen.frame.height / 2,
+                              y: 0,
+                              width: screen.frame.height / 2,
+                              height: screen.frame.height / 2)
             case .toBottomLeft:
-                return ResizeType.toBottomLeft.rect(application)
+                return CGRect(x: 0,
+                              y: screen.frame.height / 2,
+                              width: screen.frame.height / 2,
+                              height: screen.frame.height / 2)
             case .toBottomRight:
-                return ResizeType.toBottomRight.rect(application)
+                return CGRect(x: screen.frame.width - screen.frame.height / 2,
+                              y: screen.frame.height / 2,
+                              width: screen.frame.height / 2,
+                              height: screen.frame.height / 2)
         }
     }
     
