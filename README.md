@@ -20,7 +20,8 @@ An open-source app for aligning and scaling windows made using swiftUI with more
 - [x] import better icons
 - [x] working overlay that shows a box
 - [x] displaying a rectangle where is the snapping thing after the given amount time thing
-- [ ] animating the rectangle thing
+- [x] animating the rectangle thing
+- [ ] animation between snaping areas
 ### Functionality:
 - [x] window management
 - [x] app can be resized
