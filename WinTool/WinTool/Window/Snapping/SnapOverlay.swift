@@ -3,6 +3,8 @@ import Cocoa
 import SwiftUI
 
 class SnapOverlay: NSWindow {
+    var view = NSBox()
+    
     init() {
         super.init(contentRect: NSRect(x: 0, y: 0, width: 0, height: 0), styleMask: .titled, backing: .buffered, defer: false)
         title = Main.shared.appName + "Overlay"
@@ -23,18 +25,15 @@ class SnapOverlay: NSWindow {
         standardWindowButton(.zoomButton)?.isHidden = true
         standardWindowButton(.toolbarButton)?.isHidden = true
         
-        let view = NSBox()
         view.boxType = .custom
-        view.fillColor = .controlBackgroundColor
-        view.borderColor = .controlAccentColor
-        view.cornerRadius = 10
+        updateSettings()
         view.wantsLayer = true
         contentView = view
     }
     
     override func orderFront(_ sender: Any?) {
         super.orderFront(sender)
-        animator().alphaValue = 0.45
+        animator().alphaValue = SettingsManager.shared.overlayAlpha.value / 100
     }
     
     override func orderOut(_ sender: Any?) {
@@ -46,12 +45,9 @@ class SnapOverlay: NSWindow {
     }
     
     func updateSettings() {
-//        let view = NSBox()
-//        view.boxType = .custom
-//        view.fillColor = .controlBackgroundColor
-//        view.borderColor = .controlAccentColor
-//        view.cornerRadius =
-//        view.wantsLayer = true
-//        contentView = view
+        alphaValue = SettingsManager.shared.overlayAlpha.value
+        view.fillColor = NSColor(Color(rgb: SettingsManager.shared.overlayBackgroundColor.value, a: 1))
+        view.borderColor = NSColor(Color(rgb: SettingsManager.shared.overlayBorderColor.value, a: 1))
+        view.cornerRadius = SettingsManager.shared.overlayCornerRadius.value
     }
 }

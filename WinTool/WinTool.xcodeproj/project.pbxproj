@@ -10,6 +10,7 @@
 		280416A82BCD7454005CE77D /* SnapOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280416A72BCD7454005CE77D /* SnapOverlay.swift */; };
 		28116A152BDDA9470082DF60 /* SnapArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28116A142BDDA9470082DF60 /* SnapArea.swift */; };
 		2855A46D2BB995EB00B1C9EB /* ScreenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2855A46C2BB995EB00B1C9EB /* ScreenManager.swift */; };
+		2868C5372BDEC37100CEBF29 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2868C5362BDEC37100CEBF29 /* Color.swift */; };
 		288A940E2BD45D9C001E102F /* Process.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288A940D2BD45D9C001E102F /* Process.swift */; };
 		288D07392BAF35CC002C2EEC /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 288D07382BAF35CC002C2EEC /* README.md */; };
 		288D073C2BAF373A002C2EEC /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 288D073B2BAF373A002C2EEC /* LaunchAtLogin */; };
@@ -43,6 +44,7 @@
 		280416A72BCD7454005CE77D /* SnapOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapOverlay.swift; sourceTree = "<group>"; };
 		28116A142BDDA9470082DF60 /* SnapArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapArea.swift; sourceTree = "<group>"; };
 		2855A46C2BB995EB00B1C9EB /* ScreenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenManager.swift; sourceTree = "<group>"; };
+		2868C5362BDEC37100CEBF29 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		288A940D2BD45D9C001E102F /* Process.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Process.swift; sourceTree = "<group>"; };
 		288D07382BAF35CC002C2EEC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		28ABB6D12BAF5AA600496B01 /* SnappingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnappingManager.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				2855A46C2BB995EB00B1C9EB /* ScreenManager.swift */,
 				28ABB6D42BAF636F00496B01 /* SettingsManager.swift */,
 				288A940D2BD45D9C001E102F /* Process.swift */,
+				2868C5362BDEC37100CEBF29 /* Color.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 				28B354902BAE13120044A179 /* MenuView.swift in Sources */,
 				28B3547A2BAE13040044A179 /* WindowManager.swift in Sources */,
 				28B354772BAE13040044A179 /* WinToolApp.swift in Sources */,
+				2868C5372BDEC37100CEBF29 /* Color.swift in Sources */,
 				28C6F2EC2BB4C64C007394BB /* ResizeType.swift in Sources */,
 				2855A46D2BB995EB00B1C9EB /* ScreenManager.swift in Sources */,
 				28B354962BAE13120044A179 /* AX.swift in Sources */,

@@ -6,6 +6,7 @@ import KeyboardShortcuts
 @main
 struct Main: App {
     static var shared: Main = Main()
+    var environment = EnvironmentValues()
     let appName = "WinTool"
     let bundleIdentifier = "com.shibaofficial.WinTool"
     let userDefaultsKey = "setting."

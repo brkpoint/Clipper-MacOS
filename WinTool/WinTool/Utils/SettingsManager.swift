@@ -1,11 +1,12 @@
 import Foundation
+import Cocoa
 import SwiftUI
 
 struct AppSetting<T> {
     var name: String
     var value: T {
         didSet {
-            UserDefaults.standard.set(self.value, forKey: userDefaultsKey) as! T
+            UserDefaults.standard.set(self.value, forKey: userDefaultsKey)
         }
     }
     
@@ -24,16 +25,17 @@ struct AppSetting<T> {
         self.name = name
         self.value = defaultVal
     }
-    
-    func test() {
-        print(T.self)
-    }
 }
 
 struct SettingsManager {
     static var shared: SettingsManager = SettingsManager()
     
     var shortcutsEnabled = AppSetting<Bool>("shortcutsEnabled", true)
+    
     var snappingEnabled = AppSetting<Bool>("snappingEnabled", true)
-    var overlayCornerRadius = AppSetting<Int>("overlayCornerRadius", 10)
+    
+    var overlayAlpha = AppSetting<CGFloat>("overlayAlpha", 45)
+    var overlayCornerRadius = AppSetting<CGFloat>("overlayCornerRadius", 10)
+    var overlayBorderColor = AppSetting<Int>("overlayBorderColor", Color(NSColor.controlAccentColor).hex())
+    var overlayBackgroundColor = AppSetting<Int>("overlayBackgroundColor", Color(NSColor.controlBackgroundColor).hex())
 }
