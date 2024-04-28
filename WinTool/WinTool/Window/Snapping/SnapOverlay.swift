@@ -10,7 +10,7 @@ class SnapOverlay: NSWindow {
         
         isOpaque = false
         styleMask.insert(.fullSizeContentView)
-        alphaValue = 0.45
+        alphaValue = 0
         
         isReleasedWhenClosed = false
         ignoresMouseEvents = true
@@ -30,5 +30,18 @@ class SnapOverlay: NSWindow {
         view.cornerRadius = 10
         view.wantsLayer = true
         contentView = view
+    }
+    
+    override func orderFront(_ sender: Any?) {
+        super.orderFront(sender)
+        animator().alphaValue = 0.45
+    }
+    
+    override func orderOut(_ sender: Any?) {
+        NSAnimationContext.runAnimationGroup { change in
+            animator().alphaValue = 0.0
+        } completionHandler: {
+            super.orderOut(sender)
+        }
     }
 }
