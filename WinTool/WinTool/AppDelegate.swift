@@ -41,6 +41,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private func setupWindow(_ application: NSRunningApplication) {
         if application.bundleIdentifier == Main.shared.bundleIdentifier { return }
         
+        if !Process.isAllowedToUseAccessibilty() { return }
+        
         windowManager.SetApp(WindowElement(application.localizedName!, application.bundleIdentifier!, application.processIdentifier, application.icon!))
         ScreenManager.shared.UpdateScreen()
     }

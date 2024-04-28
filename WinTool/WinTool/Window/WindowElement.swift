@@ -6,7 +6,6 @@ class WindowElement {
     let ID: String
     let icon: NSImage
 
-    fileprivate var element: AXUIElement = AXUIElementCreateSystemWide()
     private var mainApp: AXUIElement = AXUIElementCreateSystemWide()
 
     convenience init(_ name: String, _ ID: String, _ pid: pid_t?) {
@@ -18,51 +17,63 @@ class WindowElement {
         self.ID = ID
         self.icon = icon
         
-        if pid == nil { return}
+        if pid == nil { return }
         mainApp = AXUIElementCreateApplication(pid!)
-        
-        if !Process.isAllowedToUseAccessibilty() { return }
-        if let val = mainApp.getValue(.focusedWindow) {
-            element = val as! AXUIElement
-        }
     }
     
     private func getAXValue(_ attribute: NSAccessibility.Attribute) -> AXUIElement? {
-        guard let value = element.getValue(attribute), CFGetTypeID(value) == AXUIElementGetTypeID() else { return nil }
+        guard let value = focusedWindow.getValue(attribute), CFGetTypeID(value) == AXUIElementGetTypeID() else { return nil }
         return value as! AXUIElement
     }
     
     private var focusedWindow: AXUIElement {
-        mainApp.getValue(.focusedWindow) as! AXUIElement
+        if let window = mainApp.getValue(.focusedWindow) {
+            return window as! AXUIElement
+        }
+        if let window = windows?.first {
+            return window
+        }
+        
+        return AXUIElementCreateSystemWide()
     }
     
     private var role: NSAccessibility.Role? {
-        guard let value = element.getValue(.role) as? String else { return nil }
+        guard let value = focusedWindow.getValue(.role) as? String else { return nil }
         return NSAccessibility.Role(rawValue: value)
     }
 
     private var position: CGPoint? {
         get {
-            element.getWrappedValue(.position)
+            focusedWindow.getWrappedValue(.position)
         }
         set {
             guard let newValue = newValue else { return }
-            element.setValue(.position, newValue)
+            focusedWindow.setValue(.position, newValue)
         }
     }
 
     private var size: CGSize? {
         get {
-            element.getWrappedValue(.size)
+            focusedWindow.getWrappedValue(.size)
         }
         set {
             guard let newValue = newValue else { return }
-            element.setValue(.size, newValue)
+            focusedWindow.setValue(.size, newValue)
         }
+    }
+    
+    var windowName: String {
+        guard let value = focusedWindow.getValue(.title) else { return "N/A" }
+        return value as! String
+    }
+    
+    var windows: [AXUIElement]? {
+        guard let value = mainApp.getValue(.windows), let arr = value as? [AXUIElement] else { return nil }
+        return arr
     }
 
     var isResizable: Bool {
-        element.isSettable(.size)
+        focusedWindow.isSettable(.size)
     }
     
     var isFullscreen: Bool {
@@ -71,7 +82,7 @@ class WindowElement {
     }
     
     var isHidden: Bool {
-        guard let value = element.getValue(.hidden) as? Bool else { return false }
+        guard let value = focusedWindow.getValue(.hidden) as? Bool else { return false }
         return value
     }
     
@@ -94,6 +105,6 @@ class WindowElement {
         position = nFrame.origin
         size = nFrame.size
 
-        print("INFO: Resizing window: \(element.getValue(.title) as? String ?? "N/A"), to rect: \(nFrame)")
+        print("INFO: Resizing window: \(focusedWindow.getValue(.title) as? String ?? "N/A"), to rect: \(nFrame)")
     }
 }

@@ -8,7 +8,7 @@ public class WindowManager {
     private(set) var currentApplication: WindowElement = WindowElement("", "", nil)
 
     func SetApp(_ app: WindowElement) {
-        print("INFO: Updating the window to \(app.name)")
+        print("INFO: Updating the app to \(app.name)")
         currentApplication = app
         screen = NSScreen.main
     }
