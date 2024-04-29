@@ -34,8 +34,8 @@ struct SettingsManager {
     
     var snappingEnabled = AppSetting<Bool>("snappingEnabled", true)
     
-    var overlayAlpha = AppSetting<CGFloat>("overlayAlpha", 45)
+    var overlayAlpha = AppSetting<CGFloat>("overlayAlpha", 30)
     var overlayCornerRadius = AppSetting<CGFloat>("overlayCornerRadius", 10)
-    var overlayBorderColor = AppSetting<Int>("overlayBorderColor", Color(NSColor.controlAccentColor).hex())
-    var overlayBackgroundColor = AppSetting<Int>("overlayBackgroundColor", Color(NSColor.controlBackgroundColor).hex())
+    var overlayBorderColor = AppSetting<Int>("overlayBorderColor", Color(NSColor.controlColor).hex())
+    var overlayBackgroundColor = AppSetting<Int>("overlayBackgroundColor", Color(NSColor.controlAccentColor).hex())
 }

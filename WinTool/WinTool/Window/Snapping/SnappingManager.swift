@@ -13,7 +13,7 @@ class SnappingManager {
     var couldSnap = false
     var mouseDown = false
     
-    var overlayWindow: NSWindow
+    var overlayWindow: SnapOverlay
     var timer: Timer?
     
     var resizeItem: ResizeType? = nil

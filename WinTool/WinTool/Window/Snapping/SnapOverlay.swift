@@ -3,16 +3,14 @@ import Cocoa
 import SwiftUI
 
 class SnapOverlay: NSWindow {
-    var view = NSBox()
-    
     init() {
         super.init(contentRect: NSRect(x: 0, y: 0, width: 0, height: 0), styleMask: .titled, backing: .buffered, defer: false)
         title = Main.shared.appName + "Overlay"
         level = .modalPanel
+        alphaValue = 0
         
         isOpaque = false
         styleMask.insert(.fullSizeContentView)
-        alphaValue = 0
         
         isReleasedWhenClosed = false
         ignoresMouseEvents = true
@@ -25,8 +23,11 @@ class SnapOverlay: NSWindow {
         standardWindowButton(.zoomButton)?.isHidden = true
         standardWindowButton(.toolbarButton)?.isHidden = true
         
+        var view = NSBox()
         view.boxType = .custom
-        updateSettings()
+        view.fillColor = NSColor(SettingsManager.shared.overlayBackgroundColor.value)
+        view.borderColor = NSColor(SettingsManager.shared.overlayBorderColor.value)
+        view.cornerRadius = SettingsManager.shared.overlayCornerRadius.value
         view.wantsLayer = true
         contentView = view
     }
@@ -44,10 +45,13 @@ class SnapOverlay: NSWindow {
         }
     }
     
-    func updateSettings() {
-        alphaValue = SettingsManager.shared.overlayAlpha.value
-        view.fillColor = NSColor(Color(rgb: SettingsManager.shared.overlayBackgroundColor.value, a: 1))
-        view.borderColor = NSColor(Color(rgb: SettingsManager.shared.overlayBorderColor.value, a: 1))
+    public func updateSettings() {
+        var view = NSBox()
+        view.boxType = .custom
+        view.fillColor = NSColor(SettingsManager.shared.overlayBackgroundColor.value)
+        view.borderColor = NSColor(SettingsManager.shared.overlayBorderColor.value)
         view.cornerRadius = SettingsManager.shared.overlayCornerRadius.value
+        view.wantsLayer = true
+        contentView = view
     }
 }

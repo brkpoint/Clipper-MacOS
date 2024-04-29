@@ -80,49 +80,45 @@ struct KeybindsSettingsView: View {
 }
 
 struct AppearanceSettingsView: View {
+    @State private var overlayAlpha = SettingsManager.shared.overlayAlpha.value / 10
     @State private var overlayCornerRadius = SettingsManager.shared.overlayCornerRadius.value
-    @State private var overlayAlpha = SettingsManager.shared.overlayAlpha.value
-    @State private var overlayBorderColor = Color(rgb: SettingsManager.shared.overlayBorderColor.value, a: 1)
-    @State private var overlayBackgroundColor = Color(rgb: SettingsManager.shared.overlayBackgroundColor.value, a: 1)
+    @State private var overlayBorderColor = Color(SettingsManager.shared.overlayBorderColor.value)
+    @State private var overlayBackgroundColor = Color(SettingsManager.shared.overlayBackgroundColor.value)
     
     var body: some View {
         Form {
             HStack {
                 VStack {
-                    Slider(value: $overlayAlpha, in: 0...100, step: 5, minimumValueLabel: Text("1"), maximumValueLabel: Text("100")) {
+                    Slider(value: $overlayAlpha, in: 0...10, step: 1, minimumValueLabel: Text("1"), maximumValueLabel: Text("100")) {
                         Label("Overlay Alpha", systemImage: "circle.lefthalf.filled")
                     }
-                    .alignmentGuide(.leading) { d in d[.leading] }
                     .onChange(of: overlayAlpha) {
-                        SettingsManager.shared.overlayAlpha.value = CGFloat(overlayAlpha)
-                        SnappingManager().overlayWindow.update()
+                        SettingsManager.shared.overlayAlpha.value = CGFloat(overlayAlpha * 10)
+                        SnappingManager().overlayWindow.updateSettings()
                     }
                     .padding(5)
                     Slider(value: $overlayCornerRadius, in: 1...18, step: 1, minimumValueLabel: Text("1"), maximumValueLabel: Text("18")) {
                         Label("Overlay Corner Radius", systemImage: "scribble")
                     }
-                    .alignmentGuide(.leading) { d in d[.leading] }
                     .onChange(of: overlayCornerRadius) {
                         SettingsManager.shared.overlayCornerRadius.value = CGFloat(overlayCornerRadius)
-                        SnappingManager().overlayWindow.update()
+                        SnappingManager().overlayWindow.updateSettings()
                     }
                     .padding(5)
                     ColorPicker(selection: $overlayBorderColor, supportsOpacity: false) {
                         Label("Overlay Border Color", systemImage: "square")
                     }
-                    .alignmentGuide(.leading) { d in d[.leading] }
                     .onChange(of: overlayBorderColor) {
                         SettingsManager.shared.overlayBorderColor.value = overlayBorderColor.hex()
-                        SnappingManager().overlayWindow.update()
+                        SnappingManager().overlayWindow.updateSettings()
                     }
                     .padding(5)
                     ColorPicker(selection: $overlayBackgroundColor, supportsOpacity: false) {
                         Label("Overlay Background Color", systemImage: "square.fill")
                     }
-                    .alignmentGuide(.leading) { d in d[.leading] }
                     .onChange(of: overlayBackgroundColor) {
                         SettingsManager.shared.overlayBackgroundColor.value = overlayBackgroundColor.hex()
-                        SnappingManager().overlayWindow.update()
+                        SnappingManager().overlayWindow.updateSettings()
                     }
                     .padding(5)
                 }
@@ -133,7 +129,7 @@ struct AppearanceSettingsView: View {
                         .stroke(overlayBorderColor, lineWidth: 5)
                         .fill(overlayBackgroundColor)
                         .frame(width: 180, height: 180)
-                        .opacity(Double(overlayAlpha / 100))
+                        .opacity(Double(overlayAlpha / 10))
                         .padding(5)
                 }
             }
