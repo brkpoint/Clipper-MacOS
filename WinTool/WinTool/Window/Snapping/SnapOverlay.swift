@@ -3,6 +3,8 @@ import Cocoa
 import SwiftUI
 
 class SnapOverlay: NSWindow {
+    var view = NSBox()
+    
     init() {
         super.init(contentRect: NSRect(x: 0, y: 0, width: 0, height: 0), styleMask: .titled, backing: .buffered, defer: false)
         title = Main.shared.appName + "Overlay"
@@ -23,10 +25,8 @@ class SnapOverlay: NSWindow {
         standardWindowButton(.zoomButton)?.isHidden = true
         standardWindowButton(.toolbarButton)?.isHidden = true
         
-        let view = NSBox()
         view.boxType = .custom
-        view.fillColor = NSColor(SettingsManager.shared.overlayBackgroundColor.value)
-        view.borderColor = NSColor(SettingsManager.shared.overlayBorderColor.value)
+        updateSettings()
         view.cornerRadius = 10
         view.wantsLayer = true
         contentView = view
@@ -43,5 +43,10 @@ class SnapOverlay: NSWindow {
         } completionHandler: {
             super.orderOut(sender)
         }
+    }
+    
+    func updateSettings() {
+        view.fillColor = NSColor(SettingsManager.shared.overlayBackgroundColor.value)
+        view.borderColor = NSColor(SettingsManager.shared.overlayBorderColor.value)
     }
 }

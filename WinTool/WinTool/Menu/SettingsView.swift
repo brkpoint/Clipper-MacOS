@@ -109,6 +109,7 @@ struct AppearanceSettingsView: View {
                     }
                     .onChange(of: overlayBorderColor) {
                         SettingsManager.shared.overlayBorderColor.value = overlayBorderColor.hex()
+                        SnappingManager.shared.overlayWindow.updateSettings()
                     }
                     .padding(5)
                     ColorPicker(selection: $overlayBackgroundColor, supportsOpacity: false) {
@@ -116,6 +117,7 @@ struct AppearanceSettingsView: View {
                     }
                     .onChange(of: overlayBackgroundColor) {
                         SettingsManager.shared.overlayBackgroundColor.value = overlayBackgroundColor.hex()
+                        SnappingManager.shared.overlayWindow.updateSettings()
                     }
                     .padding(5)
                 }
