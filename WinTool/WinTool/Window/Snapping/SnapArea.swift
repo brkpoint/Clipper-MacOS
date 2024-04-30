@@ -52,24 +52,24 @@ enum SnapArea: String, Codable, CaseIterable {
         switch self {
             case .toTopLeft:
                 return CGRect(x: 5,
-                              y: screen.frame.height / 2 - 31,
-                              width: screen.frame.width / 2,
-                              height: screen.frame.height / 2)
+                              y: screen.frame.height / 2 - 25,
+                              width: screen.frame.width / 2 - 5,
+                              height: screen.frame.height / 2 - 5)
             case .toTopRight:
-                return CGRect(x: screen.frame.width / 2 - 5,
-                              y: screen.frame.height / 2 - 31,
-                              width: screen.frame.width / 2,
-                              height: screen.frame.height / 2)
+                return CGRect(x: screen.frame.width / 2,
+                              y: screen.frame.height / 2 - 25,
+                              width: screen.frame.width / 2 - 5,
+                              height: screen.frame.height / 2 - 5)
             case .toBottomLeft:
                 return CGRect(x: 5,
                               y: 5,
-                              width: screen.frame.width / 2,
-                              height: screen.frame.height / 2)
+                              width: screen.frame.width / 2 - 5,
+                              height: screen.frame.height / 2 - 5)
             case .toBottomRight:
-                return CGRect(x: screen.frame.width / 2 - 5,
+                return CGRect(x: screen.frame.width / 2,
                               y: 5,
-                              width: screen.frame.width / 2,
-                              height: screen.frame.height / 2)
+                              width: screen.frame.width / 2 - 5,
+                              height: screen.frame.height / 2 - 5)
         }
     }
     
