@@ -4,27 +4,31 @@ import SwiftUI
 
 extension Color {
     init(_ rgb: Int) {
-        self.init(red: Double((rgb >> 16) & 0xFF) / 255.0, green: Double((rgb >> 8) & 0xFF) / 255.0, blue: Double(rgb & 0xFF) / 255.0)
+        let r = Double((rgb >> 16) & 0xFF) / 255
+        let g = Double((rgb >> 8) & 0xFF) / 255
+        let b = Double(rgb & 0xFF) / 255
+        self.init(red: r, green: g, blue: b)
     }
     
     func hex() -> Int {
         let resolved = self.resolve(in: Main.shared.environment)
-        let r = Int(resolved.red * 255) << 16
-        let g = Int(resolved.green * 255) << 8
-        let b = Int(resolved.blue * 255)
-        return Int(r | g | b)
+        return toHex(r: resolved.red, g: resolved.green, b: resolved.blue)
     }
 }
 
 extension NSColor {
     convenience init(_ rgb: Int) {
-        self.init(Color(red: Double((rgb >> 16) & 0xFF) / 255.0, green: Double((rgb >> 8) & 0xFF) / 255.0, blue: Double(rgb & 0xFF) / 255.0))
+        self.init(Color(rgb))
     }
     
     func hex() -> Int {
-        let r = Int(self.redComponent * 255) << 16
-        let g = Int(self.greenComponent * 255) << 8
-        let b = Int(self.blueComponent * 255)
-        return Int(r | g | b)
+        return toHex(r: Float(self.redComponent), g: Float(self.greenComponent), b: Float(self.blueComponent))
     }
+}
+
+func toHex(r: Float, g: Float, b: Float) -> Int {
+    let rh = Int(r * 255)
+    let gh = Int(g * 255)
+    let bh = Int(b * 255)
+    return (rh << 16) | (gh << 8) | bh
 }

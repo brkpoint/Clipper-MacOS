@@ -23,11 +23,11 @@ class SnapOverlay: NSWindow {
         standardWindowButton(.zoomButton)?.isHidden = true
         standardWindowButton(.toolbarButton)?.isHidden = true
         
-        var view = NSBox()
+        let view = NSBox()
         view.boxType = .custom
         view.fillColor = NSColor(SettingsManager.shared.overlayBackgroundColor.value)
         view.borderColor = NSColor(SettingsManager.shared.overlayBorderColor.value)
-        view.cornerRadius = SettingsManager.shared.overlayCornerRadius.value
+        view.cornerRadius = 10
         view.wantsLayer = true
         contentView = view
     }
@@ -43,15 +43,5 @@ class SnapOverlay: NSWindow {
         } completionHandler: {
             super.orderOut(sender)
         }
-    }
-    
-    public func updateSettings() {
-        var view = NSBox()
-        view.boxType = .custom
-        view.fillColor = NSColor(SettingsManager.shared.overlayBackgroundColor.value)
-        view.borderColor = NSColor(SettingsManager.shared.overlayBorderColor.value)
-        view.cornerRadius = SettingsManager.shared.overlayCornerRadius.value
-        view.wantsLayer = true
-        contentView = view
     }
 }

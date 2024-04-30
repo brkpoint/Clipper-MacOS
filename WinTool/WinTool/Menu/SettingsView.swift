@@ -81,7 +81,6 @@ struct KeybindsSettingsView: View {
 
 struct AppearanceSettingsView: View {
     @State private var overlayAlpha = SettingsManager.shared.overlayAlpha.value / 10
-    @State private var overlayCornerRadius = SettingsManager.shared.overlayCornerRadius.value
     @State private var overlayBorderColor = Color(SettingsManager.shared.overlayBorderColor.value)
     @State private var overlayBackgroundColor = Color(SettingsManager.shared.overlayBackgroundColor.value)
     
@@ -89,20 +88,20 @@ struct AppearanceSettingsView: View {
         Form {
             HStack {
                 VStack {
+                    Button("Reset All") {
+                        SettingsManager.shared.overlayAlpha.reset()
+                        SettingsManager.shared.overlayBorderColor.reset()
+                        SettingsManager.shared.overlayBackgroundColor.reset()
+                        
+                        overlayAlpha = SettingsManager.shared.overlayAlpha.value / 10
+                        overlayBorderColor = Color(SettingsManager.shared.overlayBorderColor.value)
+                        overlayBackgroundColor = Color(SettingsManager.shared.overlayBackgroundColor.value)
+                    }
                     Slider(value: $overlayAlpha, in: 0...10, step: 1, minimumValueLabel: Text("1"), maximumValueLabel: Text("100")) {
                         Label("Overlay Alpha", systemImage: "circle.lefthalf.filled")
                     }
                     .onChange(of: overlayAlpha) {
                         SettingsManager.shared.overlayAlpha.value = CGFloat(overlayAlpha * 10)
-                        SnappingManager().overlayWindow.updateSettings()
-                    }
-                    .padding(5)
-                    Slider(value: $overlayCornerRadius, in: 1...18, step: 1, minimumValueLabel: Text("1"), maximumValueLabel: Text("18")) {
-                        Label("Overlay Corner Radius", systemImage: "scribble")
-                    }
-                    .onChange(of: overlayCornerRadius) {
-                        SettingsManager.shared.overlayCornerRadius.value = CGFloat(overlayCornerRadius)
-                        SnappingManager().overlayWindow.updateSettings()
                     }
                     .padding(5)
                     ColorPicker(selection: $overlayBorderColor, supportsOpacity: false) {
@@ -110,7 +109,6 @@ struct AppearanceSettingsView: View {
                     }
                     .onChange(of: overlayBorderColor) {
                         SettingsManager.shared.overlayBorderColor.value = overlayBorderColor.hex()
-                        SnappingManager().overlayWindow.updateSettings()
                     }
                     .padding(5)
                     ColorPicker(selection: $overlayBackgroundColor, supportsOpacity: false) {
@@ -118,15 +116,14 @@ struct AppearanceSettingsView: View {
                     }
                     .onChange(of: overlayBackgroundColor) {
                         SettingsManager.shared.overlayBackgroundColor.value = overlayBackgroundColor.hex()
-                        SnappingManager().overlayWindow.updateSettings()
                     }
                     .padding(5)
                 }
                 .padding(5)
                 VStack {
                     Text("Preview:")
-                    RoundedRectangle(cornerRadius: overlayCornerRadius)
-                        .stroke(overlayBorderColor, lineWidth: 5)
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(overlayBorderColor)
                         .fill(overlayBackgroundColor)
                         .frame(width: 180, height: 180)
                         .opacity(Double(overlayAlpha / 10))
