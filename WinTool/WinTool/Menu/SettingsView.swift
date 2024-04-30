@@ -80,6 +80,7 @@ struct KeybindsSettingsView: View {
 }
 
 struct AppearanceSettingsView: View {
+    @State private var timeToSnap = SettingsManager.shared.timeToSnap.value
     @State private var overlayAlpha = SettingsManager.shared.overlayAlpha.value / 10
     @State private var overlayBorderColor = Color(SettingsManager.shared.overlayBorderColor.value)
     @State private var overlayBackgroundColor = Color(SettingsManager.shared.overlayBackgroundColor.value)
@@ -89,15 +90,20 @@ struct AppearanceSettingsView: View {
             HStack {
                 VStack {
                     Button("Reset All") {
+                        SettingsManager.shared.timeToSnap.reset()
                         SettingsManager.shared.overlayAlpha.reset()
                         SettingsManager.shared.overlayBorderColor.reset()
                         SettingsManager.shared.overlayBackgroundColor.reset()
                         
+                        timeToSnap = SettingsManager.shared.timeToSnap.value
                         overlayAlpha = SettingsManager.shared.overlayAlpha.value / 10
                         overlayBorderColor = Color(SettingsManager.shared.overlayBorderColor.value)
                         overlayBackgroundColor = Color(SettingsManager.shared.overlayBackgroundColor.value)
                     }
-                    Slider(value: $overlayAlpha, in: 0...10, step: 1, minimumValueLabel: Text("1"), maximumValueLabel: Text("100")) {
+                    Slider(value: $timeToSnap, in: 0.3 ... 1.5, step: 0.1, minimumValueLabel: Text("0.3"), maximumValueLabel: Text("1.5")) {
+                        Label("Time To Snap (In Seconds)", systemImage: "")
+                    }
+                    Slider(value: $overlayAlpha, in: 0 ... 10, step: 1, minimumValueLabel: Text("1"), maximumValueLabel: Text("100")) {
                         Label("Overlay Alpha", systemImage: "circle.lefthalf.filled")
                     }
                     .onChange(of: overlayAlpha) {

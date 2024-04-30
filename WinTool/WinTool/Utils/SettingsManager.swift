@@ -46,6 +46,8 @@ struct SettingsManager {
     
     var snappingEnabled = AppSetting<Bool>("snappingEnabled", true)
     
+    var timeToSnap = AppSetting<Double>("timeToSnap", 0.45)
+    
     var overlayAlpha = AppSetting<CGFloat>("overlayAlpha", 30)
     var overlayBorderColor = AppSetting<Int>("overlayBorderColor", Color(NSColor.controlColor).hex())
     var overlayBackgroundColor = AppSetting<Int>("overlayBackgroundColor", Color(NSColor.controlAccentColor).hex())
