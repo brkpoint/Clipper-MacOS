@@ -137,7 +137,6 @@ struct AppearanceSettingsView: View {
                         .padding(5)
                         ColorPicker(selection: $overlayBorderColor, supportsOpacity: false) {
                             Label("Overlay Border Color", systemImage: "square")
-                                .multilineTextAlignment(.leading)
                         }
                         .onChange(of: overlayBorderColor) {
                             SettingsManager.shared.overlayBorderColor.value = overlayBorderColor.hex()
@@ -149,7 +148,6 @@ struct AppearanceSettingsView: View {
                         .padding(5)
                         ColorPicker(selection: $overlayBackgroundColor, supportsOpacity: false) {
                             Label("Overlay Background Color", systemImage: "square.fill")
-                                .multilineTextAlignment(.leading)
                         }
                         .onChange(of: overlayBackgroundColor) {
                             SettingsManager.shared.overlayBackgroundColor.value = overlayBackgroundColor.hex()
@@ -167,8 +165,8 @@ struct AppearanceSettingsView: View {
                     VStack {
                         if let wallpaper = Main.shared.wallpaper {
                             wallpaper
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
                         } else {
                             Rectangle()
                         }
