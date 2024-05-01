@@ -6,10 +6,8 @@ class AlignmentManager {
     static var shared: AlignmentManager = AlignmentManager()
     
     func AlignFrame(_ type: ResizeType, _ currentApplication: WindowElement) {
-        let screenFrame: CGRect? = ScreenManager.shared.GetScreen().frame
+        guard let rect = type.rect(currentApplication) else { return }
         
-        if let rect = type.rect(currentApplication) {
-            currentApplication.setFrame(rect)
-        }
+        currentApplication.setFrame(rect)
     }
 }

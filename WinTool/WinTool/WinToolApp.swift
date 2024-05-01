@@ -6,11 +6,15 @@ import KeyboardShortcuts
 @main
 struct Main: App {
     static var shared: Main = Main()
+    
     var wallpaper: Image? = nil
+    
     var environment = EnvironmentValues()
+    
     let appName = "WinTool"
     let bundleIdentifier = "com.shibaofficial.WinTool"
     let userDefaultsKey = "setting."
+    
     var contentView = MenuView()
     
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
@@ -34,7 +38,7 @@ final class AppState: ObservableObject {
                     return
                 }
                 
-                item.execute()
+                WindowManager.shared.Align(item)
             }
         }
 

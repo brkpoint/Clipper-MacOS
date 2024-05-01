@@ -21,14 +21,6 @@ enum ResizeType: String, Codable, CaseIterable {
                 return false
         }
     }
-    
-    func execute() {
-        switch self {
-            default:
-                WindowManager.shared.Align(self)
-                break
-        }
-    }
 
     var key: KeyboardShortcuts.Key {
         switch self {

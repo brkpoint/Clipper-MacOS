@@ -25,6 +25,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     private func initialize() {
         SnappingManager()
+        
         Process.askForAccessibilityIfNeeded()
 
         if Process.isSandboxingEnabled() {
