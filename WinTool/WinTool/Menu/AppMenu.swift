@@ -38,7 +38,6 @@ class AppMenu: NSObject {
     }
 
     @objc func settings(sender: NSMenuItem) {
-        NSApplication.shared.activate(ignoringOtherApps: true)
         try? Main.shared.contentView.openSettings()
     }
 

@@ -93,6 +93,8 @@ struct KeybindsSettingsView: View {
 }
 
 struct AppearanceSettingsView: View {
+    @State private var wallpaper: Image?
+    
     @State private var timeToSnap = SettingsManager.shared.timeToSnap.value
     @State private var overlayAlpha = SettingsManager.shared.overlayAlpha.value / 10
     @State private var overlayBorderColor = Color(SettingsManager.shared.overlayBorderColor.value)
@@ -164,16 +166,47 @@ struct AppearanceSettingsView: View {
                 .padding(5)
                 VStack {
                     Text("Preview:")
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(overlayBorderColor)
-                        .fill(overlayBackgroundColor)
-                        .frame(width: 180, height: 180)
-                        .opacity(Double(overlayAlpha / 10))
-                        .padding(5)
+                    VStack {
+                        if let wallpaper = wallpaper {
+                            wallpaper
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 320, height: 220)
+                                .cornerRadius(8)
+                        }
+                    }
+                    .overlay() {
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(overlayBorderColor)
+                            .fill(overlayBackgroundColor)
+                            .frame(width: 180, height: 180)
+                            .opacity(Double(overlayAlpha / 10))
+                            .padding(5)
+                    }
                 }
             }
         }
-        .frame(width: 620, height: 250)
+        .frame(width: 650, height: 250)
         .padding(5)
+        .onAppear {
+            getWallpaper()
+        }
+    }
+    
+    func getWallpaper() {
+        DispatchQueue.global(qos: .background).async {
+            guard let url = NSWorkspace.shared.desktopImageURL(for: NSScreen.main!) else { return }
+            
+            do {
+                let data = try Data(contentsOf: url)
+                guard let img = NSImage(data: data) else { return }
+                
+                DispatchQueue.main.async {
+                    self.wallpaper = Image(nsImage: img)
+                }
+            } catch {
+                print("Wallpaper load error")
+            }
+        }
     }
 }
