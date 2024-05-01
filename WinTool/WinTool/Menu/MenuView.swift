@@ -35,6 +35,7 @@ struct MenuView: View {
         .onAppear {
             windowInfo.windowElement = WindowManager.shared.currentApplication
         }
+        .openSettingsAccess()
     }
 }
 

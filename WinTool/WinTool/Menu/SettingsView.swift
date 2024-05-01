@@ -116,7 +116,7 @@ struct AppearanceSettingsView: View {
                     .frame(maxWidth: .infinity, alignment: .center)
                     VStack(alignment: .leading) {
                         Slider(value: $timeToSnap, in: 0.3 ... 1.5, step: 0.1, minimumValueLabel: Text("0.3"), maximumValueLabel: Text("1.5")) {
-                            Label("Time To Snap (In Seconds)", systemImage: "")
+                            Label("Time To Snap (In Seconds)", systemImage: "timer")
                         }
                         .onChange(of: timeToSnap) {
                             SettingsManager.shared.timeToSnap.value = timeToSnap
