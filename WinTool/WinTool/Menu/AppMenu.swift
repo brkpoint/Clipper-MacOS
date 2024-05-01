@@ -3,8 +3,6 @@ import SwiftUI
 import SettingsAccess
 
 class AppMenu: NSObject {
-    private let windowManager = WindowManager.shared
-
     let menu = NSMenu()
     
     func createMenu() -> NSMenu {
