@@ -34,7 +34,7 @@ class SnappingManager {
             }
             
             self.snapTimeCounter += 0.25
-            if !self.mouseDown && self.snapTimeCounter < SettingsManager.shared.timeToSnap.value && !WindowManager.shared.currentApplication.isWindow && WindowManager.shared.currentApplication.isFullscreen { return }
+            if !self.mouseDown || self.snapTimeCounter < SettingsManager.shared.timeToSnap.value || !WindowManager.shared.currentApplication.isWindow || WindowManager.shared.currentApplication.isFullscreen { return }
             
             self.couldSnap = true
             
