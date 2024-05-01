@@ -36,6 +36,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if let application = NSWorkspace.shared.frontmostApplication {
             setupWindow(application)
         }
+        
+        guard let url = NSWorkspace.shared.desktopImageURL(for: NSScreen.main!) else { return }
+        
+        do {
+            let data = try Data(contentsOf: url)
+            guard let nsimg = NSImage(data: data) else { return }
+            
+            Main.shared.wallpaper = Image(nsImage: nsimg)
+        } catch {
+            print("Wallpaper load error")
+        }
     }
 
     private func setupWindow(_ application: NSRunningApplication) {

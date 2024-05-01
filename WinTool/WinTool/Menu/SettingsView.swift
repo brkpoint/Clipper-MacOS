@@ -93,8 +93,6 @@ struct KeybindsSettingsView: View {
 }
 
 struct AppearanceSettingsView: View {
-    @State private var wallpaper: Image?
-    
     @State private var timeToSnap = SettingsManager.shared.timeToSnap.value
     @State private var overlayAlpha = SettingsManager.shared.overlayAlpha.value / 10
     @State private var overlayBorderColor = Color(SettingsManager.shared.overlayBorderColor.value)
@@ -167,14 +165,16 @@ struct AppearanceSettingsView: View {
                 VStack {
                     Text("Preview:")
                     VStack {
-                        if let wallpaper = wallpaper {
+                        if let wallpaper = Main.shared.wallpaper {
                             wallpaper
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
-                                .frame(width: 320, height: 220)
-                                .cornerRadius(8)
+                        } else {
+                            Rectangle()
                         }
                     }
+                    .frame(width: 320, height: 220)
+                    .cornerRadius(8)
                     .overlay() {
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(overlayBorderColor)
@@ -188,25 +188,5 @@ struct AppearanceSettingsView: View {
         }
         .frame(width: 650, height: 250)
         .padding(5)
-        .onAppear {
-            getWallpaper()
-        }
-    }
-    
-    func getWallpaper() {
-        DispatchQueue.global(qos: .background).async {
-            guard let url = NSWorkspace.shared.desktopImageURL(for: NSScreen.main!) else { return }
-            
-            do {
-                let data = try Data(contentsOf: url)
-                guard let img = NSImage(data: data) else { return }
-                
-                DispatchQueue.main.async {
-                    self.wallpaper = Image(nsImage: img)
-                }
-            } catch {
-                print("Wallpaper load error")
-            }
-        }
     }
 }
