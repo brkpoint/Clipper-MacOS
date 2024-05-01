@@ -10,23 +10,23 @@ struct SettingsView: View {
     var body: some View {
         TabView {
             GeneralSettingsView()
-                .tabItem {
-                    Label("General", systemImage: "gear")
-                }
-                .tag(Tabs.general)
-                .padding(5)
+            .tabItem {
+                Label("General", systemImage: "gear")
+            }
+            .tag(Tabs.general)
+            .padding(5)
             KeybindsSettingsView()
-                .tabItem {
-                    Label("Keybinds", systemImage: "keyboard.badge.ellipsis")
-                }
-                .tag(Tabs.keybinds)
-                .padding(5)
+            .tabItem {
+                Label("Keybinds", systemImage: "keyboard.badge.ellipsis")
+            }
+            .tag(Tabs.keybinds)
+            .padding(5)
             AppearanceSettingsView()
-                .tabItem {
-                    Label("Appearance", systemImage: "sparkles")
-                }
-                .tag(Tabs.appearance)
-                .padding(5)
+            .tabItem {
+                Label("Appearance", systemImage: "sparkles")
+            }
+            .tag(Tabs.appearance)
+            .padding(5)
         }
     }
 }
@@ -37,16 +37,25 @@ struct GeneralSettingsView: View {
     
     var body: some View {
         Form {
-            VStack {
+            VStack(alignment: .leading) {
                 Toggle("Shortcuts", isOn: $shortcutsEnabled)
-                    .onChange(of: shortcutsEnabled) {
-                        SettingsManager.shared.shortcutsEnabled.value = shortcutsEnabled
-                    }
+                .onChange(of: shortcutsEnabled) {
+                    SettingsManager.shared.shortcutsEnabled.value = shortcutsEnabled
+                }
+                .alignmentGuide(.leading) { d in
+                    d[.leading]
+                }
                 Toggle("Snapping", isOn: $snappingEnabled)
-                    .onChange(of: snappingEnabled) {
-                        SettingsManager.shared.shortcutsEnabled.value = snappingEnabled
-                    }
+                .onChange(of: snappingEnabled) {
+                    SettingsManager.shared.shortcutsEnabled.value = snappingEnabled
+                }
+                .alignmentGuide(.leading) { d in
+                    d[.leading]
+                }
                 LaunchAtLogin.Toggle("Toggle launch at login")
+                .alignmentGuide(.leading) { d in
+                    d[.leading]
+                }
             }
         }
         .frame(width: 450, height: 200)
@@ -56,26 +65,30 @@ struct GeneralSettingsView: View {
 struct KeybindsSettingsView: View {
     var body: some View {
         Form {
-            ScrollView(.vertical) {
-                Button("Reset All") {
-                    for item in Main.shared.shortcuts.list {
-                        KeyboardShortcuts.reset(item.name)
-                    }
+            Button("Reset All") {
+                for item in Main.shared.shortcuts.list {
+                    KeyboardShortcuts.reset(item.name)
                 }
-                VStack {
+            }
+            .frame(maxWidth: .infinity, alignment: .center)
+            ScrollView(.vertical) {
+                VStack(alignment: .leading) {
                     ForEach(Main.shared.$shortcuts.list) { $shortcut in
                         HStack {
                             Text(shortcut.title)
                             KeyboardShortcuts.Recorder(for: shortcut.name)
+                        }
+                        .alignmentGuide(.leading) { d in
+                            d[.leading]
                         }
                     }
                     .padding(2)
                 }
                 .frame(maxWidth: .infinity)
             }
+            .frame(maxWidth: .infinity, alignment: .center)
         }
         .frame(width: 450, height: 200)
-        .padding(5)
     }
 }
 
@@ -100,32 +113,53 @@ struct AppearanceSettingsView: View {
                         overlayBorderColor = Color(SettingsManager.shared.overlayBorderColor.value)
                         overlayBackgroundColor = Color(SettingsManager.shared.overlayBackgroundColor.value)
                     }
-                    Slider(value: $timeToSnap, in: 0.3 ... 1.5, step: 0.1, minimumValueLabel: Text("0.3"), maximumValueLabel: Text("1.5")) {
-                        Label("Time To Snap (In Seconds)", systemImage: "")
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    VStack(alignment: .leading) {
+                        Slider(value: $timeToSnap, in: 0.3 ... 1.5, step: 0.1, minimumValueLabel: Text("0.3"), maximumValueLabel: Text("1.5")) {
+                            Label("Time To Snap (In Seconds)", systemImage: "")
+                        }
+                        .onChange(of: timeToSnap) {
+                            SettingsManager.shared.timeToSnap.value = timeToSnap
+                        }
+                        .alignmentGuide(.leading) { d in
+                            d[.leading]
+                        }
+                        .padding(5)
+                        Slider(value: $overlayAlpha, in: 0 ... 10, step: 0.5, minimumValueLabel: Text("1"), maximumValueLabel: Text("100")) {
+                            Label("Overlay Alpha", systemImage: "circle.lefthalf.filled")
+                        }
+                        .onChange(of: overlayAlpha) {
+                            SettingsManager.shared.overlayAlpha.value = CGFloat(overlayAlpha * 10)
+                        }
+                        .alignmentGuide(.leading) { d in
+                            d[.leading]
+                        }
+                        .padding(5)
+                        ColorPicker(selection: $overlayBorderColor, supportsOpacity: false) {
+                            Label("Overlay Border Color", systemImage: "square")
+                                .multilineTextAlignment(.leading)
+                        }
+                        .onChange(of: overlayBorderColor) {
+                            SettingsManager.shared.overlayBorderColor.value = overlayBorderColor.hex()
+                            SnappingManager.shared.overlayWindow.updateSettings()
+                        }
+                        .alignmentGuide(.leading) { d in
+                            d[.leading]
+                        }
+                        .padding(5)
+                        ColorPicker(selection: $overlayBackgroundColor, supportsOpacity: false) {
+                            Label("Overlay Background Color", systemImage: "square.fill")
+                                .multilineTextAlignment(.leading)
+                        }
+                        .onChange(of: overlayBackgroundColor) {
+                            SettingsManager.shared.overlayBackgroundColor.value = overlayBackgroundColor.hex()
+                            SnappingManager.shared.overlayWindow.updateSettings()
+                        }
+                        .alignmentGuide(.leading) { d in
+                            d[.leading]
+                        }
+                        .padding(5)
                     }
-                    Slider(value: $overlayAlpha, in: 0 ... 10, step: 1, minimumValueLabel: Text("1"), maximumValueLabel: Text("100")) {
-                        Label("Overlay Alpha", systemImage: "circle.lefthalf.filled")
-                    }
-                    .onChange(of: overlayAlpha) {
-                        SettingsManager.shared.overlayAlpha.value = CGFloat(overlayAlpha * 10)
-                    }
-                    .padding(5)
-                    ColorPicker(selection: $overlayBorderColor, supportsOpacity: false) {
-                        Label("Overlay Border Color", systemImage: "square")
-                    }
-                    .onChange(of: overlayBorderColor) {
-                        SettingsManager.shared.overlayBorderColor.value = overlayBorderColor.hex()
-                        SnappingManager.shared.overlayWindow.updateSettings()
-                    }
-                    .padding(5)
-                    ColorPicker(selection: $overlayBackgroundColor, supportsOpacity: false) {
-                        Label("Overlay Background Color", systemImage: "square.fill")
-                    }
-                    .onChange(of: overlayBackgroundColor) {
-                        SettingsManager.shared.overlayBackgroundColor.value = overlayBackgroundColor.hex()
-                        SnappingManager.shared.overlayWindow.updateSettings()
-                    }
-                    .padding(5)
                 }
                 .padding(5)
                 VStack {
@@ -139,7 +173,7 @@ struct AppearanceSettingsView: View {
                 }
             }
         }
-        .frame(width: 500, height: 250)
+        .frame(width: 620, height: 250)
         .padding(5)
     }
 }
