@@ -11,8 +11,8 @@ struct Main: App {
     
     var environment = EnvironmentValues()
     
-    let appName = "WinTool"
-    let bundleIdentifier = "com.shibaofficial.WinTool"
+    let appName = "Clipper"
+    let bundleIdentifier = "com.shibaofficial.Clipper"
     let userDefaultsKey = "setting."
     
     var contentView = MenuView()
