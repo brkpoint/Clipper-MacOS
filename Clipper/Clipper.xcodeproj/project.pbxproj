@@ -33,8 +33,6 @@
 
 /* Begin PBXFileReference section */
 		282E5F102BE4478F00847BDC /* Clipper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clipper.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		282E5F222BE447FD00847BDC /* Clipper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Clipper.entitlements; path = ../../../../.Trash/Clipper.entitlements; sourceTree = "<group>"; };
-		282E5F252BE4489700847BDC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		282E5F282BE448C700847BDC /* Clipper-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Clipper-Bridging-Header.h"; sourceTree = "<group>"; };
 		282E5F292BE448C800847BDC /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		282E5F2A2BE448C800847BDC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -55,6 +53,7 @@
 		282E5F3D2BE448C800847BDC /* AppMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppMenu.swift; sourceTree = "<group>"; };
 		282E5F3E2BE448C800847BDC /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		282E5F3F2BE448C800847BDC /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		284EC3D62BE449D500C56845 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +73,7 @@
 		282E5F072BE4478F00847BDC = {
 			isa = PBXGroup;
 			children = (
-				282E5F252BE4489700847BDC /* README.md */,
+				284EC3D62BE449D500C56845 /* README.md */,
 				282E5F122BE4478F00847BDC /* Clipper */,
 				282E5F112BE4478F00847BDC /* Products */,
 			);
@@ -91,7 +90,6 @@
 		282E5F122BE4478F00847BDC /* Clipper */ = {
 			isa = PBXGroup;
 			children = (
-				282E5F222BE447FD00847BDC /* Clipper.entitlements */,
 				282E5F2A2BE448C800847BDC /* Assets.xcassets */,
 				282E5F282BE448C700847BDC /* Clipper-Bridging-Header.h */,
 				282E5F2B2BE448C800847BDC /* Clipper.swift */,
