@@ -33,7 +33,6 @@
 
 /* Begin PBXFileReference section */
 		282E5F102BE4478F00847BDC /* Clipper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clipper.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		282E5F282BE448C700847BDC /* Clipper-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Clipper-Bridging-Header.h"; sourceTree = "<group>"; };
 		282E5F292BE448C800847BDC /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		282E5F2A2BE448C800847BDC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		282E5F2B2BE448C800847BDC /* Clipper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Clipper.swift; sourceTree = "<group>"; };
@@ -54,6 +53,7 @@
 		282E5F3E2BE448C800847BDC /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		282E5F3F2BE448C800847BDC /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		284EC3D62BE449D500C56845 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		28F95BD32BE58A3F003B3FEE /* Clipper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Clipper.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,8 +90,8 @@
 		282E5F122BE4478F00847BDC /* Clipper */ = {
 			isa = PBXGroup;
 			children = (
+				28F95BD32BE58A3F003B3FEE /* Clipper.entitlements */,
 				282E5F2A2BE448C800847BDC /* Assets.xcassets */,
-				282E5F282BE448C700847BDC /* Clipper-Bridging-Header.h */,
 				282E5F2B2BE448C800847BDC /* Clipper.swift */,
 				282E5F292BE448C800847BDC /* AppDelegate.swift */,
 				282E5F402BE448C800847BDC /* Menu */,
@@ -400,8 +400,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.shibaofficial.Clipper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "Clipper/Clipper-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -430,7 +429,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.shibaofficial.Clipper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "Clipper/Clipper-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 			};

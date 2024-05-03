@@ -18,8 +18,10 @@ struct Main: App {
     var contentView = MenuView()
     
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
     @StateObject private var appState: AppState = AppState()
     @ObservedObject var shortcuts: Shortcuts = Shortcuts()
+    
     var body: some Scene {
         Settings {
             SettingsView()
@@ -34,10 +36,7 @@ final class AppState: ObservableObject {
             let shortcut = KeyboardShortcuts.Name.init(item.rawValue, default: .init(item.key, modifiers: [item.modifiers]))
             Main.shared.shortcuts.list.append(Shortcut(shortcut, item.rawValue))
             KeyboardShortcuts.onKeyDown(for: shortcut) {
-                if !SettingsManager.shared.shortcutsEnabled.value {
-                    return
-                }
-                
+                if !SettingsManager.shared.shortcutsEnabled.value { return }
                 WindowManager.shared.Align(item)
             }
         }
