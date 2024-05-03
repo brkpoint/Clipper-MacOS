@@ -38,7 +38,7 @@ class SnappingManager {
             
             self.couldSnap = true
             
-            for item in (SnapArea.allCases) {
+            for item in SnapArea.allCases {
                 guard let rect = item.rect(WindowManager.shared.currentApplication) else { continue }
                 if !self.checkBoundingBox(self.mousePos, rect) { continue }
                 

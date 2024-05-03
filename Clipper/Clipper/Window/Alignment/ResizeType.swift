@@ -46,10 +46,7 @@ enum ResizeType: String, Codable, CaseIterable {
     }
 
     var modifiers: NSEvent.ModifierFlags {
-        switch self {
-            default:
-                return [NSEvent.ModifierFlags.command, NSEvent.ModifierFlags.control]
-        }
+        return [NSEvent.ModifierFlags.command, NSEvent.ModifierFlags.control]
     }
     
     func rect(_ application: WindowElement) -> CGRect? {

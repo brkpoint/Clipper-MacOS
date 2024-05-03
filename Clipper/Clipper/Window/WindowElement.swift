@@ -27,12 +27,8 @@ class WindowElement {
     }
     
     private var focusedWindow: AXUIElement {
-        if let window = mainApp.getValue(.focusedWindow) {
-            return window as! AXUIElement
-        }
-        if let window = windows?.first {
-            return window
-        }
+        if let window = mainApp.getValue(.focusedWindow) { return window as! AXUIElement }
+        if let window = windows?.first { return window }
         
         return AXUIElementCreateSystemWide()
     }
