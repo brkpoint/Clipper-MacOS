@@ -7,7 +7,7 @@ class SnapOverlay: NSWindow {
     
     init() {
         super.init(contentRect: NSRect(x: 0, y: 0, width: 0, height: 0), styleMask: .titled, backing: .buffered, defer: false)
-        title = Main.shared.appName + "Overlay"
+        title = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as! String + "Overlay"
         level = .modalPanel
         alphaValue = 0
         
