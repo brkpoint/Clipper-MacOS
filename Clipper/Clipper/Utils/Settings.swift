@@ -39,8 +39,8 @@ struct AppSetting<T> {
     }
 }
 
-struct SettingsManager {
-    static var shared: SettingsManager = SettingsManager()
+struct SettingsData {
+    static var shared: SettingsData = SettingsData()
     
     var shortcutsEnabled = AppSetting<Bool>("shortcutsEnabled", true)
     

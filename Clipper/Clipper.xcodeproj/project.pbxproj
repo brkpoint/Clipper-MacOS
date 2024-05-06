@@ -13,8 +13,8 @@
 		282E5F442BE448C800847BDC /* AX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282E5F2C2BE448C800847BDC /* AX.swift */; };
 		282E5F452BE448C800847BDC /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282E5F2D2BE448C800847BDC /* Color.swift */; };
 		282E5F462BE448C800847BDC /* Process.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282E5F2E2BE448C800847BDC /* Process.swift */; };
-		282E5F472BE448C800847BDC /* ScreenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282E5F2F2BE448C800847BDC /* ScreenManager.swift */; };
-		282E5F482BE448C800847BDC /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282E5F302BE448C800847BDC /* SettingsManager.swift */; };
+		282E5F472BE448C800847BDC /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282E5F2F2BE448C800847BDC /* Screen.swift */; };
+		282E5F482BE448C800847BDC /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282E5F302BE448C800847BDC /* Settings.swift */; };
 		282E5F492BE448C800847BDC /* Shortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282E5F312BE448C800847BDC /* Shortcuts.swift */; };
 		282E5F4A2BE448C800847BDC /* AlignmentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282E5F332BE448C800847BDC /* AlignmentManager.swift */; };
 		282E5F4B2BE448C800847BDC /* ResizeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282E5F342BE448C800847BDC /* ResizeType.swift */; };
@@ -39,8 +39,8 @@
 		282E5F2C2BE448C800847BDC /* AX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AX.swift; sourceTree = "<group>"; };
 		282E5F2D2BE448C800847BDC /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		282E5F2E2BE448C800847BDC /* Process.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Process.swift; sourceTree = "<group>"; };
-		282E5F2F2BE448C800847BDC /* ScreenManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenManager.swift; sourceTree = "<group>"; };
-		282E5F302BE448C800847BDC /* SettingsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
+		282E5F2F2BE448C800847BDC /* Screen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
+		282E5F302BE448C800847BDC /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		282E5F312BE448C800847BDC /* Shortcuts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shortcuts.swift; sourceTree = "<group>"; };
 		282E5F332BE448C800847BDC /* AlignmentManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlignmentManager.swift; sourceTree = "<group>"; };
 		282E5F342BE448C800847BDC /* ResizeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResizeType.swift; sourceTree = "<group>"; };
@@ -107,8 +107,8 @@
 				282E5F2C2BE448C800847BDC /* AX.swift */,
 				282E5F2D2BE448C800847BDC /* Color.swift */,
 				282E5F2E2BE448C800847BDC /* Process.swift */,
-				282E5F2F2BE448C800847BDC /* ScreenManager.swift */,
-				282E5F302BE448C800847BDC /* SettingsManager.swift */,
+				282E5F2F2BE448C800847BDC /* Screen.swift */,
+				282E5F302BE448C800847BDC /* Settings.swift */,
 				282E5F312BE448C800847BDC /* Shortcuts.swift */,
 			);
 			path = Utils;
@@ -236,11 +236,11 @@
 			files = (
 				282E5F412BE448C800847BDC /* AppDelegate.swift in Sources */,
 				282E5F492BE448C800847BDC /* Shortcuts.swift in Sources */,
-				282E5F472BE448C800847BDC /* ScreenManager.swift in Sources */,
+				282E5F472BE448C800847BDC /* Screen.swift in Sources */,
 				282E5F532BE448C800847BDC /* SettingsView.swift in Sources */,
 				282E5F462BE448C800847BDC /* Process.swift in Sources */,
 				282E5F4E2BE448C800847BDC /* SnappingManager.swift in Sources */,
-				282E5F482BE448C800847BDC /* SettingsManager.swift in Sources */,
+				282E5F482BE448C800847BDC /* Settings.swift in Sources */,
 				282E5F4F2BE448C800847BDC /* WindowElement.swift in Sources */,
 				282E5F522BE448C800847BDC /* MenuView.swift in Sources */,
 				282E5F4B2BE448C800847BDC /* ResizeType.swift in Sources */,
@@ -397,7 +397,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.shibaofficial.Clipper;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aleksanderbrk.Clipper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -426,7 +426,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.shibaofficial.Clipper;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aleksanderbrk.Clipper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";

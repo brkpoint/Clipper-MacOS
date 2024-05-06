@@ -50,7 +50,7 @@ enum ResizeType: String, Codable, CaseIterable {
     }
     
     func rect(_ application: WindowElement) -> CGRect? {
-        let screen: NSScreen = ScreenManager.shared.GetScreen()
+        let screen: NSScreen = Screen.shared.screen
         switch self {
             case .toLeftSide:
                 return CGRect(x: 0, 

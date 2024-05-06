@@ -34,15 +34,15 @@ struct SettingsView: View {
 }
 
 struct GeneralSettingsView: View {
-    @State private var shortcutsEnabled = SettingsManager.shared.shortcutsEnabled.value
-    @State private var snappingEnabled = SettingsManager.shared.snappingEnabled.value
+    @State private var shortcutsEnabled = SettingsData.shared.shortcutsEnabled.value
+    @State private var snappingEnabled = SettingsData.shared.snappingEnabled.value
     
     var body: some View {
         Form {
             VStack(alignment: .leading) {
                 Toggle("Shortcuts", isOn: $shortcutsEnabled)
                 .onChange(of: shortcutsEnabled) {
-                    SettingsManager.shared.shortcutsEnabled.value = shortcutsEnabled
+                    SettingsData.shared.shortcutsEnabled.value = shortcutsEnabled
                 }
                 .alignmentGuide(.leading) { d in
                     d[.leading]
@@ -50,7 +50,7 @@ struct GeneralSettingsView: View {
                 
                 Toggle("Snapping", isOn: $snappingEnabled)
                 .onChange(of: snappingEnabled) {
-                    SettingsManager.shared.shortcutsEnabled.value = snappingEnabled
+                    SettingsData.shared.shortcutsEnabled.value = snappingEnabled
                 }
                 .alignmentGuide(.leading) { d in
                     d[.leading]
@@ -97,25 +97,25 @@ struct KeybindsSettingsView: View {
 }
 
 struct AppearanceSettingsView: View {
-    @State private var timeToSnap = SettingsManager.shared.timeToSnap.value
-    @State private var overlayAlpha = SettingsManager.shared.overlayAlpha.value / 10
-    @State private var overlayBorderColor = Color(SettingsManager.shared.overlayBorderColor.value)
-    @State private var overlayBackgroundColor = Color(SettingsManager.shared.overlayBackgroundColor.value)
+    @State private var timeToSnap = SettingsData.shared.timeToSnap.value
+    @State private var overlayAlpha = SettingsData.shared.overlayAlpha.value / 10
+    @State private var overlayBorderColor = Color(SettingsData.shared.overlayBorderColor.value)
+    @State private var overlayBackgroundColor = Color(SettingsData.shared.overlayBackgroundColor.value)
     
     var body: some View {
         Form {
             HStack {
                 VStack {
                     Button("Reset All") {
-                        SettingsManager.shared.timeToSnap.reset()
-                        SettingsManager.shared.overlayAlpha.reset()
-                        SettingsManager.shared.overlayBorderColor.reset()
-                        SettingsManager.shared.overlayBackgroundColor.reset()
+                        SettingsData.shared.timeToSnap.reset()
+                        SettingsData.shared.overlayAlpha.reset()
+                        SettingsData.shared.overlayBorderColor.reset()
+                        SettingsData.shared.overlayBackgroundColor.reset()
                         
-                        timeToSnap = SettingsManager.shared.timeToSnap.value
-                        overlayAlpha = SettingsManager.shared.overlayAlpha.value / 10
-                        overlayBorderColor = Color(SettingsManager.shared.overlayBorderColor.value)
-                        overlayBackgroundColor = Color(SettingsManager.shared.overlayBackgroundColor.value)
+                        timeToSnap = SettingsData.shared.timeToSnap.value
+                        overlayAlpha = SettingsData.shared.overlayAlpha.value / 10
+                        overlayBorderColor = Color(SettingsData.shared.overlayBorderColor.value)
+                        overlayBackgroundColor = Color(SettingsData.shared.overlayBackgroundColor.value)
                     }
                     .frame(maxWidth: .infinity, alignment: .center)
                     
@@ -124,7 +124,7 @@ struct AppearanceSettingsView: View {
                             Label("Time To Snap (In Seconds)", systemImage: "timer")
                         }
                         .onChange(of: timeToSnap) {
-                            SettingsManager.shared.timeToSnap.value = timeToSnap
+                            SettingsData.shared.timeToSnap.value = timeToSnap
                         }
                         .alignmentGuide(.leading) { d in
                             d[.leading]
@@ -135,7 +135,7 @@ struct AppearanceSettingsView: View {
                             Label("Overlay Alpha", systemImage: "circle.lefthalf.filled")
                         }
                         .onChange(of: overlayAlpha) {
-                            SettingsManager.shared.overlayAlpha.value = CGFloat(overlayAlpha * 10)
+                            SettingsData.shared.overlayAlpha.value = CGFloat(overlayAlpha * 10)
                         }
                         .alignmentGuide(.leading) { d in
                             d[.leading]
@@ -146,7 +146,7 @@ struct AppearanceSettingsView: View {
                             Label("Overlay Border Color", systemImage: "square")
                         }
                         .onChange(of: overlayBorderColor) {
-                            SettingsManager.shared.overlayBorderColor.value = overlayBorderColor.hex()
+                            SettingsData.shared.overlayBorderColor.value = overlayBorderColor.hex()
                             SnappingManager.shared.overlayWindow.updateSettings()
                         }
                         .alignmentGuide(.leading) { d in
@@ -158,7 +158,7 @@ struct AppearanceSettingsView: View {
                             Label("Overlay Background Color", systemImage: "square.fill")
                         }
                         .onChange(of: overlayBackgroundColor) {
-                            SettingsManager.shared.overlayBackgroundColor.value = overlayBackgroundColor.hex()
+                            SettingsData.shared.overlayBackgroundColor.value = overlayBackgroundColor.hex()
                             SnappingManager.shared.overlayWindow.updateSettings()
                         }
                         .alignmentGuide(.leading) { d in

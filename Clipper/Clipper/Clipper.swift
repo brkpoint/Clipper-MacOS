@@ -11,8 +11,6 @@ struct Main: App {
     
     var environment = EnvironmentValues()
     
-    let appName = "Clipper"
-    let bundleIdentifier = "com.shibaofficial.Clipper"
     let userDefaultsKey = "setting."
     
     var contentView = MenuView()
@@ -34,9 +32,12 @@ final class AppState: ObservableObject {
     init() {
         for item in ResizeType.allCases {
             let shortcut = KeyboardShortcuts.Name.init(item.rawValue, default: .init(item.key, modifiers: [item.modifiers]))
+            
             Main.shared.shortcuts.list.append(Shortcut(shortcut, item.rawValue))
+            
             KeyboardShortcuts.onKeyDown(for: shortcut) {
-                if !SettingsManager.shared.shortcutsEnabled.value { return }
+                if !SettingsData.shared.shortcutsEnabled.value { return }
+                
                 WindowManager.shared.Align(item)
             }
         }

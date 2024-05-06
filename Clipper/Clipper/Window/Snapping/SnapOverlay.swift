@@ -34,7 +34,7 @@ class SnapOverlay: NSWindow {
     
     override func orderFront(_ sender: Any?) {
         super.orderFront(sender)
-        animator().alphaValue = SettingsManager.shared.overlayAlpha.value / 100
+        animator().alphaValue = SettingsData.shared.overlayAlpha.value / 100
     }
     
     override func orderOut(_ sender: Any?) {
@@ -46,7 +46,7 @@ class SnapOverlay: NSWindow {
     }
     
     func updateSettings() {
-        view.fillColor = NSColor(SettingsManager.shared.overlayBackgroundColor.value)
-        view.borderColor = NSColor(SettingsManager.shared.overlayBorderColor.value)
+        view.fillColor = NSColor(SettingsData.shared.overlayBackgroundColor.value)
+        view.borderColor = NSColor(SettingsData.shared.overlayBorderColor.value)
     }
 }

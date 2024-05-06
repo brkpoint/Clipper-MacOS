@@ -51,12 +51,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     private func setupWindow(_ application: NSRunningApplication) {
-        if application.bundleIdentifier == Main.shared.bundleIdentifier { return }
+        if application.bundleIdentifier == Bundle.main.bundleIdentifier { return }
         
         if !Process.isAllowedToUseAccessibilty() { return }
         
         windowManager.SetApp(WindowElement(application.localizedName!, application.bundleIdentifier!, application.processIdentifier, application.icon!))
-        ScreenManager.shared.UpdateScreen()
+        Screen.shared.UpdateScreen()
     }
 
     private func registerFrontAppChangeNote() {

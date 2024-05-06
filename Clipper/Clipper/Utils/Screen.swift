@@ -2,8 +2,8 @@ import Foundation
 import Cocoa
 import SwiftUI
 
-class ScreenManager {
-    static var shared: ScreenManager = ScreenManager()
+class Screen {
+    static var shared: Screen = Screen()
     
     var screen: NSScreen = NSScreen()
     

@@ -21,8 +21,8 @@ enum SnapArea: String, Codable, CaseIterable {
         }
     }
     
-    func rect(_ application: WindowElement) -> CGRect? {
-        let screen: NSScreen = ScreenManager.shared.GetScreen()
+    func rect() -> CGRect? {
+        let screen: NSScreen = Screen.shared.screen
         switch self {
             case .toTopLeft:
                 return CGRect(x: 0,
@@ -47,8 +47,8 @@ enum SnapArea: String, Codable, CaseIterable {
         }
     }
     
-    func overlayRect(_ application: WindowElement) -> CGRect? {
-        let screen: NSScreen = ScreenManager.shared.GetScreen()
+    func overlayRect() -> CGRect? {
+        let screen: NSScreen = Screen.shared.screen
         switch self {
             case .toTopLeft:
                 return CGRect(x: 5,
