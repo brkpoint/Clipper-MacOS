@@ -5,11 +5,7 @@ import SwiftUI
 class ScreenManager {
     static var shared: ScreenManager = ScreenManager()
     
-    private var screen: NSScreen = NSScreen()
-    
-    func GetScreen() -> NSScreen {
-        return screen
-    }
+    var screen: NSScreen = NSScreen()
     
     func UpdateScreen() {
         screen = NSScreen.main ?? screen
