@@ -16,7 +16,7 @@ An open-source app for aligning and scaling windows made using swiftUI with more
 - [x] buttons in the menu
 - [x] current app in the menu
 - [x] wallpaper as a preview background
-- [ ] better UI
+- [x] better UI
 - [x] better settings UI
 - [x] better icons
 - [x] import better icons

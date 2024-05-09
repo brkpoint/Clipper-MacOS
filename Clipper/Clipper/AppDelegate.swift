@@ -56,7 +56,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if !Process.isAllowedToUseAccessibilty() { return }
         
         windowManager.SetApp(WindowElement(application.localizedName!, application.bundleIdentifier!, application.processIdentifier, application.icon!))
-        Screen.shared.UpdateScreen()
     }
 
     private func registerFrontAppChangeNote() {

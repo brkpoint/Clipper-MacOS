@@ -26,7 +26,7 @@ class SnappingManager {
             self.prevMousePos = self.mousePos
             
             self.mousePos.x = NSEvent.mouseLocation.x
-            self.mousePos.y = Screen.shared.screen.frame.height - NSEvent.mouseLocation.y
+            self.mousePos.y = (NSScreen.main ?? NSScreen()).frame.height - NSEvent.mouseLocation.y
             
             if self.mousePos.x != self.prevMousePos.x || self.mousePos.y != self.prevMousePos.y {
                 self.restart()

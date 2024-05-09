@@ -13,7 +13,6 @@
 		282E5F442BE448C800847BDC /* AX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282E5F2C2BE448C800847BDC /* AX.swift */; };
 		282E5F452BE448C800847BDC /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282E5F2D2BE448C800847BDC /* Color.swift */; };
 		282E5F462BE448C800847BDC /* Process.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282E5F2E2BE448C800847BDC /* Process.swift */; };
-		282E5F472BE448C800847BDC /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282E5F2F2BE448C800847BDC /* Screen.swift */; };
 		282E5F482BE448C800847BDC /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282E5F302BE448C800847BDC /* Settings.swift */; };
 		282E5F492BE448C800847BDC /* Shortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282E5F312BE448C800847BDC /* Shortcuts.swift */; };
 		282E5F4A2BE448C800847BDC /* AlignmentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282E5F332BE448C800847BDC /* AlignmentManager.swift */; };
@@ -39,7 +38,6 @@
 		282E5F2C2BE448C800847BDC /* AX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AX.swift; sourceTree = "<group>"; };
 		282E5F2D2BE448C800847BDC /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		282E5F2E2BE448C800847BDC /* Process.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Process.swift; sourceTree = "<group>"; };
-		282E5F2F2BE448C800847BDC /* Screen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
 		282E5F302BE448C800847BDC /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		282E5F312BE448C800847BDC /* Shortcuts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shortcuts.swift; sourceTree = "<group>"; };
 		282E5F332BE448C800847BDC /* AlignmentManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlignmentManager.swift; sourceTree = "<group>"; };
@@ -107,7 +105,6 @@
 				282E5F2C2BE448C800847BDC /* AX.swift */,
 				282E5F2D2BE448C800847BDC /* Color.swift */,
 				282E5F2E2BE448C800847BDC /* Process.swift */,
-				282E5F2F2BE448C800847BDC /* Screen.swift */,
 				282E5F302BE448C800847BDC /* Settings.swift */,
 				282E5F312BE448C800847BDC /* Shortcuts.swift */,
 			);
@@ -236,7 +233,6 @@
 			files = (
 				282E5F412BE448C800847BDC /* AppDelegate.swift in Sources */,
 				282E5F492BE448C800847BDC /* Shortcuts.swift in Sources */,
-				282E5F472BE448C800847BDC /* Screen.swift in Sources */,
 				282E5F532BE448C800847BDC /* SettingsView.swift in Sources */,
 				282E5F462BE448C800847BDC /* Process.swift in Sources */,
 				282E5F4E2BE448C800847BDC /* SnappingManager.swift in Sources */,
