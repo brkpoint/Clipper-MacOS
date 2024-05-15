@@ -4,7 +4,7 @@ An open-source app for aligning and scaling windows made using swiftUI with more
 
 ** Please report bugs and maybe other stuff too... **
 ## Roadmap:
-#### Done: 39/48
+#### Done: 40/48
 ### Basic:
 - [x] running app
 - [x] hiding the app from dock
@@ -34,7 +34,7 @@ An open-source app for aligning and scaling windows made using swiftUI with more
 - [x] snapping without the button (hold the window for 0.8 sec in the area you wanna snap and then release)
 - [x] global shortcuts
 - [x] shortcut editor
-- [ ] fix the window calculation
+- [x] fix the window calculation
 - [ ] more features
 - [x] basic snapping
 - [ ] when its held for amount of time it wont stop snapping when moved to a diffrent snapping area
@@ -48,9 +48,9 @@ An open-source app for aligning and scaling windows made using swiftUI with more
 - [x] mouse position handling
 - [x] snap settings
 - [x] time to snap setting
-- [ ] accessibility setings fix
 - [ ] size reduction???
-- [ ] refactoring and optimalizations
+- [x] refactoring
+- [ ] optimalizations
 - [x] bug fixes
 - [ ] moreee bug fixes
 - [x] some more error fixes
