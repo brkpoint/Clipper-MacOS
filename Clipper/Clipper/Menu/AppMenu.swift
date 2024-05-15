@@ -15,15 +15,11 @@ class AppMenu: NSObject {
         menu.addItem(customMenuItem)
         menu.addItem(NSMenuItem.separator())
 
-        let settingsMenuItem = NSMenuItem(title: "Settings",
-                                                  action: #selector(settings),
-                                                  keyEquivalent: "u")
+        let settingsMenuItem = NSMenuItem(title: "Settings", action: #selector(settings), keyEquivalent: "u")
         settingsMenuItem.target = self
         menu.addItem(settingsMenuItem)
 
-        let quitMenuItem = NSMenuItem(title: "Quit",
-                                                  action: #selector(quit),
-                                                  keyEquivalent: "q")
+        let quitMenuItem = NSMenuItem(title: "Quit", action: #selector(quit), keyEquivalent: "q")
         quitMenuItem.target = self
         menu.addItem(quitMenuItem)
         

@@ -35,7 +35,8 @@ class SnappingManager {
             
             self.snapTimeCounter += 0.25
             
-            if !self.mouseDown || self.snapTimeCounter < SettingsData.shared.timeToSnap.value || !WindowManager.shared.currentApplication.isWindow || WindowManager.shared.currentApplication.isFullscreen { return }
+            if !self.mouseDown || !WindowManager.shared.currentApplication.isWindow || WindowManager.shared.currentApplication.isFullscreen { return }
+            if self.snapTimeCounter < SettingsData.shared.timeToSnap.value { return }
             
             self.couldSnap = true
             
@@ -57,7 +58,7 @@ class SnappingManager {
             
             if !SettingsData.shared.snappingEnabled.value { return }
             
-            if !self.couldSnap && !self.mouseDown { return }
+            if !self.couldSnap { return }
             
             guard let resizeType = self.resize else { return }
             
