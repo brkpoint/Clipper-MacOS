@@ -26,7 +26,7 @@ class SnapOverlay: NSWindow {
         standardWindowButton(.toolbarButton)?.isHidden = true
         
         view.boxType = .custom
-        updateSettings()
+        colorUpdate()
         view.cornerRadius = 10
         view.wantsLayer = true
         contentView = view
@@ -45,7 +45,7 @@ class SnapOverlay: NSWindow {
         }
     }
     
-    func updateSettings() {
+    func colorUpdate() {
         view.fillColor = NSColor(SettingsData.shared.overlayBackgroundColor.value)
         view.borderColor = NSColor(SettingsData.shared.overlayBorderColor.value)
     }

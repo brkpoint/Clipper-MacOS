@@ -147,7 +147,7 @@ struct AppearanceSettingsView: View {
                         }
                         .onChange(of: overlayBorderColor) {
                             SettingsData.shared.overlayBorderColor.value = overlayBorderColor.hex()
-                            SnappingManager.shared.overlayWindow.updateSettings()
+                            SnappingManager.shared.overlayWindow.colorUpdate()
                         }
                         .alignmentGuide(.leading) { d in
                             d[.leading]
@@ -159,7 +159,7 @@ struct AppearanceSettingsView: View {
                         }
                         .onChange(of: overlayBackgroundColor) {
                             SettingsData.shared.overlayBackgroundColor.value = overlayBackgroundColor.hex()
-                            SnappingManager.shared.overlayWindow.updateSettings()
+                            SnappingManager.shared.overlayWindow.colorUpdate()
                         }
                         .alignmentGuide(.leading) { d in
                             d[.leading]

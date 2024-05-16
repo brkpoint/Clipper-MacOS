@@ -7,13 +7,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     lazy var statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     let menu = AppMenu()
     
-    let windowManager = WindowManager.shared
-    
     func applicationDidFinishLaunching(_ notification: Notification) {
-        initialize()
         AppDelegate.instance = self
+        initialize()
         
-        registerFrontAppChangeNote()
         if let button = statusBarItem.button {
             let image = NSImage(named: "BarIcon")
             image?.isTemplate = true
@@ -38,16 +35,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             setupWindow(application)
         }
         
-        guard let url = NSWorkspace.shared.desktopImageURL(for: NSScreen.main!) else { return }
-        
-        do {
-            let data = try Data(contentsOf: url)
-            guard let nsimg = NSImage(data: data) else { return }
-            
-            Main.shared.wallpaper = Image(nsImage: nsimg)
-        } catch {
-            print("Wallpaper load error")
+        if let url = NSWorkspace.shared.desktopImageURL(for: NSScreen.main!) {
+            do {
+                let data = try Data(contentsOf: url)
+                guard let nsimg = NSImage(data: data) else { return }
+                
+                Main.shared.wallpaper = Image(nsImage: nsimg)
+            } catch {
+                print("ERR: Wallpaper load error")
+            }
         }
+        
+        print("INFO: registering app change event")
+        NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(self.appChanged(_:)), name: NSWorkspace.didActivateApplicationNotification, object: nil)
     }
 
     private func setupWindow(_ application: NSRunningApplication) {
@@ -55,16 +55,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         if !Process.isAllowedToUseAccessibilty() { return }
         
-        windowManager.SetApp(WindowElement(application.localizedName!, application.bundleIdentifier!, application.processIdentifier, application.icon!))
+        WindowManager.shared.SetApp(WindowElement(application.localizedName!, application.bundleIdentifier!, application.processIdentifier, application.icon!))
     }
 
-    private func registerFrontAppChangeNote() {
-        NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(self.receiveFrontAppChangeNote(_:)), name: NSWorkspace.didActivateApplicationNotification, object: nil)
-    }
-
-    @objc func receiveFrontAppChangeNote(_ notification: Notification) {
-        if let application = notification.userInfo?["NSWorkspaceApplicationKey"] as? NSRunningApplication {
-            setupWindow(application)
-        }
+    @objc func appChanged(_ notification: Notification) {
+        if let application = notification.userInfo?["NSWorkspaceApplicationKey"] as? NSRunningApplication { setupWindow(application) }
     }
 }

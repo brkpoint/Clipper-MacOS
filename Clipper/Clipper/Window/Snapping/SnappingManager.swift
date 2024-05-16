@@ -15,37 +15,34 @@ class SnappingManager {
     var overlayWindow: SnapOverlay = SnapOverlay();
     var timer: Timer?
     
-    var resize: ResizeType? = nil
+    var area: SnapArea? = nil
     
     init() {
         timer = Timer.scheduledTimer(withTimeInterval: 0.25, repeats: true, block: { timer in
             if !SettingsData.shared.snappingEnabled.value { return }
             
-            if WindowManager.shared.currentApplication.isFullscreen { return }
+            if WindowManager.shared.currentApplication.isFullscreen || !WindowManager.shared.currentApplication.isWindow { return }
             
             self.prevMousePos = self.mousePos
-            
             self.mousePos.x = NSEvent.mouseLocation.x
             self.mousePos.y = (NSScreen.main ?? NSScreen()).frame.height - NSEvent.mouseLocation.y
             
             if self.mousePos.x != self.prevMousePos.x || self.mousePos.y != self.prevMousePos.y {
-                self.restart()
+                self.reset()
                 return
             }
             
             self.snapTimeCounter += 0.25
             
-            if !self.mouseDown || !WindowManager.shared.currentApplication.isWindow || WindowManager.shared.currentApplication.isFullscreen { return }
-            if self.snapTimeCounter < SettingsData.shared.timeToSnap.value { return }
+            if !self.mouseDown || self.snapTimeCounter < SettingsData.shared.timeToSnap.value || self.couldSnap { return }
             
             self.couldSnap = true
             
             for item in SnapArea.allCases {
-                guard let rect = item.rect() else { continue }
-                if !self.checkBoundingBox(self.mousePos, rect) { continue }
+                if !self.checkBoundingBox(self.mousePos, item.rect()) { continue }
                 
-                self.resize = item.resizeType;
-                self.showRect(item.overlayRect())
+                self.area = item;
+                self.showRect()
             }
         })
         
@@ -54,26 +51,22 @@ class SnappingManager {
         }
         
         NSEvent.addGlobalMonitorForEvents(matching: [.leftMouseUp, .rightMouseUp, .otherMouseUp]) { event in
-            self.mouseDown = false
-            
             if !SettingsData.shared.snappingEnabled.value { return }
             
             if !self.couldSnap { return }
             
-            guard let resizeType = self.resize else { return }
+            WindowManager.shared.Align(self.area!.resizeType);
             
-            WindowManager.shared.Align(resizeType);
-            
-            self.restart()
+            self.mouseDown = false
+            self.reset()
         }
     }
     
-    func showRect(_ rect: CGRect?) {
+    func showRect() {
         if !Process.isAllowedToUseAccessibilty() { return }
-        guard let rect = rect else { return }
         
         self.overlayWindow.orderFront(nil)
-        self.overlayWindow.setFrame(rect, display: false)
+        self.overlayWindow.setFrame(area!.overlayRect(), display: false)
     }
     
     func hideRect() {
@@ -86,10 +79,10 @@ class SnappingManager {
         return position.x > box.origin.x && position.y > box.origin.y && position.x < box.width + box.origin.x && position.y < box.height + box.origin.y
     }
     
-    private func restart() {
+    private func reset() {
         self.snapTimeCounter = 0
         self.couldSnap = false
-        self.resize = nil
+        self.area = nil
         self.hideRect()
     }
 }

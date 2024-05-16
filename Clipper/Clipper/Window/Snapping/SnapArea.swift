@@ -21,7 +21,7 @@ enum SnapArea: String, Codable, CaseIterable {
         }
     }
     
-    func rect() -> CGRect? {
+    func rect() -> CGRect {
         let screen: NSScreen = NSScreen.main ?? NSScreen()
         switch self {
             case .toTopLeft:
@@ -47,7 +47,7 @@ enum SnapArea: String, Codable, CaseIterable {
         }
     }
     
-    func overlayRect() -> CGRect? {
+    func overlayRect() -> CGRect {
         let screen: NSScreen = NSScreen.main ?? NSScreen()
         switch self {
             case .toTopLeft:
