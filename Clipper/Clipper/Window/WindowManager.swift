@@ -4,14 +4,14 @@ import SwiftUI
 public class WindowManager {
     static let shared = WindowManager()
     
-    private(set) var currentApplication: WindowElement = WindowElement("", "", nil)
+    private(set) var application: WindowElement = WindowElement("", "", nil)
 
     func SetApp(_ app: WindowElement) {
         print("INFO: Updating the app to \(app.name)")
-        currentApplication = app
+        application = app
     }
 
     func Align(_ type: ResizeType) {
-        AlignmentManager.shared.AlignFrame(type, currentApplication)
+        AlignmentManager.shared.AlignFrame(type, application)
     }
 }

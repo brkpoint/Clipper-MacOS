@@ -73,7 +73,7 @@ class WindowElement {
     }
     
     var isFullscreen: Bool {
-        guard let value = getAXValue(.fullScreenButton)?.getValue(.subrole) as? String else { return false }
+        guard let value = getAXValue(.fullScreenButton)?.getValue(.subrole) as? String else { return true }
         return NSAccessibility.Subrole(rawValue: value) == .zoomButton
     }
     

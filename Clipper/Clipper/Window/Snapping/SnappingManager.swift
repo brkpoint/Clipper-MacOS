@@ -21,7 +21,7 @@ class SnappingManager {
         timer = Timer.scheduledTimer(withTimeInterval: 0.25, repeats: true, block: { timer in
             if !SettingsData.shared.snappingEnabled.value { return }
             
-            if WindowManager.shared.currentApplication.isFullscreen || !WindowManager.shared.currentApplication.isWindow { return }
+            if WindowManager.shared.application.isFullscreen || !WindowManager.shared.application.isWindow || !WindowManager.shared.application.isResizable { return }
             
             self.prevMousePos = self.mousePos
             self.mousePos.x = NSEvent.mouseLocation.x
@@ -54,6 +54,8 @@ class SnappingManager {
             if !SettingsData.shared.snappingEnabled.value { return }
             
             if !self.couldSnap { return }
+            
+            guard self.area != nil else { return }
             
             WindowManager.shared.Align(self.area!.resizeType);
             
