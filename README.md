@@ -4,7 +4,7 @@ An open-source app for aligning and scaling windows made using swiftUI with more
 
 ** Please report bugs and maybe other stuff too... **
 ## Roadmap:
-#### Done: 40/48
+#### Done: 44/48
 ### Basic:
 - [x] running app
 - [x] hiding the app from dock
@@ -48,11 +48,11 @@ An open-source app for aligning and scaling windows made using swiftUI with more
 - [x] mouse position handling
 - [x] snap settings
 - [x] time to snap setting
-- [ ] size reduction???
+- [x] size reduction???
 - [x] refactoring
-- [ ] optimalizations
+- [x] optimalizations
 - [x] bug fixes
-- [ ] moreee bug fixes
+- [x] moreee bug fixes
 - [x] some more error fixes
 - [ ] better code doc
 ### Readme.md stuff:
@@ -67,4 +67,4 @@ An open-source app for aligning and scaling windows made using swiftUI with more
 - [LaunchAtLogin](https://github.com/sindresorhus/LaunchAtLogin-modern)
 - [SettingsAccess](https://github.com/orchetect/SettingsAccess)
 ## How to run this app?
-### If you're using vscode or other IDE go to vscode branch
+### If you're using vscode or other IDE go to vscode branch (not supported)
