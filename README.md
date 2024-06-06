@@ -68,3 +68,4 @@ An open-source app for aligning and scaling windows made using swiftUI with more
 - [SettingsAccess](https://github.com/orchetect/SettingsAccess)
 ## How to run this app?
 ### If you're using vscode or other IDE go to vscode branch (not supported)
+You need to open the project, install the requirements and compile it.
